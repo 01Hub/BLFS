@@ -1,0 +1,12 @@
+<sect2>
+<title>Installation of <application><acronym>ORB</acronym>it2</application></title>
+
+<para>Install <application><acronym>ORB</acronym>it2</application> by running the following commands:</para>
+
+<screen><userinput><command>ldconfig &amp;&amp;
+./configure --prefix=$GNOME_PREFIX &amp;&amp;
+make &amp;&amp;
+make install</command></userinput></screen>
+
+</sect2>
+

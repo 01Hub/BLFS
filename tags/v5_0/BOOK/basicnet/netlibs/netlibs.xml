@@ -1,0 +1,17 @@
+<chapter id="basicnet-netlibs">
+<?dbhtml filename="netlibs.html" dir="basicnet"?>
+<title>Networking Libraries</title>
+
+<para>These applications are support libraries for other applications in
+the book.  It is unlikely that you would just install these libraries, you will
+generally find that you will be referred to this chapter to satisfy a
+dependency of other applications.</para>
+
+
+
+&curl;
+&wvstreams;
+&gnet;
+&libsoup;
+
+</chapter>

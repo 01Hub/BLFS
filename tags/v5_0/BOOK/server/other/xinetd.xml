@@ -1,0 +1,12 @@
+<sect1 id="xinetd" xreflabel="xinetd-&xinetd-version;">
+<?dbhtml filename="xinetd.html" dir="server"?>
+<title>xinetd-&xinetd-version;</title>
+
+&xinetd-intro;
+&xinetd-inst;
+&xinetd-exp;
+&xinetd-config;
+&xinetd-desc;
+
+</sect1>
+

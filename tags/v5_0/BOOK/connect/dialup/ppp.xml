@@ -1,0 +1,11 @@
+<sect1 id="ppp" xreflabel="PPP-&ppp-version;">
+<?dbhtml filename="ppp.html" dir="connect"?>
+<title>PPP-&ppp-version;</title>
+
+&ppp-intro;
+&ppp-inst;
+&ppp-config;
+&ppp-desc;
+
+</sect1>
+

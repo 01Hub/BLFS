@@ -1,0 +1,9 @@
+<sect2>
+<title>Command explanations</title>
+
+<para><parameter>--with-gtk-prefix=/usr</parameter>: This switch
+directs configure to <filename>gtk-config</filename>.</para>
+
+
+</sect2>
+

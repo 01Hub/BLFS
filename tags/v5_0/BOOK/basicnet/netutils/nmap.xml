@@ -1,0 +1,9 @@
+<sect1 id="nmap" xreflabel="Nmap-&nmap-version;">
+<?dbhtml filename="nmap.html" dir="basicnet"?>
+<title>Nmap-&nmap-version;</title>
+
+&nmap-intro;
+&nmap-inst;
+&nmap-desc;
+
+</sect1>

@@ -1,0 +1,22 @@
+<sect2>
+<title>Introduction to <application>Berkeley DB</application></title>
+
+<para>The <application>Berkeley DB</application> package contains programs and
+utilities used by many other applications for database related
+functions.</para>
+
+<sect3><title>Package information</title>
+<itemizedlist spacing='compact'>
+<listitem><para>Download (HTTP): <ulink
+url="&db-download-http;"/></para></listitem>
+<listitem><para>Download (FTP): <ulink
+url="&db-download-ftp;"/></para></listitem>
+<listitem><para>Download size: &db-size;</para></listitem>
+<listitem><para>Estimated Disk space required:
+&db-buildsize;</para></listitem>
+<listitem><para>Estimated build time:
+&db-time;</para></listitem></itemizedlist>
+</sect3>
+
+
+</sect2>

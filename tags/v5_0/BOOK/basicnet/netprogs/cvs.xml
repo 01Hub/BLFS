@@ -1,0 +1,11 @@
+<sect1 id="cvs" xreflabel="CVS-&cvs-version;">
+<?dbhtml filename="cvs.html" dir="basicnet"?>
+<title>CVS-&cvs-version;</title>
+
+&cvs-intro;
+&cvs-inst;
+&cvs-config;
+&cvs-desc;
+
+</sect1>
+

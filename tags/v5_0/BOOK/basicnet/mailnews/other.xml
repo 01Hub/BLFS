@@ -1,0 +1,24 @@
+<sect1 id="basicnet-mailnews-other">
+<?dbhtml filename="othermn.html" dir="basicnet"?>
+<title>Other Mail and News programs</title>
+
+<para><xref linkend="pan"/> is an <acronym>GTK</acronym>2 based newsreader 
+program.</para>
+
+<para>KNode is a Qt based newsreader program from 
+<xref linkend="kde-network"/>.</para>
+
+<para>KMail is a Qt based mail client from <xref linkend="kde-network"/>.</para>
+
+<para><xref linkend="balsa"/> is an <acronym>GTK</acronym>2 based mail client.
+</para>
+
+<para><xref linkend="mozilla"/> includes both a mail client and newsreader in 
+its installation along with notes for installing <application>Mozilla
+Thunderbird</application>, a mail/news client based on the
+<application>Mozilla</application> code base.</para>
+
+<para><xref linkend="evolution"/> includes an <acronym>GTK</acronym>2
+based mail client.</para> 
+
+</sect1>

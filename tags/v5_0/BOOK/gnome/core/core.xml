@@ -1,0 +1,15 @@
+<chapter id="gnome-core">
+<?dbhtml filename="core.html" dir="gnome"?>
+<title>GNOME core</title>
+
+<para>This section contains required elements of the
+<application><acronym>GNOME</acronym></application> environment
+to display a functional desktop.</para>
+
+&gnome-desktop;
+&gnome-panel;
+&gnome-session;
+&control-center;
+
+
+</chapter>

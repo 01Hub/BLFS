@@ -1,0 +1,23 @@
+<sect2>
+<title>Installation of <application>shadow</application></title>
+
+<para>Download the patch for shadow from <ulink url="&patch-root;"/>.</para>
+
+<para>Reinstall shadow by running the following commands:</para>
+
+<screen><userinput><command>patch -Np1 -i ../shadow-4.0.3-pam-2.patch &amp;&amp;
+./configure --prefix=/usr --libdir=/usr/lib \
+--enable-shared --with-libpam &amp;&amp;
+make &amp;&amp;
+make install &amp;&amp;
+ln -sf vipw /usr/sbin/vigr &amp;&amp;
+rm /bin/vipw &amp;&amp;
+mv /bin/sg /usr/bin &amp;&amp;
+mv /usr/lib/lib{misc,shadow}.so.0* /lib &amp;&amp;
+ln -sf ../../lib/libshadow.so.0 /usr/lib/libshadow.so &amp;&amp;
+ln -sf ../../lib/libmisc.so.0 /usr/lib/libmisc.so &amp;&amp;
+cp debian/securetty /etc/securetty</command></userinput></screen>
+
+
+</sect2>
+

@@ -1,0 +1,12 @@
+<sect1 id="fluxbox" xreflabel="Fluxbox-&fluxbox-version;">
+<?dbhtml filename="fluxbox.html" dir="x"?>
+<title>Fluxbox-&fluxbox-version;</title>
+
+&fluxbox-intro;
+&fluxbox-inst;
+&fluxbox-exp;
+&fluxbox-config;
+&fluxbox-desc;
+
+</sect1>
+

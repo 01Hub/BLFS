@@ -1,0 +1,12 @@
+<sect1 id="xmms" xreflabel="XMMS-&XMMS-version;">
+<?dbhtml filename="xmms.html" dir="multimedia"?>
+<title>XMMS-&XMMS-version;</title>
+
+&XMMS-intro;
+&XMMS-inst;
+&XMMS-exp;
+&XMMS-config;
+&XMMS-desc;
+
+</sect1>
+

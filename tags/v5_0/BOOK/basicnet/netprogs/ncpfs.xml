@@ -1,0 +1,12 @@
+<sect1 id="ncpfs" xreflabel="NCPFS-&ncpfs-version;">
+<?dbhtml filename="ncpfs.html" dir="basicnet"?>
+<title>NCPFS-&ncpfs-version;</title>
+
+&ncpfs-intro;
+&ncpfs-inst;
+&ncpfs-exp;
+&ncpfs-config;
+&ncpfs-desc;
+
+</sect1>
+

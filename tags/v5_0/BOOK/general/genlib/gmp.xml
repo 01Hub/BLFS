@@ -1,0 +1,11 @@
+<sect1 id="gmp" xreflabel="GMP-&gmp-version;">
+<?dbhtml filename="gmp.html" dir="general"?>
+<title>GMP-&gmp-version;</title>
+
+&gmp-intro;
+&gmp-inst;
+&gmp-exp;
+&gmp-desc;
+
+</sect1>
+

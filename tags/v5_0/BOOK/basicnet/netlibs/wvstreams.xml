@@ -1,0 +1,12 @@
+<sect1 id="wvstreams" xreflabel="WvStreams-&wvstreams-version;">
+<?dbhtml filename="wvstreams.html" dir="basicnet"?>
+<title>WvStreams-&wvstreams-version;</title>
+
+&wvstreams-intro;
+&wvstreams-inst;
+&wvstreams-exp;
+&wvstreams-config;
+&wvstreams-desc;
+
+</sect1>
+

@@ -1,0 +1,18 @@
+<sect2>
+<title>Installation of <application>Berkeley DB</application></title>
+
+<para>Install <application>Berkeley DB</application> by running the following commands:</para>
+
+<screen><userinput><command>cd build_unix &amp;&amp;
+../dist/configure --prefix=/usr \
+    --enable-compat185 \
+    --enable-cxx &amp;&amp;
+make &amp;&amp;
+make docdir=/usr/share/doc/db-&db-version; install</command></userinput></screen>
+<note><para>If you wish to enable <application>Java</application>
+support in <application>Berkeley DB</application>-&db-version;, add <command>
+--enable-java</command> to the configure options.
+<application>Java</application> support is needed
+if you plan to use system installed <application>Berkeley DB</application> when 
+compiling <application>OpenOffice</application>.</para></note>
+</sect2>

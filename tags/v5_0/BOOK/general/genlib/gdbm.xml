@@ -1,0 +1,11 @@
+<sect1 id="gdbm" xreflabel="GDBM-&gdbm-version;">
+<?dbhtml filename="gdbm.html" dir="general"?>
+<title>GDBM-&gdbm-version;</title>
+
+&gdbm-intro;
+&gdbm-inst;
+&gdbm-exp;
+&gdbm-desc;
+
+</sect1>
+

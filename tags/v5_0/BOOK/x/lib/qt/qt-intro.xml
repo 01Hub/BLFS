@@ -1,0 +1,24 @@
+<sect2>
+<title>Introduction to <application>Qt</application></title>
+
+<para>The <application>Qt</application> package contains a
+<application>C++</application> <acronym>GUI</acronym> library. This is useful 
+for creating graphical applications or executing graphical applications that
+are dynamically linked to the <application>Qt</application> library.</para>
+
+<sect3><title>Package information</title>
+<itemizedlist spacing='compact'>
+<listitem><para>Download (HTTP): <ulink url="&qt-download-http;"/></para></listitem>
+<listitem><para>Download (FTP): <ulink url="&qt-download-ftp;"/></para></listitem>
+<listitem><para>Download size: &qt-size;</para></listitem>
+<listitem><para>Estimated Disk space required: &qt-buildsize;</para></listitem>
+<listitem><para>Estimated build time: &qt-time;</para></listitem></itemizedlist>
+</sect3>
+
+<sect3><title><application>Qt</application> dependencies</title>
+<sect4><title>Required</title>
+<para><xref linkend="xfree86"/>, <xref linkend="libjpeg"/>, and 
+<xref linkend="libmng"/></para></sect4>
+</sect3>
+
+</sect2>

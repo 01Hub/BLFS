@@ -1,0 +1,11 @@
+<sect1 id="control-center" xreflabel="Control Center-&control-center-version;">
+<?dbhtml filename="control-center.html" dir="gnome"?>
+<title>Control Center-&control-center-version;</title>
+
+&control-center-intro;
+&control-center-inst;
+&control-center-exp;
+&control-center-desc;
+
+</sect1>
+

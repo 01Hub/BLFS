@@ -1,0 +1,10 @@
+<sect1 id="xsane" xreflabel="XSane-&xsane-version;">
+<?dbhtml filename="xsane.html" dir="pst"?>
+<title>XSane-&xsane-version;</title>
+
+&xsane-intro;
+&xsane-inst;
+&xsane-exp;
+&xsane-desc;
+
+</sect1>

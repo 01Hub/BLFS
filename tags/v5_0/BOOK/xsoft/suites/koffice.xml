@@ -1,0 +1,9 @@
+<sect1 id="koffice">
+<?dbhtml filename="koffice.html" dir="xsoft"?>
+<title>KOffice-&koffice-version;</title>
+
+&koffice-intro;
+&koffice-inst;
+&koffice-desc;
+
+</sect1>

@@ -1,0 +1,10 @@
+<sect1 id="curl" xreflabel="cURL-&curl-version;">
+<?dbhtml filename="curl.html" dir="basicnet"?>
+<title>cURL-&curl-version;</title>
+
+&curl-intro;
+&curl-inst;
+&curl-desc;
+
+</sect1>
+

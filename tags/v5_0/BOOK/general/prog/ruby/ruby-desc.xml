@@ -1,0 +1,21 @@
+<sect2>
+<title>Contents</title>
+
+<para>The <application>Ruby</application> package contains
+<command>ruby</command> and
+<command>irb</command>.</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<sect3><title>ruby</title>
+<para><command>ruby</command> is an interpreted scripting language for quick 
+and easy object-oriented programming.</para></sect3>
+
+<sect3><title>irb</title>
+<para><command>irb</command> is the interactive interface for ruby.</para>
+</sect3>
+
+</sect2>
+
