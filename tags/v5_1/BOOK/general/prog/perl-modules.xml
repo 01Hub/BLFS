@@ -1,0 +1,9 @@
+<sect1 id="perl-modules" xreflabel="Perl modules">
+<?dbhtml filename="perl-modules.html" ?>
+<title>Perl modules</title>
+
+&perl-modules-intro;
+&perl-modules-inst;
+
+</sect1>
+

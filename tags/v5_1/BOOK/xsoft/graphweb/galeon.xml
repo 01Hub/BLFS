@@ -1,0 +1,10 @@
+<sect1 id="galeon" xreflabel="Galeon-&galeon-version;">
+<?dbhtml filename="galeon.html" ?>
+<title>Galeon-&galeon-version;</title>
+
+&galeon-intro;
+&galeon-inst;
+&galeon-desc;
+
+</sect1>
+

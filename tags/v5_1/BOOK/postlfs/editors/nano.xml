@@ -1,0 +1,10 @@
+<sect1 id="postlfs-editors-nano">
+<?dbhtml filename="nano.html"?>
+<title>nano-&nano-version;</title>
+
+&nano-intro;
+&nano-inst;
+&nano-config;
+&nano-desc;
+
+</sect1>

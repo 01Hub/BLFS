@@ -1,0 +1,10 @@
+<sect1 id="whois" xreflabel="Whois-&whois-version;">
+<?dbhtml filename="whois.html"?>
+<title>Whois-&whois-version;</title>
+
+&whois-intro;
+&whois-inst;
+&whois-desc;
+
+</sect1>
+

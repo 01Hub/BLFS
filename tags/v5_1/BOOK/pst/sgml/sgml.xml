@@ -1,0 +1,17 @@
+<chapter id="pst-sgml">
+<?dbhtml filename="sgml.html"?>
+<title>Standard Generalized Markup Language (<acronym>SGML</acronym>)</title>
+
+<para>This chapter contains DocBook <acronym>SGML</acronym> document
+type definitions (<acronym>DTD</acronym>s), DocBook
+<acronym>DSSSL</acronym> Stylesheets and DocBook tools to validate,
+transform, format and publish DocBook documents.</para>
+
+&sgml-common;
+&sgml-dtd-3;
+&sgml-dtd;
+&opensp;
+&openjade;
+&docbook-dsssl;
+
+</chapter>

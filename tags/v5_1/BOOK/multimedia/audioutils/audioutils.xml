@@ -1,0 +1,17 @@
+<chapter id="multimedia-audioutils">
+<?dbhtml filename="audioutils.html"?>
+<title>Audio utilities</title>
+
+<para>This chapter contains programs involved with audio file
+manipulation; that is to say playing, recording, ripping and the other
+common things which people want to do.  To use much of this software,
+you will require either the kernel sound drivers installed, or <xref
+linkend="alsa"/> installed.</para>
+
+&mpg123;
+&vorbistools;
+&XMMS;
+&lame;
+&CDParanoia;
+
+</chapter>

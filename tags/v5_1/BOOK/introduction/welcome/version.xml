@@ -1,0 +1,23 @@
+<sect1 id="intro-welcome-version" xreflabel="Book Version" role="dsssl">
+<?dbhtml filename="version.html"?>
+<title>Book version</title>
+
+<para>This is <acronym>BLFS</acronym>-BOOK version &version; dated &releasedate;. 
+If this version is older than a month, a newer version is probably already 
+available for download. Check one of the mirror sites below for updated
+versions.</para>
+
+</sect1>
+
+<sect1 id="intro-welcome-mirrors" xreflabel="Mirrors">
+<title>Mirror sites</title>
+
+<para>The <acronym>BLFS</acronym> project has a number of mirrors setup
+world-wide to make it easier and more convenient for you to access the
+website.  Please visit the <ulink url="http://www.linuxfromscratch.org/blfs">
+http://www.linuxfromscratch.org/blfs</ulink> website for the list of current
+mirrors.</para>
+
+</sect1>
+
+

@@ -1,0 +1,12 @@
+<sect1 id="pppoe" xreflabel="RP-PPPoE-&pppoe-version;">
+<?dbhtml filename="pppoe.html"?>
+<title>RP-PPPoE-&pppoe-version;</title>
+
+&pppoe-intro;
+&pppoe-inst;
+&pppoe-exp;
+&pppoe-config;
+&pppoe-desc;
+
+</sect1>
+

@@ -1,0 +1,12 @@
+<sect1 id="postfix" xreflabel="Postfix-&postfix-version;">
+<?dbhtml filename="postfix.html"?>
+<title>Postfix-&postfix-version;</title>
+
+&postfix-intro;
+&postfix-inst;
+&postfix-exp;
+&postfix-config;
+&postfix-desc;
+
+</sect1>
+

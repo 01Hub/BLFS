@@ -1,0 +1,18 @@
+<sect1 id="postlfs-config-netfs"  xreflabel="netfs">
+<?dbhtml filename="netfs.html"?>
+<title>Configuring for Network Filesystems</title>
+
+<para>While <acronym>LFS</acronym> is capable of mounting network file
+systems such as <acronym>NFS</acronym>, these are not mounted by the
+<filename>mountfs</filename> init script.  The tools needed to mount
+these systems may not be available on the root partition and the
+network file systems need to be mounted after the networking is activated.
+These file systems also need to be unmounted before the network goes down.</para>
+
+<para>Install the <filename>/etc/rc.d/init.d/netfs</filename>
+network mount script included with the
+<xref linkend="intro-important-bootscripts"/> package.</para>
+                                                                                                                
+<screen><userinput><command>make install-netfs</command></userinput></screen>
+
+</sect1>

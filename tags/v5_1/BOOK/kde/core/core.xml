@@ -1,0 +1,11 @@
+<chapter id="kde-core">
+<?dbhtml filename="core.html"?>
+<title>KDE Core Packages</title>
+
+&kde-pre-install-config;
+&kde-core-arts;
+&kdelibs;
+&kdebase;
+&kde-core-config;
+
+</chapter>

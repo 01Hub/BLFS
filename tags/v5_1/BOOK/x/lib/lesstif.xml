@@ -1,0 +1,12 @@
+<sect1 id="lesstif" xreflabel="LessTif-&lesstif-version;">
+<?dbhtml filename="lesstif.html" ?>
+<title>LessTif-&lesstif-version;</title>
+
+&lesstif-intro;
+&lesstif-inst;
+&lesstif-exp;
+&lesstif-config;
+&lesstif-desc;
+
+</sect1>
+

@@ -1,0 +1,17 @@
+<chapter id="postlfs-editors">
+<?dbhtml filename="editors.html"?>
+<title>Editors</title>
+
+<para>This chapter is referenced in the <acronym>LFS</acronym> book for those 
+wishing to use other editors on their <acronym>LFS</acronym> system.  We
+also have the opportunity to show how some <acronym>LFS</acronym> installed 
+programs benefit from being recompiled after <acronym>GUI</acronym> libraries 
+have been installed.</para>
+
+&postlfs-editors-vim;
+&postlfs-editors-emacs;
+&postlfs-editors-nano;
+&postlfs-editors-joe;
+&postlfs-editors-pico;
+
+</chapter>

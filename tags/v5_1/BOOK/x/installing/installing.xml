@@ -1,0 +1,11 @@
+<chapter id="x-installing">
+<?dbhtml filename="installing.html" ?>
+<title>X Window Environment</title>
+
+<para>This chapter contains a graphical user environment.</para>
+
+&xorg;
+&xfree86;
+&x-setup;
+
+</chapter>

@@ -1,0 +1,11 @@
+<sect1 id="reiserfs" xreflabel="ReiserFS-&reiser-version;">
+<?dbhtml filename="reiserfs.html"?>
+<title>ReiserFS-&reiser-version;</title>
+
+&reiser-intro;
+&reiser-inst;
+&reiser-exp;
+&reiser-desc;
+
+</sect1>
+

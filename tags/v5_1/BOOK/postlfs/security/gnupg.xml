@@ -1,0 +1,10 @@
+<sect1 id="gnupg" xreflabel="GnuPG-&gnupg-version;">
+<?dbhtml filename="gnupg.html"?>
+<title>GnuPG-&gnupg-version;</title>
+
+&gnupg-intro;
+&gnupg-inst;
+&gnupg-exp;
+&gnupg-desc;
+
+</sect1>

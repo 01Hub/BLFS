@@ -1,0 +1,11 @@
+<sect1 id="bind" xreflabel="BIND-&bind-version;">
+<?dbhtml filename="bind.html"?>
+<title><acronym>BIND</acronym>-&bind-version;</title>
+
+&bind-intro;
+&bind-inst;
+&bind-config;
+&bind-desc;
+
+</sect1>
+

@@ -1,0 +1,10 @@
+<sect1 id="vorbistools" xreflabel="Vorbis Tools-&vorbistools-version;">
+<?dbhtml filename="vorbistools.html"?>
+<title>Vorbis Tools-&vorbistools-version;</title>
+
+&vorbistools-intro;
+&vorbistools-inst;
+&vorbistools-desc;
+
+</sect1>
+

@@ -1,0 +1,12 @@
+<sect1 id="ncftp" xreflabel="NcFTP-&ncftp-version;">
+<?dbhtml filename="ncftp.html"?>
+<title>NcFTP-&ncftp-version;</title>
+
+&ncftp-intro;
+&ncftp-inst;
+&ncftp-exp;
+&ncftp-config;
+&ncftp-desc;
+
+</sect1>
+

@@ -1,0 +1,10 @@
+<sect1 id="popt" xreflabel="popt-&popt-version;">
+<?dbhtml filename="popt.html"?>
+<title>popt-&popt-version;</title>
+
+&popt-intro;
+&popt-inst;
+&popt-desc;
+
+</sect1>
+

@@ -1,0 +1,12 @@
+<sect1 id="mplayer" xreflabel="MPlayer-&mplayer-version;">
+<?dbhtml filename="mplayer.html"?>
+<title>MPlayer-&mplayer-version;</title>
+
+&mplayer-intro;
+&mplayer-inst;
+&mplayer-exp;
+&mplayer-config;
+&mplayer-desc;
+
+</sect1>
+

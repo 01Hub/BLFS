@@ -1,0 +1,15 @@
+<chapter id="pst-printing">
+<?dbhtml filename="printing.html"?>
+<title>Printing</title>
+
+<para>This chapter contains spooling printer management systems and
+ghostscript applications to render PostScript for display on terminals
+or paper.</para>
+
+&cups;
+&LPRng;
+&gs;
+&espgs;
+&gimp-print;
+
+</chapter>

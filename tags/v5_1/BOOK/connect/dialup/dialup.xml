@@ -1,0 +1,8 @@
+<chapter id="connect-dialup">
+<?dbhtml filename="dialup.html"?>
+<title>Dial-up networking</title>
+
+&ppp;
+&wvdial;
+
+</chapter>

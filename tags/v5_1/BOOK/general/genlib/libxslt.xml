@@ -1,0 +1,10 @@
+<sect1 id="libxslt" xreflabel="libxslt-&libxslt-version;">
+<?dbhtml filename="libxslt.html"?>
+<title>libxslt-&libxslt-version;</title>
+
+&libxslt-intro;
+&libxslt-inst;
+&libxslt-desc;
+
+</sect1>
+

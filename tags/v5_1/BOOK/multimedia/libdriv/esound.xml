@@ -1,0 +1,12 @@
+<sect1 id="esound" xreflabel="EsounD-&esound-version;">
+<?dbhtml filename="esound.html"?>
+<title>EsounD-&esound-version;</title>
+
+&esound-intro;
+&esound-inst;
+&esound-exp;
+&esound-config;
+&esound-desc;
+
+</sect1>
+

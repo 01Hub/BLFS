@@ -1,0 +1,12 @@
+<part id="pst" xreflabel="Printing, Scanning and Typesetting">
+<?dbhtml filename="pst.html" dir="pst"?>
+<title>Printing, Scanning and Typesetting</title>
+
+&pst-printing;
+&pst-scanning;
+&pst-sgml;
+&pst-xml;
+&pst-ps;
+&pst-typesetting;
+
+</part>

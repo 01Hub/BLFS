@@ -1,0 +1,10 @@
+<!ENTITY appendices SYSTEM "appendices.xml">
+
+<!-- Deprecated package appendix -->
+
+<!ENTITY appendices-old SYSTEM "old/old.xml">
+
+<!-- Glossary -->
+
+<!ENTITY glossary SYSTEM "glossary.xml">
+

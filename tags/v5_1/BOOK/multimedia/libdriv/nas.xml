@@ -1,0 +1,11 @@
+<sect1 id="nas" xreflabel="NAS-&nas-version;">
+<?dbhtml filename="nas.html"?>
+<title>NAS-&nas-version;</title>
+
+&nas-intro;
+&nas-inst;
+&nas-exp;
+&nas-config;
+&nas-desc;
+
+</sect1>

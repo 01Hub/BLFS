@@ -1,0 +1,10 @@
+<sect1 id="ruby" xreflabel="Ruby-&ruby-version;">
+<?dbhtml filename="ruby.html"?>
+<title>Ruby-&ruby-version;</title>
+
+&ruby-intro;
+&ruby-inst;
+&ruby-desc;
+
+</sect1>
+

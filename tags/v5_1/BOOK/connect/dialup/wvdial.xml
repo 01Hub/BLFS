@@ -1,0 +1,11 @@
+<sect1 id="wvdial" xreflabel="WvDial-&wvdial-version;">
+<?dbhtml filename="wvdial.html"?>
+<title>WvDial-&wvdial-version;</title>
+
+&wvdial-intro;
+&wvdial-inst;
+&wvdial-config;
+&wvdial-desc;
+
+</sect1>
+

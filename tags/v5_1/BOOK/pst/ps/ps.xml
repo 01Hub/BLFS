@@ -1,0 +1,16 @@
+<chapter id="pst-ps">
+<?dbhtml filename="ps.html"?>
+<title>PostScript</title>
+
+<para>This chapter includes applications that create, manipulate or view 
+PostScript files and view Portable Document Format <acronym>PDF</acronym> 
+files.</para>
+
+&a2ps;
+&enscript;
+&psutils;
+&gsview;
+&xpdf;
+&pst-postscript-other;
+
+</chapter>
