@@ -1,0 +1,11 @@
+<sect1 id="imlib" xreflabel="Imlib-&imlib-version;">
+<?dbhtml filename="imlib.html" dir="general"?>
+<title>Imlib-&imlib-version;</title>
+
+&imlib-intro;
+&imlib-inst;
+&imlib-exp;
+&imlib-desc;
+
+</sect1>
+

@@ -1,0 +1,21 @@
+<sect2>
+<title>Contents</title>
+
+<para>The <application><acronym>LAME</acronym></application> package contains 
+<command>lame</command> and <filename class="libraryfile">libmp3lame</filename> libraries.</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<sect3><title>lame</title>
+<para><command>lame</command> creates <filename>MP3</filename> audio files.
+</para></sect3>
+
+<sect3><title>libmp3lame libraries</title>
+<para><filename class="libraryfile">libmp3lame</filename> libraries provide the functions necessary 
+to convert <filename>WAV</filename> files to <filename>MP3</filename> files.</para>
+</sect3>
+
+</sect2>
+

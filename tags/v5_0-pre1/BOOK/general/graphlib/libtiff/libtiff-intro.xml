@@ -1,0 +1,23 @@
+<sect2>
+<title>Introduction to <application>libtiff</application></title>
+
+<para>The <application>libtiff</application> package contains the tiff libraries and associated
+utilities.  The libraries are used by many programs for reading and
+writing tiff files and the utilities are useful for general work with
+tiff files.</para>
+
+<sect3><title>Package information</title>
+<itemizedlist spacing='compact'>
+<listitem><para>Download (HTTP): <ulink url="&libtiff-download-http;"/></para></listitem>
+<listitem><para>Download (FTP): <ulink url="&libtiff-download-ftp;"/></para></listitem>
+<listitem><para>Download size: &libtiff-size;</para></listitem>
+<listitem><para>Estimated Disk space required: &libtiff-buildsize;</para></listitem>
+<listitem><para>Estimated build time: &libtiff-time;</para></listitem></itemizedlist>
+</sect3>
+
+<sect3><title>Additional downloads</title>
+<itemizedlist spacing='compact'>
+<listitem><para>Download (HTTP): <ulink url="&patch-root;/tiff-3.6.0-tiffio.patch"/></para></listitem>
+</itemizedlist></sect3>
+
+</sect2>

@@ -1,0 +1,11 @@
+<sect1 id="lame" xreflabel="LAME-&lame-version;">
+<?dbhtml filename="lame.html" dir="multimedia"?>
+<title>LAME-&lame-version;</title>
+
+&lame-intro;
+&lame-inst;
+&lame-exp;
+&lame-desc;
+
+</sect1>
+

@@ -1,0 +1,31 @@
+<sect1 id="gnome-otherlib-config">
+<?dbhtml filename="otherlib-config.html" dir="gnome"?>
+<title>Pre-installation configuration</title>
+
+<para>Add to your system or personal profile:</para>
+
+<screen><command>export PATH=$PATH:/opt/gnome/bin
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/gnome/lib/pkgconfig
+export GNOME_LIBCONFIG_PATH=/usr/lib</command></screen>
+
+<para>Add to your <filename>/etc/ld.so.conf</filename>:</para>
+
+<screen><userinput><command>cat &gt;&gt; /etc/ld.so.conf &lt;&lt; "EOF"</command>
+# Begin gnome addition to /etc/ld.so.conf
+
+/opt/gnome/lib
+
+# End gnome addition
+<command>EOF</command></userinput></screen>
+
+<para>Add to your <filename>/etc/man.conf</filename>:</para>
+
+<screen><userinput><command>cat &gt;&gt; /etc/man.conf &lt;&lt; "EOF"</command>
+# Begin gnome addition to man.conf
+
+MANPATH /opt/gnome/man
+
+# END gnome addition to man.conf
+<command>EOF</command></userinput></screen>
+
+</sect1>

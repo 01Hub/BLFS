@@ -1,0 +1,23 @@
+<sect2>
+<title>Contents</title>
+
+<para>Ghostscript comes with a lot of filters to render
+PostScript/<acronym>PDF</acronym> files back and forth. Please 
+refer to the <acronym>HTML</acronym> documentation or try
+<command>man gs</command>. <acronym>ESP</acronym> Ghostscript provides 
+pstoraster too.</para>
+
+</sect2>
+
+<sect2>
+
+<title>Description</title>
+
+<sect3>
+<title>pstoraster</title>
+<para><command>pstoraster</command> allows <acronym>CUPS</acronym> to filter 
+output to non-PostScript printers. It is built and installed only if 
+<xref linkend="cups"/> is found.</para></sect3>
+
+</sect2>
+

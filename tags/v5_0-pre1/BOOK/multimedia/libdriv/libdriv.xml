@@ -1,0 +1,34 @@
+<chapter id="multimedia-libdriv">
+<?dbhtml filename="libdriv.html" dir="multimedia"?>
+<title>Multimedia Libraries and Drivers</title>
+
+<para>Many multimedia programs require libraries and/or drivers in order 
+to function properly.  The packages in this section fall into this category.
+Generally you only need to install these if you are installing a program
+which has the library listed as either a requirement, or as an option to
+enable it to support certain functionality.</para>
+
+&alsa;
+&arts;
+&audiofile;
+&esound;
+&SDL;
+&libao;
+&libogg;
+&libvorbis;
+&nas;
+&libmpeg3;
+&libmad;
+&openquicktime;
+&libfame;
+&speex;
+&id3lib;
+&flac;
+&libdvdread;
+&libdvdcss;
+&libdv;
+&liba52;
+&xvid;
+&xine-lib;
+
+</chapter>

@@ -1,0 +1,81 @@
+<sect1 id="kde-pim">
+<?dbhtml filename="kde-pim.html" dir="kde"?>
+<title>kdepim-&kde-version;</title>
+
+<sect2>
+<title>Introduction to <application>kdepim</application></title>
+
+<sect3><title>Package information</title>
+<itemizedlist spacing='compact'>
+<listitem><para>Download (HTTP): <ulink url="&kde-pim-download-http;"/></para></listitem>
+<listitem><para>Download (FTP): <ulink url="&kde-pim-download-ftp;"/></para></listitem>
+<listitem><para>Download size: &kde-pim-size;</para></listitem>
+<listitem><para>Estimated Disk space required: &kde-pim-buildsize;</para></listitem>
+<listitem><para>Estimated build time: &kde-pim-time;</para></listitem></itemizedlist>
+</sect3>
+
+<sect3><title><application>kdepim</application> dependencies</title>
+<sect4><title>Required</title>
+<para><xref linkend="kde-base"/>
+</para></sect4>
+<sect4><title>Optional</title>
+<para><ulink
+url="http://www.slac.com/pilone/kpilot_home">pilot-link</ulink>
+</para></sect4>
+</sect3>
+
+</sect2>
+
+<sect2>
+<title>Installation of <application>kdepim</application></title>
+
+<para>Install <application>kdepim</application> with:</para>
+<screen><userinput><command>./configure --prefix=&kde-dir; --disable-debug \
+    --disable-dependency-tracking &amp;&amp;
+make &amp;&amp;
+make install</command></userinput></screen>
+
+</sect2>
+
+<sect2>
+<title>Contents</title>
+
+<para>The <acronym>KDE</acronym> <acronym>PIM</acronym> package provides
+<command>kalarm</command>,
+<command>kandy</command>,
+<command>karm</command>,
+<command>knotes</command>,
+<command>korganizer</command>,
+<command>kpilot</command> and
+<command>libical</command>.
+</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<sect3><title>kalarm</title>
+<para><command>kalarm</command> is a system to provide reminder messages.</para></sect3>
+
+<sect3><title>kandy</title>
+<para><command>kandy</command>is a program to synchronize mobile phone
+numbers.</para></sect3>
+
+<sect3><title>karm</title>
+<para><command>karm</command> is a personal time tracker.</para></sect3>
+
+<sect3><title>knotes</title>
+<para><command>knotes</command> is a popup notes utility.</para></sect3>
+
+<sect3><title>korganizer</title>
+<para><command>korganizer</command> is a personal calendar/todo system.</para></sect3>
+
+<sect3><title>kpilot</title>
+<para><command>kpilot</command> is a program to synchronize a
+Palm-Pilot.</para></sect3>
+
+<sect3><title>libical</title>
+<para><command>libical</command> is a calendar library.</para></sect3>
+
+</sect2>
+</sect1>

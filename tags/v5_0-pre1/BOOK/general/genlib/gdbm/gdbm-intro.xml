@@ -1,0 +1,22 @@
+<sect2>
+<title>Introduction to <application><acronym>GDBM</acronym></application></title>
+
+<para>The <application><acronym>GDBM</acronym></application> package
+contains the <acronym>GNU</acronym> Database Manager. This 
+is useful for database routines that use extendible hashing.</para>
+
+<sect3><title>Package information</title>
+<itemizedlist spacing='compact'>
+<listitem><para>Download (HTTP): <ulink
+url="&gdbm-download-http;"/></para></listitem>
+<listitem><para>Download (FTP): <ulink
+url="&gdbm-download-ftp;"/></para></listitem>
+<listitem><para>Download size: &gdbm-size;</para></listitem>
+<listitem><para>Estimated Disk space required:
+&gdbm-buildsize;</para></listitem>
+<listitem><para>Estimated build time:
+&gdbm-time;</para></listitem></itemizedlist>
+</sect3>
+
+
+</sect2>

@@ -1,0 +1,10 @@
+<sect1 id="gnet" xreflabel="GNet-&gnet-version;">
+<?dbhtml filename="gnet.html" dir="basicnet"?>
+<title>GNet-&gnet-version;</title>
+
+&gnet-intro;
+&gnet-inst;
+&gnet-desc;
+
+</sect1>
+

@@ -1,0 +1,10 @@
+<sect1 id="zip" xreflabel="Zip-&zip-version;">
+<?dbhtml filename="zip.html" dir="general"?>
+<title>Zip-&zip-version;</title>
+
+&zip-intro;
+&zip-inst;
+&zip-exp;
+&zip-desc;
+
+</sect1>

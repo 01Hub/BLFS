@@ -1,0 +1,78 @@
+<sect1 id="dhcpclient" xreflabel="Configuring the LFS bootscripts to support DHCP clients">
+<?dbhtml filename="configdhcp.html" dir="connect"?>
+<title>Configuring the <acronym>LFS</acronym> bootscripts to support <acronym>DHCP</acronym> clients</title>
+
+<sect2><title>Config files</title>
+<para><filename>/etc/sysconfig/network</filename>,
+<filename>/etc/sysconfig/network-devices/ifup-eth0</filename>,
+<filename>/etc/sysconfig/network-devices/ifdown-eth0</filename>,
+<filename>/etc/sysconfig/network-devices/ifconfig.eth0</filename></para>
+</sect2>
+
+<sect2><title>Configuration Information</title>
+
+<para>Note that on this and the following pages, we 
+use <emphasis role="strong">eth0</emphasis> as the example interface.
+If you want to configure a different (or more than one) interface, simply 
+replace <emphasis role="strong">eth0</emphasis> with the interface you wish to 
+use.</para>
+
+<para>These instructions will convert the configuration files from
+<acronym>LFS</acronym> (a static configuration) to a configuration using the 
+<acronym>DHCP</acronym> protocol. Note that static and
+<acronym>DHCP</acronym>-based interfaces can co-exist on a
+<acronym>LFS</acronym> system.  To do this, you should only make the 
+alterations to those interfaces which need to support
+<acronym>DHCP</acronym>.  All of the instructions on this page are applicable
+no matter which <acronym>DHCP</acronym> client you intend to use.</para>
+
+<para>If the interface you intend to use as your default gateway is going to 
+use <acronym>DHCP</acronym>, the first step is to remove the <envar>GATEWAY
+</envar> and <envar>GATEWAY_IF</envar> variables 
+from <filename>/etc/sysconfig/network</filename>.  This will only need to be
+done once.</para>
+
+<screen><userinput><command>cd /etc/sysconfig &amp;&amp;
+cp network network.bak &amp;&amp;
+sed "s/GATEWAY/# GATEWAY/" network.bak > network</command></userinput></screen>
+
+<para>You then need to create scripts which will override the default
+network scripts and provide <acronym>DHCP</acronym> support.  These two scripts 
+are generic and so for use with both <acronym>DHCP</acronym> clients.  First, 
+the <filename>ifup-eth0</filename> script:</para>
+
+<screen><userinput><command>cat &gt; /etc/sysconfig/network-devices/ifup-eth0 &lt;&lt; "EOF" </command>
+#!/bin/sh
+
+source /etc/sysconfig/rc || exit
+source $rc_functions || exit
+source $network_devices/ifconfig.eth0 || exit
+
+echo "Bringing up the eth0 interface..."
+modprobe eth0
+loadproc $DHCP_PROG $DHCP_START
+<command>EOF</command></userinput></screen>
+
+<para>Then the <filename>ifdown-eth0</filename> script:</para>
+
+<screen><userinput><command>cat &gt; /etc/sysconfig/network-devices/ifdown-eth0 &lt;&lt; "EOF" </command>
+#!/bin/sh
+
+source /etc/sysconfig/rc || exit
+source $rc_functions || exit
+source $network_devices/ifconfig.eth0 || exit
+
+echo "Bringing down the eth0 interface..."
+$DHCP_PROG $DHCP_STOP
+evaluate_retval
+<command>EOF</command></userinput></screen>
+
+<para>Finally, we need to make these scripts executable:</para>
+
+<screen><userinput><command>chmod 755 /etc/sysconfig/network-devices/ifup-eth0 &amp;&amp;
+chmod 755 /etc/sysconfig/network-devices/ifdown-eth0</command></userinput></screen>
+
+</sect2>
+
+</sect1>
+

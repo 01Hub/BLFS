@@ -1,0 +1,21 @@
+<sect2>
+<title>Configuring <application>slrn</application></title>
+
+<sect3><title>Config files</title>
+<para><filename>$HOME/.jnewsrc</filename>,
+<filename>$HOME/.jnewsrc.time</filename>,
+<filename>$HOME/.slrnrc</filename></para>
+</sect3>
+
+<sect3><title>Configuration Information</title>
+
+<para>The first time <command>slrn</command> is run, the
+<filename>$HOME/.jnewsrc</filename> file must be
+created. Create the <filename>$HOME/.jnewsrc</filename> file with the following
+command:</para>
+
+<screen><userinput><command>slrn -f $HOME/.jnewsrc --create</command></userinput></screen>
+
+</sect3>
+
+</sect2>

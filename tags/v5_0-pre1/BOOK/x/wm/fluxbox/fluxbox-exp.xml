@@ -1,0 +1,15 @@
+<sect2>
+<title>Command explanations</title>
+
+<para><option>--enable-kde</option>: This command activates
+<application>Fluxbox</application>'s ability to allow
+<application><acronym>KDE</acronym></application>
+tray icons to be placed in the slit.</para>
+
+<para><option>--enable-gnome</option>: This command activates
+<application>Fluxbox</application>'s ability to support
+<application><acronym>GNOME</acronym></application>.</para>
+
+</sect2>
+
+

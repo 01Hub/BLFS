@@ -1,0 +1,10 @@
+<!ENTITY Python SYSTEM "../python.xml">
+<!ENTITY Python-intro SYSTEM "python-intro.xml">
+<!ENTITY Python-inst SYSTEM "python-inst.xml">
+<!ENTITY Python-desc SYSTEM "python-desc.xml">
+<!ENTITY Python-version "2.3.2">
+<!ENTITY Python-download-http "http://www.python.org/ftp/python/&Python-version;/Python-&Python-version;.tgz">
+<!ENTITY Python-download-ftp "ftp://ftp.python.org/pub/python/&Python-version;/Python-&Python-version;.tgz">
+<!ENTITY Python-size "6.8 MB">
+<!ENTITY Python-buildsize "69 MB">
+<!ENTITY Python-time "1.13 SBU">

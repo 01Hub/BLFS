@@ -1,0 +1,19 @@
+<sect2>
+<title>Contents</title>
+
+<para>The <application><acronym>FAM</acronym></application> package contains 
+<command>fam</command> and
+<filename>libfam</filename> libraries.</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<sect3><title>fam</title>
+
+<para><command>fam</command> is the file alteration monitor.</para>
+
+</sect3>
+
+</sect2>
+

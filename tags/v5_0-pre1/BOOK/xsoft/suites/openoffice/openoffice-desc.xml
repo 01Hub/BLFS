@@ -1,0 +1,29 @@
+<sect2>
+<title>Contents</title>
+
+<para>The <application>OpenOffice</application> package contains
+<command>swriter</command>,
+<command>simpress</command>, <command>scalc</command>,
+<command>sdraw</command> and <command>smath</command>.</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<sect3><title>swriter</title>
+<para>Word processing application.</para></sect3>
+
+<sect3><title>simpress</title>
+<para>Presentation application.</para></sect3>
+
+<sect3><title>scalc</title>
+<para>Spreadsheet application.</para></sect3>
+
+<sect3><title>sdraw</title>
+<para>Drawing application.</para></sect3>
+
+<sect3><title>smath</title>
+<para>Mathematical formula editor.</para></sect3>
+
+</sect2>
+

@@ -1,0 +1,31 @@
+<sect2>
+<title>Introduction to <application>Fcron</application></title>
+
+<para>The <application>Fcron</application> package contains a periodical 
+command scheduler which aims at replacing <application>Vixie
+Cron</application>.</para>
+
+<sect3><title>Package information</title>
+<itemizedlist spacing='compact'>
+<listitem><para>Download (HTTP): <ulink url="&fcron-download-http;"/></para></listitem>
+<listitem><para>Download (FTP): <ulink url="&fcron-download-ftp;"/></para></listitem>
+<listitem><para>Download size: &fcron-size;</para></listitem>
+<listitem><para>Estimated Disk space required: &fcron-buildsize;</para></listitem>
+<listitem><para>Estimated build time: &fcron-time;</para></listitem></itemizedlist>
+</sect3>
+
+<sect3><title><application>Fcron</application> dependencies</title>
+<sect4><title>Optional</title>
+<para>
+<xref linkend="sendmail"/> or
+<xref linkend="postfix"/> or
+<xref linkend="qmail"/> or
+<xref linkend="exim"/> or
+<xref linkend="courier"/>,
+<xref linkend="Linux_PAM"/>,
+<xref linkend="openjade"/> and 
+<xref linkend="docbook-dsssl"/>
+</para></sect4>
+</sect3>
+
+</sect2>

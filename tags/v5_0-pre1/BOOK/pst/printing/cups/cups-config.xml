@@ -1,0 +1,69 @@
+<sect2>
+<title>Configuring <application><acronym>CUPS</acronym></application></title>
+
+<para>Configuration of <application><acronym>CUPS</acronym></application> is 
+dependent on the type of printer and can be complex. Generally, PostScript 
+printers are easier. For detailed instructions on configuration and use of 
+<application><acronym>CUPS</acronym></application>, see 
+<ulink url="http://www.cups.org/documentation.php"/>. The Software 
+Administrators Manual and Software Users Manual are particularly useful.</para>
+
+<para>During the install, <application><acronym>CUPS</acronym></application> 
+created the startup file <filename>/etc/rc.d/init.d/cups</filename>. The file 
+works, but you may want to change it to a more conventional <acronym>LFS
+</acronym> startup file:</para>
+
+<screen><userinput><command>cat &gt; /etc/rc.d/init.d/cups &lt;&lt; "EOF"</command>
+#!/bin/sh
+# Begin $rc_base/init.d/cups
+
+# Start or stop the CUPS server based upon the first argument to the script.
+
+source /etc/sysconfig/rc
+source $rc_functions
+
+case $1 in
+    start)
+           echo "Starting CUPS Printserver..."
+           loadproc /usr/sbin/cupsd
+           ;;
+    stop)
+           echo "Stopping CUPS Printserver..."
+           killproc cupsd
+           ;;
+
+    reload)
+           echo "Reloading CUPS Printserver..."
+           reloadproc /usr/sbin/cupsd
+           ;;
+
+    restart)
+           $0 stop
+           sleep 1
+           $0 start
+           ;;
+
+    status)
+           statusproc cupsd
+           ;;
+
+    *)
+           echo "Usage: $0 {start|stop|reload|restart|status}"
+           exit 1
+           ;;
+esac
+
+# End $rc_base/init.d/cups startup script.
+<command>EOF</command></userinput></screen>
+
+<para>Create the symbolic links to this file in the relevant
+<filename class="directory">rc.d</filename> directory
+with the following commands:</para>
+
+<screen><userinput><command>cd /etc/rc.d/init.d &amp;&amp;
+ln -sf ../init.d/cups ../rc0.d/K00cups &amp;&amp;
+ln -sf ../init.d/cups ../rc2.d/S99cups &amp;&amp;
+ln -sf ../init.d/cups ../rc3.d/S99cups &amp;&amp;
+ln -sf ../init.d/cups ../rc5.d/S99cups</command></userinput></screen>
+
+</sect2>

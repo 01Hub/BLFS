@@ -1,0 +1,12 @@
+<sect2>
+<title>Installation of <application>AbiWord</application></title>
+
+<para>Install <application>AbiWord</application> by running the following commands:</para>
+
+<screen><userinput><command>cd abi &amp;&amp;
+./configure --prefix=/usr &amp;&amp;
+make &amp;&amp;
+make install</command></userinput></screen>
+
+</sect2>
+

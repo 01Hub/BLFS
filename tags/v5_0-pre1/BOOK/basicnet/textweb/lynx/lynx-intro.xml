@@ -1,0 +1,25 @@
+<sect2>
+<title>Introduction to <application>Lynx</application></title>
+
+<para><application>Lynx</application> is a text based web browser.</para>
+
+<sect3><title>Package information</title>
+<itemizedlist spacing='compact'>
+<listitem><para>Download (HTTP): <ulink
+url="&lynx-download-http;"/></para></listitem>
+<listitem><para>Download (FTP): <ulink
+url="&lynx-download-ftp;"/></para></listitem>
+<listitem><para>Download size: &lynx-size;</para></listitem>
+<listitem><para>Estimated Disk space required:
+&lynx-buildsize;</para></listitem>
+<listitem><para>Estimated build time:
+&lynx-time;</para></listitem></itemizedlist>
+</sect3>
+
+<sect3><title><application>Lynx</application> dependencies</title>
+<sect4><title>Required</title>
+<para><xref linkend="openssl"/></para></sect4>
+</sect3>
+
+
+</sect2>

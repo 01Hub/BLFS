@@ -1,0 +1,13 @@
+<chapter id="xsoft-graphweb">
+<?dbhtml filename="graphweb.html" dir="xsoft"?>
+<title>Graphical Web Browsers</title>
+
+<para>This chapter contains a wonderful selection of browsers. We hope
+you can find one you enjoy using or give them each a trial run.</para>
+
+&mozilla;
+&galeon;
+&xsoft-graphweb-konq;
+&dillo;
+
+</chapter>

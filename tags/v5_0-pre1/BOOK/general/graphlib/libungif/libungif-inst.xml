@@ -1,0 +1,19 @@
+<sect2>
+<title>Installation of <application>libungif</application></title>
+
+<para>Install <application>libungif</application> by running the following 
+commands:</para>
+
+<screen><userinput><command>./configure --prefix=/usr &amp;&amp;
+make &amp;&amp;
+make install</command></userinput></screen>
+
+<!--
+<note><para>If you get an error during the make portion compiling
+<filename>lib/qprintf.c</filename>,
+edit the file and comment out or remove line 14: #include &lt;config.h&gt; 
+</para></note>
+-->
+
+</sect2>
+

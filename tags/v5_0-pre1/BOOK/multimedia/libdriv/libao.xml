@@ -1,0 +1,10 @@
+<sect1 id="libao" xreflabel="libao-&libao-version;">
+<?dbhtml filename="libao.html" dir="multimedia"?>
+<title>libao-&libao-version;</title>
+
+&libao-intro;
+&libao-inst;
+&libao-desc;
+
+</sect1>
+

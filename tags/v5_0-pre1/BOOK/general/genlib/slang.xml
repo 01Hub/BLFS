@@ -1,0 +1,10 @@
+<sect1 id="slang" xreflabel="slang-&slang-version;">
+<?dbhtml filename="slang.html" dir="general"?>
+<title>slang-&slang-version;</title>
+
+&slang-intro;
+&slang-inst;
+&slang-config;
+&slang-desc;
+
+</sect1>

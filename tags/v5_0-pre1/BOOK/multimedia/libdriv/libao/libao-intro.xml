@@ -1,0 +1,25 @@
+<sect2>
+<title>Introduction to <application>libao</application></title>
+
+<para>The <application>libao</application> package contains a cross-platform 
+audio library. This is useful to output audio on a wide variety of platforms.  
+It currently supports <filename>WAV</filename> files,
+<acronym>OSS</acronym> (Open Sound System), <acronym>ESD</acronym> (Enlighten 
+Sound Daemon) and <acronym>ALSA</acronym> (Advanced Linux Sound Architecture).
+</para>
+
+<sect3><title>Package information</title>
+<itemizedlist spacing='compact'>
+<listitem><para>Download (HTTP): <ulink
+url="&libao-download-http;"/></para></listitem>
+<listitem><para>Download (FTP): <ulink
+url="&libao-download-ftp;"/></para></listitem>
+<listitem><para>Download size: &libao-size;</para></listitem>
+<listitem><para>Estimated Disk space required:
+&libao-buildsize;</para></listitem>
+<listitem><para>Estimated build time:
+&libao-time;</para></listitem></itemizedlist>
+</sect3>
+
+
+</sect2>

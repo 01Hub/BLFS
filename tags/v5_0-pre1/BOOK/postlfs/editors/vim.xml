@@ -1,0 +1,10 @@
+<sect1 id="postlfs-editors-vim" xreflabel="Vim-&vim-version;">
+<?dbhtml filename="vim.html" dir="postlfs"?>
+<title>Vim-&vim-version;</title>
+
+&vim-intro;
+&vim-inst;
+&vim-exp;
+&vim-desc;
+
+</sect1>

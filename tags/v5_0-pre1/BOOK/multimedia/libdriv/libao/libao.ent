@@ -1,0 +1,10 @@
+<!ENTITY libao SYSTEM "../libao.xml">
+<!ENTITY libao-intro SYSTEM "libao-intro.xml">
+<!ENTITY libao-inst SYSTEM "libao-inst.xml">
+<!ENTITY libao-desc SYSTEM "libao-desc.xml">
+<!ENTITY libao-version "0.8.3">
+<!ENTITY libao-download-http "http://fatpipe.vorbis.com/files/1.0/unix/libao-&libao-version;.tar.gz">
+<!ENTITY libao-download-ftp "ftp://ftp.yars.free.net/pub/software/unix/util/sound/ogg/libao-&libao-version;.tar.gz">
+<!ENTITY libao-size "212 KB">
+<!ENTITY libao-buildsize "1.7 MB">
+<!ENTITY libao-time "0.05 SBU">
