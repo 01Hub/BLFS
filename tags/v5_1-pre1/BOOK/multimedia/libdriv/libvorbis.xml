@@ -1,0 +1,9 @@
+<sect1 id="libvorbis" xreflabel="libvorbis-&libvorbis-version;">
+<?dbhtml filename="libvorbis.html"?>
+<title>libvorbis-&libvorbis-version;</title>
+
+&libvorbis-intro;
+&libvorbis-inst;
+&libvorbis-desc;
+
+</sect1>

@@ -1,0 +1,11 @@
+<sect1 id="Pango" xreflabel="Pango-&Pango-version;">
+<?dbhtml filename="pango.html" ?>
+<title>Pango-&Pango-version;</title>
+
+&Pango-intro;
+&Pango-inst;
+&Pango-exp;
+&Pango-desc;
+
+</sect1>
+

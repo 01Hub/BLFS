@@ -1,0 +1,9 @@
+<sect1 id="xfs" xreflabel="XFS-&xfsprogs-version;">
+<?dbhtml filename="xfsfs.html"?>
+<title>XFS-&xfsprogs-version;</title>
+
+&xfs-intro;
+&xfs-inst;
+&xfs-desc;
+
+</sect1>

@@ -1,0 +1,11 @@
+<sect1 id="xfce" xreflabel="XFce-&xfce-version;">
+<?dbhtml filename="xfce.html" ?>
+<title>XFce-&xfce-version;</title>
+
+&xfce-intro;
+&xfce-inst;
+&xfce-config;
+&xfce-desc;
+
+</sect1>
+

@@ -1,0 +1,12 @@
+<sect1 id="ffmpeg" xreflabel="FFmpeg-&ffmpeg-version;">
+<?dbhtml filename="ffmpeg.html"?>
+<title>FFmpeg-&ffmpeg-version;</title>
+
+&ffmpeg-intro;
+&ffmpeg-inst;
+&ffmpeg-exp;
+&ffmpeg-config;
+&ffmpeg-desc;
+
+</sect1>
+

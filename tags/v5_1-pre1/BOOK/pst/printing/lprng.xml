@@ -1,0 +1,10 @@
+<sect1 id="LPRng" xreflabel="LPRng-&LPRng-version;">
+<?dbhtml filename="LPRng.html"?>
+<title>LPRng-&LPRng-version;</title>
+
+&LPRng-intro;
+&LPRng-inst;
+&LPRng-config;
+&LPRng-desc;
+
+</sect1>

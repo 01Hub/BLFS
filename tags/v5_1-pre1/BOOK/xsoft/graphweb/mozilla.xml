@@ -1,0 +1,12 @@
+<sect1 id="mozilla" xreflabel="Mozilla-&mozilla-version;">
+<?dbhtml filename="mozilla.html" ?>
+<title>Mozilla-&mozilla-version;</title>
+
+&mozilla-intro;
+&mozilla-inst;
+&mozilla-exp;
+&mozilla-config;
+&mozilla-desc;
+
+</sect1>
+

@@ -1,0 +1,15 @@
+<sect2>
+<title>Installation of <application>libdv</application></title>
+
+<para>Install <application>libdv</application> by running the
+following commands:</para>
+
+<screen><userinput><command>./configure --prefix=/usr &amp;&amp;
+make &amp;&amp;
+make install</command></userinput></screen>
+
+<note><para>The configure check for <application>GTK+</application> is
+broken. If <application>GTK+</application> is not installed also pass
+<parameter>--without-gtk</parameter> to the configure script.</para></note>
+
+</sect2>

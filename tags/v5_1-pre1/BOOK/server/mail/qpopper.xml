@@ -1,0 +1,11 @@
+<sect1 id="qpopper" xreflabel="Qpopper-&qpopper-version;">
+<?dbhtml filename="qpopper.html"?>
+<title>Qpopper-&qpopper-version;</title>
+
+&qpopper-intro;
+&qpopper-inst;
+&qpopper-config;
+&qpopper-desc;
+
+</sect1>
+

@@ -1,0 +1,10 @@
+<sect1 id="ntp" xreflabel="NTP-&ntp-version;">
+<?dbhtml filename="ntp.html"?>
+<title>NTP-&ntp-version;</title>
+
+&ntp-intro;
+&ntp-inst;
+&ntp-config;
+&ntp-desc;
+
+</sect1>

@@ -1,0 +1,23 @@
+<chapter id="kde-add">
+<?dbhtml filename="add.html"?>
+<title>KDE Additional Packages</title>
+
+&kdeadmin;
+&kdenetwork;
+&kdepim;
+&kdemultimedia;
+&kdegraphics;
+&kdeutils;
+&kdeedu;
+&kdesdk;
+&kdevelop;
+&quanta;
+&kdebindings;
+&kdeaccessibility;
+&kdetoys;
+&kdegames;
+&kdeartwork;
+&kdeaddons;
+&kde-i18n;
+
+</chapter>

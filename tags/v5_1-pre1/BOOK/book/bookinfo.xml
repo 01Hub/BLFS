@@ -1,0 +1,11 @@
+<bookinfo>
+<title>Beyond Linux From Scratch</title>
+<subtitle>Version &version;</subtitle>
+&book-info-authorgroup;
+<pubdate>&pubdate;</pubdate>
+&book-info-copyright;
+&book-info-legalnotice;
+&book-info-revhistory;
+&book-info-abstract;
+
+</bookinfo>

@@ -1,0 +1,13 @@
+<chapter id="basicnet-netutils">
+<?dbhtml filename="netutils.html"?>
+<title>Basic Networking Utilities</title>
+
+<para>This chapter contains some tools that come in handy when the
+network need some investigating.</para>
+
+&traceroute;
+&nmap;
+&whois;
+&bind-utils;
+
+</chapter>

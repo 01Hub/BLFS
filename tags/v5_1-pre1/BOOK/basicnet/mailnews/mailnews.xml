@@ -1,0 +1,22 @@
+<chapter id="basicnet-mailnews">
+<?dbhtml filename="mailnews.html"?>
+<title>Mail/News Clients</title>
+
+<para>Mail Clients help us retrieve (Fetchmail), sort (Procmail), read and 
+compose responses (Nail, Mutt, Pine, Kmail, Balsa, Evolution, Mozilla) to
+email.</para>
+
+<para>News clients also help us retrieve, sort, read and compose
+responses, but these messages travel through USENET (a worldwide
+bulletin board system) using the Network News Transfer Protocol
+(<acronym>NNTP</acronym>).</para>
+
+&nail;
+&procmail;
+&fetchmail;
+&mutt;
+&pine;
+&slrn;
+&basicnet-mailnews-othermn;
+
+</chapter>

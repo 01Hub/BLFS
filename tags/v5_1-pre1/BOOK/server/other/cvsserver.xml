@@ -1,0 +1,10 @@
+<sect1 id="cvsserver" xreflabel="cvsserver">
+<?dbhtml filename="cvsserver.html"?>
+<title>Running a CVS server</title>
+
+&cvsserver-intro;
+&cvsserver-inst;
+&cvsserver-exp;
+
+</sect1>
+

@@ -1,0 +1,10 @@
+<sect1 id="guile" xreflabel="Guile-&guile-version;">
+<?dbhtml filename="guile.html"?>
+<title>Guile-&guile-version;</title>
+
+&guile-intro;
+&guile-inst;
+&guile-desc;
+
+</sect1>
+

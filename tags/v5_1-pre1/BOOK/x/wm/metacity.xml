@@ -1,0 +1,11 @@
+<sect1 id="metacity" xreflabel="Metacity-&metacity-version;">
+<?dbhtml filename="metacity.html" ?>
+<title>Metacity-&metacity-version;</title>
+
+&metacity-intro;
+&metacity-inst;
+&metacity-config;
+&metacity-desc;
+
+</sect1>
+

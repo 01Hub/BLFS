@@ -1,0 +1,10 @@
+<sect1 id="libesmtp" xreflabel="libesmtp-&libesmtp-version;">
+<?dbhtml filename="libesmtp.html"?>
+<title>libesmtp-&libesmtp-version;</title>
+
+&libesmtp-intro;
+&libesmtp-inst;
+&libesmtp-desc;
+
+</sect1>
+

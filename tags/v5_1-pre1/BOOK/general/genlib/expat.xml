@@ -1,0 +1,9 @@
+<sect1 id="expat" xreflabel="expat-&expat-version;">
+<?dbhtml filename="expat.html"?>
+<title>expat-&expat-version;</title>
+
+&expat-intro;
+&expat-inst;
+&expat-desc;
+
+</sect1>

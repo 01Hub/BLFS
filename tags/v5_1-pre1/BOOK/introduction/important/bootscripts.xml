@@ -1,0 +1,33 @@
+<sect1 id="intro-important-bootscripts" xreflabel="blfs-bootscripts-&blfs-bootscripts-version;">
+<?dbhtml filename="bootscripts.html"?>
+<title><acronym>BLFS</acronym> Boot Scripts</title>
+
+<para>The BLFS Bootscripts package contains the init scripts that are
+used throughout the book. It is assumed that you will be using the blfs-bootscripts
+package in conjuction with a compatible lfs-bootscripts package.
+Refer to <ulink url="&lfs-root;/chapter07/bootscripts.html"/> for more
+information on the lfs-bootscripts package.</para>
+
+<itemizedlist spacing='compact'>
+<title>Package information</title>
+<listitem><para>Download: <ulink url="&blfs-bootscripts-download;"/></para></listitem>
+</itemizedlist>
+
+
+<para>The blfs-bootscripts package will be used throughout the <acronym>BLFS</acronym>
+book for startup scripts.  Unlike <acronym>LFS</acronym>, each init script
+has a seperate install target in the blfs-bootscrits package. 
+It is recomended you keep the package
+source directory around until completion of your
+<acronym>BLFS</acronym> system.  When a script is requested from
+blfs-bootscritps, simply change to the directory and execute the given
+<command>make install-&lt;init-script&gt;</command> command. This command installs the
+init script to its proper location (along with any auxillary configuration
+scripts) and also creates the appropriate symlinks to start and stop the
+service at the appropriate run-level.</para>
+
+<note><para>It is advisable to peruse each bootscript before installation to
+ascertain that it satisfies your need. Also verify that the start and stop
+symlinks it creates match your preferences.</para></note>
+
+</sect1>

@@ -1,0 +1,9 @@
+<sect1 id="NASM" xreflabel="NASM-&NASM-version;">
+<?dbhtml filename="NASM.html" ?>
+<title>NASM-&NASM-version;</title>
+
+&NASM-intro;
+&NASM-inst;
+&NASM-desc;
+
+</sect1>

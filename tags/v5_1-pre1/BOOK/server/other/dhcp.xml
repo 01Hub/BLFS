@@ -1,0 +1,12 @@
+<sect1 id="dhcp" xreflabel="DHCP-&dhcp-version;">
+<?dbhtml filename="dhcp.html"?>
+<title><acronym>DHCP</acronym>-&dhcp-version;</title>
+
+&dhcp-intro;
+&dhcp-inst;
+&dhcp-exp;
+&dhcp-config;
+&dhcp-desc;
+
+</sect1>
+
