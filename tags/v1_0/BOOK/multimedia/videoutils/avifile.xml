@@ -1,0 +1,10 @@
+<sect1 id="avifile" xreflabel="avifile-&avifile-version;">
+<?dbhtml filename="avifile.html" dir="multimedia"?>
+<title>avifile-&avifile-version;</title>
+
+&avifile-intro;
+&avifile-inst;
+&avifile-desc;
+
+</sect1>
+

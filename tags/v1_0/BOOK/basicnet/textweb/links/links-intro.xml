@@ -1,0 +1,15 @@
+<sect2>
+<title>Introduction to links</title>
+
+<screen>Download location (HTTP):       <ulink url="&links-download-http;"/>
+Download location (FTP):        <ulink url="&links-download-ftp;"/>
+Version used:                   &links-version;
+Package size:                   &links-size;
+Estimated Disk space required:  &links-buildsize;</screen>
+
+<para>Links is a text-based, frame friendly,  WWW browser.</para>
+
+<screen>Links will utilize:
+<xref linkend="openssl"></xref> and <xref linkend="gpm"></xref></screen>
+
+</sect2>

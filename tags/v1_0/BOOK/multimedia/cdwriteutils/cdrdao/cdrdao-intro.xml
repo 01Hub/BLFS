@@ -1,0 +1,17 @@
+<sect2>
+<title>Introduction to cdrdao</title>
+
+<screen>Download location (HTTP):       <ulink url="&cdrdao-download-http;"/>
+Download location (FTP):        <ulink url="&cdrdao-download-ftp;"/>
+Version used:                   &cdrdao-version;
+Package size:                   &cdrdao-size;
+Estimated Disk space required:  &cdrdao-buildsize;</screen>
+
+<para>The cdrdao package contains cd recording utilities. These are useful for burning a CD in disk-at-once mode.</para>
+
+<screen>cdrdao will utilize:
+<xref linkend="lame"/>
+cdrdao will utilize to build gui interface:
+<xref linkend="GTK"/> and <xref linkend="gnome-libs"/></screen>
+
+</sect2>

@@ -1,0 +1,15 @@
+<sect2>
+<title>Introduction to lynx</title>
+
+<screen>Download location (HTTP):       <ulink url="&lynx-download-http;"/>
+Download location (FTP):        <ulink url="&lynx-download-ftp;"/>
+Version used:                   &lynx-version;
+Package size:                   &lynx-size;
+Estimated Disk space required:  &lynx-buildsize;</screen>
+
+<para>Lynx is a text based web browser.</para>
+
+<screen>lynx depends on:
+<xref linkend="openssl"></xref></screen>
+
+</sect2>

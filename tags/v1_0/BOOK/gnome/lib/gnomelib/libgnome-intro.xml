@@ -1,0 +1,17 @@
+<sect2>
+<title>Introduction to libgnome</title>
+
+<screen>Download location (HTTP):       <ulink url="&libgnome-download-http;"/>
+Download location (FTP):        <ulink url="&libgnome-download-ftp;"/>
+Version used:                   &libgnome-version;
+Package size:                   &libgnome-size;
+Estimated Disk space required:  &libgnome-buildsize;
+Estimated build time:           &libgnome-time;</screen>
+
+<para>The libgnome package contains the libgnome library.</para>
+
+<screen>libgnome depends on:
+<xref linkend="esound"/>, <xref linkend="audiofile"/>, <xref linkend="ORBit2"/>, <xref linkend="GConf"/>, 
+<xref linkend="bonobo-activation"/>, <xref linkend="gtk-doc"/> and <xref linkend="sgml-dtd-3"/></screen>
+
+</sect2>

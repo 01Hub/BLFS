@@ -1,0 +1,11 @@
+<sect1 id="sendmail" xreflabel="sendmail-&sendmail-version;">
+<?dbhtml filename="sendmail.html" dir="server"?>
+<title>sendmail-&sendmail-version;</title>
+
+&sendmail-intro;
+&sendmail-inst;
+&sendmail-config;
+&sendmail-desc;
+
+</sect1>
+

@@ -1,0 +1,12 @@
+<sect2>
+<title>Introduction to Samba</title>
+
+<screen>Download location (HTTP):       <ulink url="&samba-download-http;"/>
+Download location (FTP):        <ulink url="&samba-download-ftp;"/>
+Version used:                   &samba-version;
+Package size:                   &samba-size;
+Estimated Disk space required:  &samba-buildsize;
+Estimated build time:           &samba-time;</screen>
+
+<para>The Samba package provides file and print services to SMB/CIFS
+clients.</para></sect2>

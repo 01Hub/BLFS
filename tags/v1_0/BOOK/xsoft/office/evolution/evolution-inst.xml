@@ -1,0 +1,18 @@
+<sect2>
+<title>Installation of evolution</title>
+
+<para>Install evolution by running the following commands:</para>
+
+<!--
+<note><para><xref linkend="db-3.1"></xref> must be installed
+temporarily in order to install Evolution.</para></note>
+-->
+<para><screen><userinput>./configure --prefix=/opt/gnome --with-db3=/opt/db-&db-3.1-version; &amp;&amp;
+make &amp;&amp;
+make install</userinput></screen></para>
+
+<para>Optionally, you may remove the installed db-&db-3.1-version;</para>
+<para><screen><userinput>rm -rf /opt/db-&db-3.1-version;</userinput></screen></para>
+
+</sect2>
+

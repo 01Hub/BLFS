@@ -1,0 +1,12 @@
+<!ENTITY librep SYSTEM "../librep.xml">
+<!ENTITY librep-intro SYSTEM "librep-intro.xml">
+<!ENTITY librep-inst SYSTEM "librep-inst.xml">
+<!ENTITY librep-exp SYSTEM "librep-exp.xml">
+<!ENTITY librep-desc SYSTEM "librep-desc.xml">
+<!ENTITY librep-config SYSTEM "librep-config.xml">
+<!ENTITY librep-buildsize "6.8 MB">
+<!ENTITY librep-version "0.16.2">
+<!ENTITY librep-download-http "http://telia.dl.sourceforge.net/sourceforge/librep/librep-0.16.2.tar.gz">
+<!ENTITY librep-download-ftp "">
+<!ENTITY librep-size "896 KB">
+<!ENTITY librep-time "1.46 SBU">

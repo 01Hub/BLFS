@@ -1,0 +1,15 @@
+<sect2>
+<title>Configuring db</title>
+
+<sect3><title>Configuration Information</title>
+
+&library-config;
+
+<para>If you recompile perl after installing db-&db-version; you will need to
+apply the <userinput>perl-5.8.0-db-4.1.patch</userinput> available at
+<userinput><ulink url="&hfile-root;"/></userinput>.</para>
+
+</sect3>
+
+</sect2>
+

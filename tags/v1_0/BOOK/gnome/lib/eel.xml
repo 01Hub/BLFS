@@ -1,0 +1,10 @@
+<sect1 id="eel" xreflabel="eel-&eel-version;">
+<?dbhtml filename="eel.html" dir="gnome"?>
+<title>eel-&eel-version;</title>
+
+&eel-intro;
+&eel-inst;
+&eel-desc;
+
+</sect1>
+

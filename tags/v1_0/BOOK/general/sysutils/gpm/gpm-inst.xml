@@ -1,0 +1,23 @@
+<sect2>
+<title>Installation of gpm</title>
+
+<para>Install gpm by running the following commands:</para>
+
+<note><para>The LDFLAGS environment variable must be set before
+    configuring gpm.</para></note>
+    
+<para><screen><userinput>LDFLAGS="-lm" ./configure --prefix=/usr &amp;&amp;
+make &amp;&amp;
+make install</userinput></screen></para>
+</sect2>
+
+
+<sect2>
+<title>Command explanations</title>
+
+<para><userinput>export LDFLAGS="-lm": </userinput>The math library
+ must be linked with gpm, as ceil() is used in some cursor scrolling
+ logic. LDFLAGS is only needed if you optimize gpm for size.</para>
+
+</sect2>
+

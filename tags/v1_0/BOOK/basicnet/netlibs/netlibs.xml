@@ -1,0 +1,9 @@
+<chapter id="basicnet-netlibs">
+<?dbhtml filename="netlibs.html" dir="basicnet"?>
+<title>Networking Libraries</title>
+
+&curl;
+&wvstreams;
+&gnet;
+
+</chapter>

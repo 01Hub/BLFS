@@ -1,0 +1,23 @@
+<sect2>
+<title>Configuring gcc</title>
+
+<sect3><title>Configuration Information</title>
+
+&library-config;
+
+<para>The instructions given above make compatibility symlinks that pre-compiled
+packages in BLFS require. You may create additional compatibility links based on
+your requirements.</para>
+
+<para>If you only need the gcc-&gcc2-version; libraries, you may delete
+<filename>/opt/gcc2</filename>.</para>
+
+<para>Whenever you need to use gcc-&gcc2-version; instead of you system installed compiler,
+add <filename class="directory">/opt/gcc2/bin</filename> to the front of your
+<envar>PATH</envar> before compiling the concerned
+package.</para>
+
+</sect3>
+
+</sect2>
+

@@ -1,0 +1,16 @@
+<sect2>
+<title>Introduction to Pine</title>
+
+<screen>Download location (HTTP):       <ulink url="&pine-download-http;"/>
+Download location (FTP):        <ulink url="&pine-download-ftp;"/>
+Version used:                   &pine-version;
+Package size:                   &pine-size;
+Estimated Disk space required:  &pine-buildsize;</screen>
+<screen>
+Required patches:
+Download location (FTP):        <ulink url="&blfs-patch-dir;/pine-4.44-fhs.patch.bz2"/></screen>
+
+<para>The Pine package contains the Pine Mail User Agent and several
+server daemons for various mail protocols, in addition to some nice
+file and directory editing/browsing programs.</para></sect2>
+

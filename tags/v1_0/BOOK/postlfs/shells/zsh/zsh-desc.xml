@@ -1,0 +1,16 @@
+<sect2>
+<title>Contents</title>
+
+<para>The zsh package contains <userinput>zsh</userinput>.</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<sect3><title>zsh</title>
+<para>zsh is a shell which has  command line editing, built-in spelling
+correction, programmable command completion, shell functions (with 
+autoloading), a history mechanism, and a host of other features.</para></sect3>
+
+</sect2>
+

@@ -1,0 +1,10 @@
+<sect1 id="gtk-engines" xreflabel="gtk-engines-&gtk-engines-version;">
+<?dbhtml filename="gtk-engines.html" dir="gnome"?>
+<title>gtk-engines-&gtk-engines-version;</title>
+
+&gtk-engines-intro;
+&gtk-engines-inst;
+&gtk-engines-desc;
+
+</sect1>
+

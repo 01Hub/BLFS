@@ -1,0 +1,12 @@
+<sect2>
+<title>Command explanations</title>
+
+<para><userinput>xmkmf...</userinput> : Compile using the standard way
+for compiling X based apps.</para>
+
+<para><userinput>make INCROOT=...</userinput> : Install with
+<filename>/usr</filename> prefix
+instead of the default <filename>/usr/X11R6</filename>. Also install man pages.</para>
+
+</sect2>
+

@@ -1,0 +1,22 @@
+<sect2>
+<title>Introduction to sawfish</title>
+
+<screen>Download location (HTTP):       <ulink url="&sawfish-download-http;"/>
+Download location (FTP):        <ulink url="&sawfish-download-ftp;"/>
+Version used:                   &sawfish-version;
+Package size:                   &sawfish-size;
+Estimated Disk space required:  &sawfish-buildsize;
+Estimated build time:           &sawfish-time;</screen>
+
+<para>The sawfish package contains a window manager. This is useful for
+organizing and displaying windows where all window decorations are
+configurable and all user-interface policy is controlled through the
+extension language.</para>
+
+<screen>sawfish-&sawfish-version; depends on:
+<xref linkend="xfree86"/>, <xref linkend="librep"/>, <xref linkend="rep-gtk"/>, <xref linkend="esound"/> and <xref linkend="GTK2"/>
+sawfish will utilize:
+<xref linkend="libglade"/></screen>
+
+
+</sect2>

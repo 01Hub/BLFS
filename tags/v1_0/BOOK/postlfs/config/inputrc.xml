@@ -1,0 +1,67 @@
+<sect1 id="postlfs-config-inputrc">
+<?dbhtml filename="inputrc.html" dir="postlfs"?>
+<title>/etc/inputrc</title>
+
+<para>Inputrc deals with the mapping of the keyboard for certain
+situations.  This file is the start-up file used by readline - the input
+related library used by Bash and most other shells.</para>
+
+<para>For more information see <filename>info bash</filename> -- Node:
+Readline Init file as well as <filename>info readline</filename>. There
+is a lot that can be done with this one rc file.</para>
+
+<para>The following is a base <filename>/etc/inputrc</filename> along with
+comments to explain what the various options do.</para>
+
+<para>Please note that comments can <emphasis>not</emphasis> be on the
+same line as commands in <filename>inputrc</filename>.</para>
+
+<para><screen># Begin /etc/inputrc
+
+# Make sure we don't output everything on the 1 line
+set horizontal-scroll-mode Off
+
+# Enable 8bit input
+set meta-flag On 
+set input-meta On
+
+# Turns off 8th bit stripping
+set convert-meta Off
+
+# Keep the 8th bit for display
+set output-meta On
+
+# none, visible or audible
+set bell-style none
+
+# All of the following map the escape sequence of the 
+# value contained inside the 1st argument to the 
+# readline specific functions
+
+"\eOd": backward-word
+"\eOc": forward-word
+
+# for linux console
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+"\e[5~": beginning-of-history
+"\e[6~": end-of-history
+"\e[3~": delete-char
+"\e[2~": quoted-insert
+
+# for xterm
+"\eOH": beginning-of-line
+"\eOF": end-of-line
+
+# End /etc/inputrc</screen></para>
+
+<para>Global values are set in <filename>/etc/inputrc</filename>.
+Personal user values as are set in <filename>~/.inputrc</filename>. The
+<filename>~/.inputrc</filename> file will override the global settings
+file.  The previous page sets up Bash to use
+<filename>/etc/inputrc</filename> by default.  If you want your system
+to use both, it might be a good idea to place a default
+<filename>.inputrc</filename> into the <filename>/etc/skel</filename>
+directory for use with new users.</para>
+
+</sect1>

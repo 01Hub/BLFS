@@ -1,0 +1,17 @@
+<sect2>
+<title>Configuring aspell</title>
+
+<sect3><title>Configuration Information</title>
+
+<para>After Aspell is installed at least one dictionary needs to be 
+installed. You can find them at <ulink url="http://aspell.net/"/>.</para>
+
+<para>Install your dictionary or dictionaries by running the following commands:</para>
+<para><screen><userinput>./configure &amp;&amp;
+make &amp;&amp;
+make install</userinput></screen></para>
+
+</sect3>
+
+</sect2>
+

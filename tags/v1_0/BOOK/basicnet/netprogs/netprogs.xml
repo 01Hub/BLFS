@@ -1,0 +1,12 @@
+<chapter id="basicnet-netprogs">
+<?dbhtml filename="netprogs.html" dir="basicnet"?>
+<title>Basic Networking Programs</title>
+
+&ncftp;
+&basicnet-netprogs-opensshclient;
+&cvs;
+&wget;
+&tcpwrappers;
+&portmap;
+&inetutils;
+</chapter>

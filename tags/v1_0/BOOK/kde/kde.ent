@@ -1,0 +1,85 @@
+<!ENTITY kde SYSTEM "kde.xml">
+<!ENTITY kde-intro SYSTEM "kde-intro.xml">
+
+<!-- KDE Core -->
+<!ENTITY kde-core SYSTEM "core/core.xml">
+<!-- <!ENTITY kde-core-arts SYSTEM "core/arts.xml"> -->
+<!ENTITY kde-core-config SYSTEM "core/config.xml">
+
+<!ENTITY kde-core-arts SYSTEM    "core/arts.xml">
+<!ENTITY arts-version        "1.1">
+<!ENTITY arts-download-size  "947 KB">
+<!ENTITY arts-build-size     "35 MB">
+<!ENTITY arts-install-size   "5.7 MB">
+<!ENTITY arts-download-ftp "ftp://ftp.kde.org/pub/kde/stable/&kde-version;/src/arts-&arts-version;.tar.bz2">
+<!ENTITY arts-build-time    "11 min (667 MHz)">
+<!ENTITY arts-time "9.33 SBU">
+<!-- KDE Additional -->
+<!ENTITY kde-add SYSTEM "add/add.xml">
+
+<!-- KDE Other -->
+<!ENTITY kde-other SYSTEM "other/other.xml">
+
+<!-- Package entities -->
+
+<!-- <!ENTITY arts SYSTEM "core/arts.xml"> -->
+<!ENTITY kde-libs SYSTEM "inst/kde-libs.xml">
+<!ENTITY kde-base SYSTEM "inst/kde-base.xml">
+<!ENTITY kde-multimedia SYSTEM "inst/kde-multimedia.xml">
+<!ENTITY kde-network SYSTEM "inst/kde-network.xml">
+<!ENTITY kde-graphics SYSTEM "inst/kde-graphics.xml">
+<!ENTITY kde-pim SYSTEM "inst/kde-pim.xml">
+<!ENTITY kde-admin SYSTEM "inst/kde-admin.xml">
+<!ENTITY kde-games SYSTEM "inst/kde-games.xml">
+<!ENTITY kde-utils SYSTEM "inst/kde-utils.xml">
+<!ENTITY kde-edu SYSTEM "inst/kde-edu.xml">
+<!ENTITY kde-artwork SYSTEM "inst/kde-artwork.xml">
+<!ENTITY kde-toys SYSTEM "inst/kde-toys.xml">
+<!ENTITY kde-addons SYSTEM "inst/kde-addons.xml">
+<!ENTITY kde-office SYSTEM "inst/kde-office.xml">
+<!ENTITY kdoc SYSTEM "inst/kdoc.xml">
+<!ENTITY kde-bindings SYSTEM "inst/kde-bindings.xml">
+<!ENTITY kde-sdk SYSTEM "inst/kde-sdk.xml">
+<!ENTITY kdevelop SYSTEM "inst/kdevelop.xml">
+<!ENTITY kdm SYSTEM "inst/kdm.xml">
+
+<!ENTITY kde-version "3.1">
+<!ENTITY kde-download "ftp://ftp.kde.org/pub/kde/stable/&kde-version;/src">
+<!ENTITY kde-dir "/opt/kde-&kde-version;">
+
+<!ENTITY kde-libs-ftp "&kde-download;/kdelibs-&kde-version;.tar.bz2">
+<!ENTITY kde-libs-size "7.2 MB">
+<!ENTITY kde-base-ftp "&kde-download;/kdebase-&kde-version;.tar.bz2">
+<!ENTITY kde-base-size "12.0 MB">
+<!ENTITY kde-multimedia-ftp "&kde-download;/kdemultimedia-&kde-version;.tar.bz2">
+<!ENTITY kde-multimedia-size "5.8 MB">
+<!ENTITY kde-network-ftp "&kde-download;/kdenetwork-&kde-version;.tar.bz2">
+<!ENTITY kde-network-size "4.8 MB">
+<!ENTITY kde-graphics-ftp "&kde-download;/kdegraphics-&kde-version;.tar.bz2">
+<!ENTITY kde-graphics-size "4.4 MB">
+<!ENTITY kde-pim-ftp "&kde-download;/kdepim-&kde-version;.tar.bz2">
+<!ENTITY kde-pim-size "3.1 MB">
+<!ENTITY kde-admin-ftp "&kde-download;/kdeadmin-&kde-version;.tar.bz2">
+<!ENTITY kde-admin-size "1.5 MB">
+<!ENTITY kde-games-ftp "&kde-download;/kdegames-&kde-version;.tar.bz2">
+<!ENTITY kde-games-size "8.0 MB">
+<!ENTITY kde-utils-ftp "&kde-download;/kdeutils-&kde-version;.tar.bz2">
+<!ENTITY kde-utils-size "1.4 MB">
+<!ENTITY kde-edu-ftp "&kde-download;/kdeedu-&kde-version;.tar.bz2">
+<!ENTITY kde-edu-size   "20 MB">
+<!ENTITY kde-artwork-ftp "&kde-download;/kdeartwork-&kde-version;.tar.bz2">
+<!ENTITY kde-artwork-size "14 MB">
+<!ENTITY kde-toys-ftp "&kde-download;/kdetoys-&kde-version;.tar.bz2">
+<!ENTITY kde-toys-size "1.8 MB">
+<!ENTITY kde-addons-ftp "&kde-download;/kdeaddons-&kde-version;.tar.bz2">
+<!ENTITY kde-addons-size "1.1 MB">
+<!ENTITY kdoc-ftp "http://www.ph.unimelb.edu.au/~ssk/kde/kdoc/kdoc-snapshot.tar.gz">
+<!ENTITY kdoc-size "86 KB">
+<!ENTITY kde-bindings-size "??? MB">
+<!ENTITY kde-sdk-size "??? MB">
+<!ENTITY kdevelop-ftp "ftp://download.uk.kde.org/pub/kde/stable/3.0.5/src/kdevelop-2.1.4_for_KDE_3.0.tar.bz2">
+<!ENTITY kdevelop-size "3.2 MB">
+<!ENTITY kdm-size "??? MB">
+
+
+

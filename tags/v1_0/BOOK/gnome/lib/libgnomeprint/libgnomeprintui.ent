@@ -1,0 +1,13 @@
+<!ENTITY libgnomeprintui SYSTEM "../libgnomeprintui.xml">
+<!ENTITY libgnomeprintui-intro SYSTEM "libgnomeprintui-intro.xml">
+<!ENTITY libgnomeprintui-inst SYSTEM "libgnomeprintui-inst.xml">
+<!ENTITY libgnomeprintui-exp SYSTEM "libgnomeprintui-exp.xml">
+<!ENTITY libgnomeprintui-desc SYSTEM "libgnomeprintui-desc.xml">
+<!ENTITY libgnomeprintui-config SYSTEM "libgnomeprintui-config.xml">
+<!ENTITY libgnomeprintui-buildsize "4.9 MB">
+<!ENTITY libgnomeprintui-version "2.2.1.2">
+<!ENTITY libgnomeprintui-download-http "http://ftp.gnome.org/pub/GNOME/sources/libgnomeprintui/2.2/libgnomeprintui-2.2.1.2.tar.bz2">
+<!ENTITY libgnomeprintui-download-ftp
+"ftp://ftp.gnome.org/pub/GNOME/sources/libgnomeprintui/2.2/libgnomeprintui-2.2.1.2.tar.bz2">
+<!ENTITY libgnomeprintui-size "422 KB">
+<!ENTITY libgnomeprintui-time "0.66 SBU">

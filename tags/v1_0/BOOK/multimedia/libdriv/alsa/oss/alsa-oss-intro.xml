@@ -1,0 +1,18 @@
+<sect2>
+<title>Introduction to alsa-oss</title>
+
+<screen>Download location (HTTP):       <ulink url="&alsa-oss-download-http;"/>
+Download location (FTP):        <ulink url="&alsa-oss-download-ftp;"/>
+Version used:                   &alsa-oss-version;
+Package size:                   &alsa-oss-size;
+Estimated Disk space required:  &alsa-oss-buildsize;</screen>
+
+<para>The alsa-oss package contains the alsa oss compatibility library.
+This is used by programs which wish to use the alsa oss sound interface</para>
+
+<!--
+<screen>alsa-oss depends on:
+DEPENDENCY LIST (if any)</screen>
+-->
+
+</sect2>

@@ -1,0 +1,18 @@
+<sect2>
+<title>Introduction to galeon</title>
+
+<screen>Download location (HTTP):       <ulink url="&galeon-download-http;"/>
+Download location (FTP):        <ulink url="&galeon-download-ftp;"/>
+Version used:                   &galeon-version;
+Package size:                   &galeon-size;
+Estimated Disk space required:  &galeon-buildsize;
+Estimated build time:           &galeon-time;</screen>
+
+<para>The galeon package contains a GNOME browser that utilizes the
+mozilla gecko rendering engine and presents the simplest interface
+possible for a browser.</para>
+
+<screen>galeon depends on:
+<xref linkend="libgnomeui"/> and <xref linkend="mozilla"/></screen>
+
+</sect2>

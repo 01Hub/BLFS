@@ -1,0 +1,14 @@
+<chapter id="multimedia-videoutils">
+<?dbhtml filename="videoutils.html" dir="multimedia"?>
+<title>Video utilities</title>
+
+&xvid;
+<!-- &opendivx; -->
+&ffmpeg;
+&avifile;
+&mplayer;
+&xine-lib;
+&xine;
+&transcode;
+
+</chapter>

@@ -1,0 +1,18 @@
+<sect2>
+<title>Introduction to libglade</title>
+
+<screen>Download location (HTTP):       <ulink url="&libglade-download-http;"/>
+Download location (FTP):        <ulink url="&libglade-download-ftp;"/>
+Version used:                   &libglade-version;
+Package size:                   &libglade-size;
+Estimated Disk space required:  &libglade-buildsize;</screen>
+
+<para>The libglade package contains libglade libraries. This is useful
+for loading glade interface files in a program at runtime.</para>
+
+<screen>libglade depends on:
+<xref linkend="libxml2"/> and <xref linkend="GTK2"/>
+libglade will utilize:
+<xref linkend="Python"/> if compiled utilizing <xref linkend="expat"/>, <xref linkend="gtk-doc"/> and <xref linkend="sgml-dtd-3"/></screen>
+
+</sect2>

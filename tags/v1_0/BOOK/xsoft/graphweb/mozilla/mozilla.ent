@@ -1,0 +1,15 @@
+<!ENTITY mozilla SYSTEM "../mozilla.xml">
+<!ENTITY mozilla-intro SYSTEM "mozilla-intro.xml">
+<!ENTITY mozilla-inst SYSTEM "mozilla-inst.xml">
+<!ENTITY mozilla-exp SYSTEM "mozilla-exp.xml">
+<!ENTITY mozilla-desc SYSTEM "mozilla-desc.xml">
+<!ENTITY mozilla-config SYSTEM "mozilla-config.xml">
+<!ENTITY mozilla-buildsize "550 MB">
+<!ENTITY mozilla-version "1.3">
+<!ENTITY mozilla-prefix "/usr">
+<!ENTITY mozilla-download-http "http://ftp.mozilla.org/pub/mozilla/releases/mozilla&mozilla-version;/src/mozilla-source-&mozilla-version;.tar.bz2">
+<!ENTITY mozilla-download-ftp "ftp://ftp.mozilla.org/pub/mozilla/releases/mozilla&mozilla-version;/src/mozilla-source-&mozilla-version;.tar.bz2">
+<!ENTITY mozilla-size "39 MB">
+<!ENTITY mozilla-buildtime "2 Hrs (850 MHz)">
+<!ENTITY mozilla-installsize "65 MB">
+<!ENTITY mozilla-time "79.04 SBU">

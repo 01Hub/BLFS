@@ -1,0 +1,10 @@
+<chapter id="content-databases">
+<?dbhtml filename="databases.html" dir="content"?>
+<title>Databases</title>
+
+&db;
+&db-3.3;
+&mysql;
+&postgres;
+
+</chapter>

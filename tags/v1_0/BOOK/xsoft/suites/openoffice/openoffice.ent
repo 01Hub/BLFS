@@ -1,0 +1,12 @@
+<!ENTITY openoffice SYSTEM "../openoffice.xml">
+<!ENTITY openoffice-intro SYSTEM "openoffice-intro.xml">
+<!ENTITY openoffice-inst SYSTEM "openoffice-inst.xml">
+<!ENTITY openoffice-exp SYSTEM "openoffice-exp.xml">
+<!ENTITY openoffice-desc SYSTEM "openoffice-desc.xml">
+<!ENTITY openoffice-buildsize "2.1 GB">
+<!ENTITY openoffice-version "1.0.2">
+<!ENTITY openoffice-download-http "http://sf1.mirror.openoffice.org/stable/&openoffice-version;/OOo_&openoffice-version;_source.tar.bz2">
+<!ENTITY openoffice-download-ftp "">
+<!ENTITY openoffice-buildtime "14 Hrs (850 MHz)">
+<!ENTITY openoffice-installsize "203 MB">
+<!ENTITY openoffice-size "155 MB">

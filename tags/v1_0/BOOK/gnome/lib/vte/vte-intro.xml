@@ -1,0 +1,17 @@
+<sect2>
+<title>Introduction to vte</title>
+
+<screen>Download location (HTTP):       <ulink url="&vte-download-http;"/>
+Download location (FTP):        <ulink url="&vte-download-ftp;"/>
+Version used:                   &vte-version;
+Package size:                   &vte-size;
+Estimated Disk space required:  &vte-buildsize;
+Estimated build time:           &vte-time;</screen>
+
+<para>The vte package contains a termcap file implementation for
+terminal emulators.</para>
+
+<screen>vte depends on:
+<xref linkend="Python"/> and <xref linkend="GTK2"/></screen>
+
+</sect2>

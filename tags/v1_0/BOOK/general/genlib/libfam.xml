@@ -1,0 +1,11 @@
+<sect1 id="libfam" xreflabel="libfam-&libfam-version;">
+<?dbhtml filename="libfam.html" dir="general"?>
+<title>fam-&libfam-version;</title>
+
+&libfam-intro;
+&libfam-inst;
+&libfam-exp;
+&libfam-config;
+&libfam-desc;
+
+</sect1>

@@ -1,0 +1,24 @@
+<sect2>
+<title>Configuring wvdial</title>
+
+<sect3><title>Config files</title>
+<para><filename>/etc/wvdial.conf</filename>, 
+<filename>/etc/ppp/*</filename></para></sect3>
+
+<sect3><title>Configuration Information</title>
+
+<para><screen><userinput>wvdialconf /etc/wvdial.conf</userinput></screen>
+wvdialconf will test that you have a working modem, try and determine 
+its exact setup and then ask you some questions regarding your ISP's phone 
+number etc.  You will then need to enter that information into the
+<filename>/etc/wvdial.conf</filename> file.</para>
+
+<para>You then start wvdial with:
+<screen><userinput>wvdial</userinput>.</screen></para>
+
+<para>For more information examine the wvdialconf, wvdial.conf and wvdial man pages.</para>
+
+</sect3>
+
+</sect2>
+

@@ -1,0 +1,8 @@
+<chapter id="pst-scanning">
+<?dbhtml filename="scanning.html" dir="pst"?>
+<title>Scanning</title>
+
+&sane;
+&xsane;
+
+</chapter>

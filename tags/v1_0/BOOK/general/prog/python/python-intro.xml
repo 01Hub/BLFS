@@ -1,0 +1,18 @@
+<sect2>
+<title>Introduction to Python</title>
+
+<screen>Download location (HTTP):       <ulink url="&Python-download-http;"/>
+Download location (FTP):        <ulink url="&Python-download-ftp;"/>
+Version used:                   &Python-version;
+Package size:                   &Python-size;
+Estimated Disk space required:  &Python-buildsize;
+Estimated build time:           &Python-time;</screen>
+
+<para>The Python package contains the python development environment.
+This is useful for object-oriented programming, writing scripts,
+prototyping large programs or developing them entirely.</para>
+
+<screen>Python will utilize:
+<xref linkend="expat"/></screen>
+
+</sect2>

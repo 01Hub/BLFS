@@ -1,0 +1,11 @@
+<sect1 id="openoffice" xreflabel="openoffice-&openoffice-version;">
+<?dbhtml filename="openoffice.html" dir="xsoft"?>
+<title>openoffice-&openoffice-version;</title>
+
+&openoffice-intro;
+&openoffice-inst;
+&openoffice-exp;
+&openoffice-desc;
+
+</sect1>
+

@@ -1,0 +1,9 @@
+<chapter id="basicnet-djb">
+<?dbhtml filename="djb.html" dir="basicnet"?>
+<title>DJB's Utilities</title>
+
+&daemontools;
+&daemontools-man;
+&ucspi-tcp;
+
+</chapter>

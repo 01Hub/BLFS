@@ -1,0 +1,16 @@
+<sect2>
+<title>Contents</title>
+
+<para>The glib package contains <filename>libglib-1.2</filename> libraries.</para>
+
+</sect2>
+
+<sect2><title>Description</title>
+
+<sect3><title>GLib libraries</title>
+<para>GLib libraries contain a low-level core library for the Gimp
+Tool Kit.</para></sect3>
+
+
+</sect2>
+

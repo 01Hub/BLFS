@@ -1,0 +1,15 @@
+<sect2>
+<title>Introduction to libpng</title>
+
+<screen>Download location (HTTP):       <ulink url="&libpng-download-http;"/>
+Download location (FTP):	<ulink url="&libpng-download-ftp;"/>
+Version used:                   &libpng-version;
+Package size:                   &libpng-size;
+Estimated Disk space required:  &libpng-buildsize;</screen>
+
+<para>The libpng package contains the libpng libraries.  These are used
+by other programs for reading and writing png files.</para>
+
+<para>Download the patch to force linking of libpng to libz from <ulink url="&hfile-root;"/>.</para>
+
+</sect2>

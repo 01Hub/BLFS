@@ -1,0 +1,9 @@
+<sect1 id="audiofile" xreflabel="audiofile-&audiofile-version;">
+<?dbhtml filename="audiofile.html" dir="multimedia"?>
+<title>audiofile-&audiofile-version;</title>
+
+&audiofile-intro;
+&audiofile-inst;
+&audiofile-desc;
+
+</sect1>

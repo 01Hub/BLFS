@@ -1,0 +1,11 @@
+<!ENTITY expat SYSTEM "../expat.xml">
+<!ENTITY expat-intro SYSTEM "expat-intro.xml">
+<!ENTITY expat-inst SYSTEM "expat-inst.xml">
+<!ENTITY expat-desc SYSTEM "expat-desc.xml">
+<!ENTITY expat-config SYSTEM "expat-config.xml">
+<!ENTITY expat-buildsize "3.2 MB">
+<!ENTITY expat-version "1.95.6">
+<!ENTITY expat-download-http
+	 "http://umn.dl.sourceforge.net/sourceforge/expat/expat-1.95.6.tar.gz">
+<!ENTITY expat-size "292 KB">
+<!ENTITY expat-time "0.25 SBU">

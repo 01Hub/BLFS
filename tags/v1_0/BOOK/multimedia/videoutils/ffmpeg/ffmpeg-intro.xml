@@ -1,0 +1,17 @@
+<sect2>
+<title>Introduction to ffmpeg</title>
+
+<screen>Download location (HTTP):       <ulink url="&ffmpeg-download-http;"/>
+Download location (FTP):        <ulink url="&ffmpeg-download-ftp;"/>
+Version used:                   &ffmpeg-version;
+Package size:                   &ffmpeg-size;
+Estimated Disk space required:  &ffmpeg-buildsize;
+Estimated build time            &ffmpeg-time;</screen>
+
+<para>ffmpeg is a solution to record, convert and stream audio and
+video. Due to heavy development, not all of this functions will work.  </para>
+
+<screen>ffmpeg will utilize:
+<xref linkend="libvorbis"/>, <xref linkend="lame"/> and Imlib2</screen>
+
+</sect2>

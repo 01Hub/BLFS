@@ -1,0 +1,41 @@
+<sect2>
+<title>Introduction to mozilla</title>
+
+<screen>Download location (HTTP):       <ulink url="&mozilla-download-http;"/>
+Download location (FTP):        <ulink url="&mozilla-download-ftp;"/>
+Version used:                   &mozilla-version;
+Package size:                   &mozilla-size;
+Estimated Disk space required:  &mozilla-buildsize;
+Estimated Build time:           &mozilla-buildtime;
+Estimated Install size:         &mozilla-installsize;</screen>
+
+<para>Mozilla is a browser suite, the opensource sibling of
+Netscape. It includes the browser, composer, mail client and an IRC client. A
+calendar component is also being built but it is not yet integrated into the
+stable mozilla releases.</para>
+
+<screen>mozilla depends on:
+<xref linkend="freetype2"/>, <xref linkend="xfree86"/>,	<xref linkend="zip"/>,
+<xref linkend="GLib2"/>, <xref linkend="GTK2"/>, <xref linkend="libIDL"/>,
+<xref linkend="lcms"/>, <xref linkend="libjpeg"/>, <xref linkend="libmng"/>,
+<xref linkend="libpng"/> and <xref linkend="which"/></screen>
+
+<para>Download the patch for various fixes to the build from
+<userinput><ulink url="&hfile-root;"/></userinput>. The patches begin with
+<userinput>mozilla-&mozilla-version;</userinput></para>
+
+<para>Note that the mozdev spellchecker instructions have been removed since the API
+for spellchecker was changed and it is currently broken.</para>
+<!--
+<para>Download the spellchecker (a Mozdev project).
+<screen><ulink url="&hfile-root;/mozilla-&mozilla-version;-spellchecker.tar.bz2"/></screen>
+</para>
+-->
+
+<para>If you have difficulties in building mozilla, check out the mozilla
+hint for detailed information at <ulink url="http://www.linuxfromscratch.org/~tushar/"/>. 
+The instructions 
+that follow install the entire suite. To select specific components, refer 
+to the hint.</para>
+
+</sect2>

@@ -1,0 +1,32 @@
+<sect2>
+<title>Command explanations</title>
+
+<para><userinput>PATH_HOLD=$PATH</userinput> : This command
+stores your current path before it's modified so that it can be restored after
+installation.</para>
+
+<para><userinput>export PATH=$PATH:/opt/gnat/bin</userinput> : This
+command allows the build to find gnat's Ada compiler to build
+Ada.</para>
+
+<para><userinput>touch treeprs.ads [es]info.h nmake.ad[bs]</userinput> :
+This command creates necessary files for the Ada build. This step
+may be skipped if you don't want to compile the ada frontend.</para>
+
+<para><userinput>--enable-languages=c,c++,objc,f77,ada,java</userinput>
+: This command builds all available languages in the gcc package.
+You may modify this command to remove unwanted languages.</para>
+
+<para><userinput>--enable-shared --enable-threads=posix
+--enable-__cxa_atexit</userinput> : These commands are required to build
+the C++ libraries to published standards.</para>
+
+<para><userinput>--enable-clocale=gnu</userinput> : This command is a
+failsafe for incomplete locale data.</para>
+
+<para><userinput>make gnatlib_and tools</userinput> : This command
+completes the Ada build process. Skip this step if you have not enabled
+ADA as one of the languages.</para>
+
+</sect2>
+

@@ -1,0 +1,13 @@
+<sect1 id="gcc" xreflabel="gcc-&gcc-version;">
+<?dbhtml filename="gcc.html" dir="general"?>
+<title>gcc-&gcc-version;</title>
+
+&gnat-intro;
+&gnat-inst;
+&gcc-intro;
+&gcc-inst;
+&gcc-exp;
+&gcc-desc;
+
+</sect1>
+

@@ -1,0 +1,10 @@
+<sect1 id="gnumeric" xreflabel="gnumeric-&gnumeric-version;">
+<?dbhtml filename="gnumeric.html" dir="xsoft"?>
+<title>gnumeric-&gnumeric-version;</title>
+
+&gnumeric-intro;
+&gnumeric-inst;
+&gnumeric-desc;
+
+</sect1>
+

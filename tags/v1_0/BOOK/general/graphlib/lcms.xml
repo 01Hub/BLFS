@@ -1,0 +1,11 @@
+<sect1 id="lcms" xreflabel="lcms-&lcms-version;">
+<?dbhtml filename="lcms.html" dir="general"?>
+<title>lcms-&lcms-version;</title>
+
+&lcms-intro;
+&lcms-inst;
+&lcms-config;
+&lcms-desc;
+
+</sect1>
+

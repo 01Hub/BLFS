@@ -1,0 +1,10 @@
+<chapter id="pst-printing">
+<?dbhtml filename="printing.html" dir="pst"?>
+<title>Printing</title>
+
+&cups;
+&gs;
+&espgs;
+&LPRng;
+
+</chapter>

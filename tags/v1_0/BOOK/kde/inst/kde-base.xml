@@ -1,0 +1,63 @@
+<sect1 id="kde-base" xreflabel="kdebase-&kde-version;">
+<title>kdebase-&kde-version;</title>
+<para><screen>Download location (FTP):     <ulink url="&kde-base-ftp;"/>
+Estimated build disk space:  132 MB
+Estimated installed space:   45 MB
+Package size:                &kde-base-size;
+Estimated build time:        98 min (667 MHz)</screen></para>
+
+<para>kdebase can use many optional libraries and programs.  The following are
+recommended:
+<screen><xref linkend="openssl"/>, <xref linkend="lesstif"/>, <xref linkend="CDParanoia"/>, <xref linkend="libvorbis"/>,
+shadow (in the LFS book), and <xref linkend="cups"/></screen></para>
+
+<para>Other programs and libraries that can be used by kdebase are:
+<screen><xref linkend="lame"/>, and <xref linkend="Linux_PAM"/></screen></para>
+
+<para>Check to see if <filename>/lib/libmisc.la</filename> exists.  If not, run:
+<screen>ln -sf /usr/lib/libmisc.la /lib/libmisc.la</screen></para>
+
+<para>Install kdebase with:
+<screen><userinput>./configure --prefix=&kde-dir; --disable-debug \
+     --disable-dependency-tracking --disable-lametest --with-shadow &amp;&amp;
+make &amp;&amp;
+make install</userinput></screen></para>
+
+<sect2>
+<title>kdebase Installation Command explanations</title>
+ 
+<para><userinput>--disable-lametest</userinput> : Do not search for and use 
+lame support.  This package provides mp3 encoding. Omit this option if
+you installed <filename>lame</filename>.</para>
+  
+<para><userinput>--with-shadow</userinput> : Use shadow password 
+support.</para>
+</sect2>
+
+<sect2>
+<title>Contents</title>
+
+<para>Major programs in Kde-base include:</para>
+
+<itemizedlist>
+<listitem><para>kdesktop - the program that handles desktop icons, popup menus, and the
+                screensaver system.</para></listitem>
+<listitem><para>kaddressbook - a simple addressbook</para></listitem> 
+<listitem><para>kappfinder - utility to add non-KDE applications to K-menu</para></listitem> 
+<listitem><para>kcontrol - KDE Control Center</para></listitem> 
+<listitem><para>kdeprint - Print job administration</para></listitem> 
+<listitem><para>kdm - KDE Display manager (a replacement for xdm</para></listitem> 
+<listitem><para>kfind - utility to find files</para></listitem> 
+<listitem><para>khelpcenter - kde help tool</para></listitem> 
+<listitem><para>khotkeys - handles hot keys for KDE</para></listitem> 
+<listitem><para>kicker - KDE control panel</para></listitem> 
+<listitem><para>klipper - a clipboard utility</para></listitem> 
+<listitem><para>kmenuedit - utility to reaggange or add to the K-menu</para></listitem> 
+<listitem><para>konqueror - a filesystem and Web browser</para></listitem> 
+<listitem><para>konsole - a highly configurable X terminal emulator</para></listitem> 
+<listitem><para>kscreensaver - program to set up screensavers</para></listitem> 
+<listitem><para>ktip - wizard to provide hints and KDE information</para></listitem> 
+</itemizedlist>
+</sect2>
+   
+</sect1>

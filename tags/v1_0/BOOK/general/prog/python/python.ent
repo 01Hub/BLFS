@@ -1,0 +1,12 @@
+<!ENTITY Python SYSTEM "../python.xml">
+<!ENTITY Python-intro SYSTEM "python-intro.xml">
+<!ENTITY Python-inst SYSTEM "python-inst.xml">
+<!ENTITY Python-exp SYSTEM "python-exp.xml">
+<!ENTITY Python-desc SYSTEM "python-desc.xml">
+<!ENTITY Python-config SYSTEM "python-config.xml">
+<!ENTITY Python-buildsize "59.7 MB">
+<!ENTITY Python-version "2.2.2">
+<!ENTITY Python-download-http "http://www.python.org/ftp/python/2.2.2/Python-2.2.2.tgz">
+<!ENTITY Python-download-ftp "ftp://ftp.python.org/pub/python/2.2.2/Python-2.2.2.tgz">
+<!ENTITY Python-size "6.5 MB">
+<!ENTITY Python-time "2.45 SBU">

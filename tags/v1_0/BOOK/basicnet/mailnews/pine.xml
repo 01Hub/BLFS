@@ -1,0 +1,12 @@
+<sect1 id="pine" xreflabel="pine-&pine-version;">
+<?dbhtml filename="pine.html" dir="basicnet"?>
+<title>pine-&pine-version;</title>
+
+&pine-intro;
+&pine-inst;
+&pine-exp;
+&pine-config;
+&pine-desc;
+
+</sect1>
+

@@ -1,0 +1,11 @@
+<sect1 id="gimp" xreflabel="gimp-&gimp-version;">
+<?dbhtml filename="gimp.html" dir="xsoft"?>
+<title>gimp-&gimp-version;</title>
+
+&gimp-intro;
+&gimp-inst;
+&gimp-config;
+&gimp-desc;
+
+</sect1>
+
