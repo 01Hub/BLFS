@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY x7libs-download-http "http://xorg.freedesktop.org/releases/individual/lib/">
+  <!ENTITY x7libs-download-ftp  "ftp://ftp.x.org/pub/individual/lib/">
+  <!ENTITY x7libs-md5sum        "&files-anduin;/xorg/md5sums">
+  <!ENTITY x7libs-size          "12 MB">
+  <!ENTITY x7libs-buildsize     "186 MB">
+  <!ENTITY x7libs-time          "6.6 SBU">
+
+]>
+
+<sect1 id="xorg7-lib" xreflabel="Xorg Libraries">
+  <?dbhtml filename="x7lib.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Xorg Libraries</title>
+
+  <indexterm zone="xorg7-lib">
+    <primary sortas="a-xorg7-lib">Xorg Libraries</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Xorg Libraries</title>
+
+    <para>The <application>Xorg</application> libraries provide library
+    routines that are used within all X Window applications.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&x7libs-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&x7libs-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: <ulink url="&x7libs-md5sum;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download size: &x7libs-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &x7libs-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &x7libs-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <!-- Following patch is security related and has been
+        fixed for Xorg-7.2 -->
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Required patch: <ulink
+        url="&patch-root;/libXfont-1.1.0-cidfonts-1.patch"/></para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Xorg Libraries Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="ed"/>,
+    <xref linkend="fontconfig"/>,
+    <xref linkend="pkgconfig"/>, and
+    <xref linkend="xorg7-proto"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="linux-pam"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url='&blfs-wiki;/Xorg7Libraries'/></para>
+
+  </sect2>
+
+  <sect2>
+    <title>Downloading Xorg Libraries</title>
+
+    <para>To download the needed files using <application>wget</application>,
+    use the following commands:</para>
+
+<screen><userinput>wget &files-anduin;/xorg/lib-7.1.wget &amp;&amp;
+mkdir lib &amp;&amp;
+cd lib &amp;&amp;
+wget -B http://xorg.freedesktop.org/releases/individual/lib/ \
+     -i ../lib-7.1.wget</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Xorg Libraries</title>
+
+    <para><ulink url='http://wiki.x.org/wiki/SecurityPage'>Security
+    vulnerabilities</ulink> have been identified in the libXfont package.
+    Before building this package with the commands shown below, be sure
+    to apply the supplied patches. This can be accomplished with with the
+    following command:</para>
+
+<screen><userinput>patch -Np1 -i ../libXfont-1.1.0-cidfonts-1.patch</userinput></screen>
+
+    <para>Install the libraries by running the following commands for each
+    of the chosen packages:</para>
+
+<screen><userinput>./configure $XORG_CONFIG &amp;&amp;
+make</userinput></screen>
+
+    <para>These packages do not provide test suites.</para>
+
+    <para>Now as the <systemitem class="username">root</systemitem>
+    user:</para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+ldconfig</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuration of Xorg Libraries</title>
+
+    <para>If you've chosen to install <application>Xorg</application> into
+    <filename class="directory">/usr</filename>, then no further
+    configuration is necessary and you can skip the rest of this section.
+    If you've opted for an alternate prefix, you should create two symlinks
+    to satisfy the expected environment of several packages.
+    Execute the following commands as the root user:</para>
+
+<screen role="root"><userinput>ln -sv $XORG_PREFIX/lib/X11 /usr/lib/X11 &amp;&amp;
+ln -sv $XORG_PREFIX/include/X11 /usr/include/X11</userinput></screen>
+
+  </sect2>
+
+</sect1>
