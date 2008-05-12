@@ -8,8 +8,8 @@
   <!ENTITY jdk-md5sum          "f7528500c17c09546566e05988beda86">
   <!ENTITY jdk-size            "67 MB">
   <!ENTITY jdk-buildsize       "207 MB">
+  <!ENTITY jdk-build-time      "0.2 SBU">
   <!ENTITY jdk-bin-version     "6u5">
-  <!ENTITY jdk-build-time      "0.3 SBU">
   <!ENTITY jdk-version-string  "1.6.0_05">
 
 ]>
@@ -41,7 +41,7 @@
 
     <note><para>Sun has recently decided not to provide JRL sources for
     the latest update versions of the JDK. Sun is actively working on a GPL'd
-    version of the JDK, titled
+    version of the JDK, titled 
     <ulink url="http://openjdk.java.net/projects/jdk6/">OpenJDK</ulink>.
     This new JDK will be licensed under the
     <ulink url="http://openjdk.java.net/legal/gplv2+ce.html">GNU General
