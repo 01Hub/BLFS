@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="changelog" xreflabel='Change Log'>
+  <?dbhtml filename="changelog.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Change Log</title>
+
+  <para>Please note that the Change Log only lists which editor was
+  responsible for putting the changes into SVN; please read the
+  <xref linkend="credits"/> page in Chapter 1 for details on
+  who wrote what.</para>
+
+  <para>Current release: &version; &ndash; &releasedate;</para>
+
+  <itemizedlist>
+    <title>Changelog Entries:</title>
+
+<!-- Changelog template
+
+    <listitem>
+      <para>Date</para>
+      <itemizedlist>
+        <listitem>
+          <para>[name] - Changelog entry.</para>
+        </listitem>
+        <listitem>
+          <para>[name] - Another changelog entry.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+-->
+
+    <listitem>
+      <para>February 15th, 2007</para>
+      <itemizedlist>
+        <listitem>
+          <para>[randy] - Updated to CrackLib-2.8.10.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>February 14th, 2007</para>
+      <itemizedlist>
+        <listitem>
+          <para>[randy] - Released BLFS Version 6.2.0.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+  </itemizedlist>
+
+</sect1>
