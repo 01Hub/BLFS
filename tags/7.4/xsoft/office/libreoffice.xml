@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libreoffice-dl "http://download.documentfoundation.org/libreoffice/src/&libreoffice-version;">
+
+  <!ENTITY libreoffice-core-download-http "&libreoffice-dl;/libreoffice-&libreoffice-dlversion;.tar.xz">
+  <!ENTITY libreoffice-core-md5sum        "4eb8fd2b0d1177d19b2f797faabc4ea2">
+  <!ENTITY libreoffice-core-size          "117 MB">
+
+  <!ENTITY libreoffice-dict-download-http "&libreoffice-dl;/libreoffice-dictionaries-&libreoffice-dlversion;.tar.xz">
+  <!ENTITY libreoffice-dict-md5sum        "482c3ba55f6062eaf49eb493200643c9">
+  <!ENTITY libreoffice-dict-size          "35 MB">
+
+  <!ENTITY libreoffice-help-download-http "&libreoffice-dl;/libreoffice-help-&libreoffice-dlversion;.tar.xz">
+  <!ENTITY libreoffice-help-md5sum        "f6b418a1ed94ef9d5ee30e9f5d7f305a">
+  <!ENTITY libreoffice-help-size          "1.8 MB">
+
+  <!ENTITY libreoffice-translations-download-http "&libreoffice-dl;/libreoffice-translations-&libreoffice-dlversion;.tar.xz">
+  <!ENTITY libreoffice-translations-md5sum        "e8c69bdb55586531cc192904467f5e24">
+  <!ENTITY libreoffice-translations-size          "124 MB">
+
+  <!ENTITY libreoffice-buildsize          "7.8 GB (509 MB installed)">
+  <!ENTITY libreoffice-time               "173 SBU">
+]>
+
+<sect1 id="libreoffice" xreflabel="LibreOffice-&libreoffice-version;">
+  <?dbhtml filename="libreoffice.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>LibreOffice-&libreoffice-version;</title>
+
+  <indexterm zone="libreoffice">
+    <primary sortas="a-LibreOffice">LibreOffice</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to LibreOffice</title>
+
+    <para>
+      <application>LibreOffice</application> is a full-featured office suite.
+      It is largely compatible with <application>Microsoft Office</application>
+      and is descended from <application>OpenOffice.org</application>.
+    </para>
+
+    &lfs74_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Core Download: <ulink url="&libreoffice-core-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Core Download MD5 sum: &libreoffice-core-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Core Download size: &libreoffice-core-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libreoffice-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libreoffice-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Dictionaries: <ulink url="&libreoffice-dict-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Dictionaries MD5 sum: &libreoffice-dict-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Dictionaries size: &libreoffice-dict-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Help Files: <ulink url="&libreoffice-help-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Help Files MD5 sum: &libreoffice-help-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Help Files size: &libreoffice-help-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Translations: <ulink url="&libreoffice-translations-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Translations MD5 sum: &libreoffice-translations-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Translations size: &libreoffice-translations-size;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/libreoffice-&libreoffice-dlversion;-system_neon-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">LibreOffice Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="gperf"/>,
+      <xref linkend="gtk2"/>,
+      <application>Perl Modules</application>
+      <xref linkend="perl-archive-zip"/> and
+      <xref linkend="perl-xml-parser"/>,
+      <xref linkend="unzip"/>,
+      <xref linkend="wget"/>,
+      <xref linkend="which"/> and
+      <xref linkend="zip"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <note>
+      <para>
+        Most of these packages are recommended because if they're not installed,
+        the build process will compile and install its own (often older)
+        version.
+      </para>
+    </note>
+
+    <para role="recommended">
+      <xref linkend="boost"/>,
+      <xref linkend="cups"/>,
+      <xref linkend="curl"/>,
+      <xref linkend="dbus"/>,
+      <xref linkend="expat"/>,
+      <xref linkend="gst-plugins-base"/> or
+      <xref linkend="gst10-plugins-base"/>,
+      <xref linkend="icu"/>,
+      <xref linkend="lcms2"/>,
+      <xref linkend="librsvg"/>,
+      <xref linkend="libxml2"/> and
+      <xref linkend="libxslt"/>,
+      <xref linkend="mesalib"/>,
+      <xref linkend="neon"/>,
+      <xref linkend="nss"/>,
+      <xref linkend="openldap"/> (client only),
+      <xref linkend="openssl"/>,
+      <xref linkend="poppler"/>,
+      <xref linkend="python3"/> (used to build the translations),
+      <xref linkend="redland"/> and
+      <xref linkend="unixodbc"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="bluez"/>,
+      <ulink url="http://sourceforge.net/projects/cppunit/">Cppunit</ulink>,
+      <ulink url="http://sourceforge.net/projects/silgraphite/">Graphite2</ulink>,
+      <xref linkend="gtk3"/>,
+      <ulink url="http://hunspell.sourceforge.net/">Hunspell</ulink>,
+      <ulink url="http://sourceforge.net/projects/hunspell/files/Hyphen/">Hyphen</ulink>,
+      <xref linkend="kdelibs"/>,
+      <ulink url="http://libwpd.sourceforge.net/">libwpd</ulink>,
+      <ulink url="http://libwpg.sourceforge.net/">libwpg</ulink>,
+      <ulink url="http://libwps.sourceforge.net/">libwps</ulink>,
+      <ulink url="http://www.freedesktop.org/wiki/Software/libcdr/">libcdr</ulink>,
+      <ulink url="http://www.freedesktop.org/wiki/Software/libmspub/">libmspub</ulink>,
+      <ulink url="http://sourceforge.net/projects/libmwaw/">libmwaw</ulink>,
+      <ulink url="http://www.freedesktop.org/wiki/Software/libvisio/">libvisio</ulink>,
+      <ulink url="http://sourceforge.net/projects/libcmis/">libcmis</ulink>,
+      <ulink url="http://clucene.sourceforge.net/">CLucene</ulink>,
+      <ulink url="http://www.freedesktop.org/wiki/Software/libexttextcat/">libexttextcat</ulink>,
+      <ulink url="http://tagoh.bitbucket.org/liblangtag/">liblangtag</ulink>,
+      <ulink url="http://sourceforge.net/projects/libwpd/files/libodfgen/">libodfgen</ulink>,
+      <ulink url="http://hci.iwr.uni-heidelberg.de/vigra/">VIGRA</ulink>,
+      <ulink url="http://code.google.com/p/multidimalgorithm/">mdds</ulink>,
+      <xref linkend="mysql"/>,
+      <ulink url="http://sourceforge.net/projects/hunspell/files/MyThes/">MyThes</ulink>,
+      <xref linkend="postgresql"/>,
+      <xref linkend="sane"/> and
+      <ulink url="&gnome-download-http;/zenity/">Zenity</ulink>
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/libreoffice"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of LibreOffice</title>
+
+    <warning>
+      <para>
+        Untaring the libreoffice-&libreoffice-dlversion; tarball as
+        <systemitem class="username">root</systemitem> has the curious effect of
+        changing the ownership of the <emphasis>parent</emphasis> directory
+        to a user with numerical id 11012 and with the permissions set to allow
+        read, write and execute for that user only! If you untared as
+        <systemitem class="username">root</systemitem> in your home folder you
+        could end up unable to log in again. If you untared it in
+        <filename class="directory">/usr</filename> you would find your user
+        account unable to access any file in
+        <filename class="directory">/usr</filename>.
+      </para>
+
+      <para>
+        You can avoid this unpleasantness by
+        <emphasis>not</emphasis> untaring it as
+        <systemitem class="username">root</systemitem>. If you must untar it as
+        <systemitem class="username">root</systemitem> pass the option
+        <option>--no-overwrite-dir</option> to tar. This is the default when you
+        untar as a user but has to be passed as an option when untaring as
+        <systemitem class="username">root</systemitem>:
+      </para>
+    </warning>
+
+<screen role="root"><userinput>tar -xf libreoffice-&libreoffice-dlversion;.tar.xz --no-overwrite-dir &amp;&amp;
+cd libreoffice-&libreoffice-dlversion;</userinput></screen>
+
+    <para>
+      Unpack the dictionaries file and create symlinks to tarballs from the
+      source directory so they won't get downloaded again (it is not necessary
+      to unpack the help nor the translations tarballs):
+    </para>
+
+<screen><userinput>install -dm755 src &amp;&amp;
+
+tar -xf ../libreoffice-dictionaries-&libreoffice-dlversion;.tar.xz --no-overwrite-dir --strip-components=1 &amp;&amp;
+<!-- Not necessary for this version
+tar -xf ../libreoffice-help-&libreoffice-dlversion;.tar.xz -\-no-overwrite-dir -\-strip-components=1 &amp;&amp;
+-->
+ln -sv ../../libreoffice-dictionaries-&libreoffice-dlversion;.tar.xz src/ &amp;&amp;
+ln -sv ../../libreoffice-help-&libreoffice-dlversion;.tar.xz src/</userinput></screen>
+
+<!-- Not necessary for this version
+    <para>
+      If you have downloaded the translations tarball, unpack it:
+    </para>
+
+<screen><userinput>tar -xf ../libreoffice-translations-&libreoffice-dlversion;.tar.xz -\-no-overwrite-dir -\-strip-components=1 &amp;&amp;
+ln -sv ../../libreoffice-translations-&libreoffice-dlversion;.tar.xz src/</userinput></screen>
+-->
+    <para>
+      If you have downloaded the translations tarball, create a symlink:
+    </para>
+
+<screen><userinput>ln -sv ../../libreoffice-translations-&libreoffice-dlversion;.tar.xz src/</userinput></screen>
+
+    <note>
+      <para>
+        During the build process, some packages will be downloaded (including
+        the ones listed as recommended and optional dependencies) if they are
+        not present on the system. Doing so, build time may be different
+        for everyone.
+      </para>
+    </note>
+
+    <para>
+      In the rest of the page, locales "en-US" and "pt-BR" are examples; the
+      user will change them to suit his needs - you might want to read the
+      "Command Explanations", further below, before proceeding. Due to the
+      large size of the package, the user may prefer to install in
+      <filename class="directory">/opt</filename>, instead of
+      <filename class="directory">/usr</filename>. In order to do that, replace
+      <filename class="directory">/usr</filename> by
+      <filename class="directory">/opt/libreoffice-&libreoffice-dlversion;</filename>
+      in the rest of the page, except in the commands fixing the menu icons.
+      Prepare <application>LibreOffice</application> for compilation by running
+      the following commands:
+    </para>
+
+<screen><userinput>sed -e "/gzip -f/d"   \
+    -e "s|.1.gz|.1|g" \
+    -i bin/distro-install-desktop-integration &amp;&amp;
+sed -e "/distro-install-file-lists/d" -i Makefile.in &amp;&amp;
+
+chmod -v +x bin/unpack-sources &amp;&amp;
+sed -e "s/target\.mk/langlist\.mk/"                \
+    -e "s/tar -xf/tar -x --strip-components=1 -f/" \
+    -e "/tar -x/s/lo_src_dir/start_dir/"           \
+    -i bin/unpack-sources &amp;&amp;
+
+patch -Np1 -i ../libreoffice-&libreoffice-dlversion;-system_neon-1.patch    &amp;&amp;
+./autogen.sh --prefix=/usr              \
+             --sysconfdir=/etc          \
+             --with-vendor="BLFS"       \
+             --with-lang="en-US pt-BR"  \
+             --with-help                \
+             --with-alloc=system        \
+             --without-java             \
+             --disable-gconf            \
+             --disable-odk              \
+             --disable-postgresql-sdbc  \
+             --enable-python=system     \
+             --with-system-boost        \
+             --with-system-cairo        \
+             --with-system-curl         \
+             --with-system-expat        \
+             --with-system-harfbuzz     \
+             --with-system-icu          \
+             --with-system-jpeg         \
+             --with-system-lcms2        \
+             --with-system-libpng       \
+             --with-system-libxml       \
+             --with-system-mesa-headers \
+             --with-system-neon         \
+             --with-system-nss          \
+             --with-system-odbc         \
+             --with-system-openldap     \
+             --with-system-openssl      \
+             --with-system-poppler      \
+             --with-system-redland      \
+             --with-system-zlib         \
+             --with-parallelism=$(getconf _NPROCESSORS_ONLN)</userinput></screen>
+
+    <para>
+      The instructions below will only build the package without running
+      any unit tests. If you prefer to run the unit tests, replace
+      <command>make build</command> with <command>make</command>
+    </para>
+
+    <para>
+      Build the package:
+    </para>
+
+<screen><userinput>make build</userinput></screen>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make distro-pack-install</userinput></screen>
+
+    <para>
+       If the dictionaries have been built, again as
+       <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>chown -cR 0:0 dictionaries/                                                  &amp;&amp;
+mkdir -pv /usr/lib/libreoffice/share/extensions/dict-en                      &amp;&amp;
+cp -vR dictionaries/en/*    /usr/lib/libreoffice/share/extensions/dict-en    &amp;&amp;
+mkdir -pv /usr/lib/libreoffice/share/extensions/dict-pt-BR                   &amp;&amp;
+cp -vR dictionaries/pt_BR/* /usr/lib/libreoffice/share/extensions/dict-pt-BR</userinput></screen>
+
+    <para>
+       In the following, do not replace
+       <filename class="directory">/usr</filename> by
+       <filename class="directory">/opt/libreoffice-&libreoffice-dlversion;</filename>.
+       If installed in <filename class="directory">/opt</filename> and there
+       are no icons in the new items of the desktop menu, optionally run
+       the following commands, as <systemitem class="username">root</systemitem>
+       user (it may be necessary to logout the session, before the
+       icons appear):
+    </para>
+
+<screen role="root"><userinput>mkdir -pv /usr/share/pixmaps &amp;&amp;
+for i in writer base calc draw impress math startcenter writer
+do
+  ln -svf /opt/libreoffice-&libreoffice-dlversion;/share/icons/hicolor/32x32/apps/libreoffice-$i.png \
+          /usr/share/pixmaps/
+done
+unset i</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>sed -e ...</command>: First sed prevents compression of the
+      manual pages, the second one prevents a script that causes install to
+      fail from running and the third one fixes the unpack script.
+    </para>
+
+    <para>
+      <command>chmod -v +x ...</command>: Fix the unpack script's permissions.
+    </para>
+
+    <para>
+      <parameter>--with-vendor=BLFS</parameter>: This switch sets BLFS as
+      the vendor which is mentioned when you click "About" on the toolbar.
+    </para>
+<!-- I believe en-US is not necessary anymore
+    <para>
+      <parameter>-\-with-lang="en-US pt-BR"</parameter>: This switch sets
+      what languages to support. en-US is always needed. To list several
+      languages, separate them with a space. For all languages, use
+      <parameter>-\-with-lang=ALL</parameter>
+    </para>
+-->
+
+    <para>
+      <parameter>--with-lang="en-US pt-BR"</parameter>: This switch sets
+      what languages to support. To list several languages, separate them with
+      a space. For all languages, use
+      <parameter>--with-lang=ALL</parameter>.
+    </para>
+
+    <para>
+      For a list of the available languages, you can uncompress the
+      translations tarball, <command>tar -xf
+      ../libreoffice-translations-&libreoffice-dlversion;.tar.xz
+      --no-overwrite-dir -C /tmp</command>, and run <command>ls
+      /tmp/libreoffice-&libreoffice-dlversion;/translations/source</command>.
+    </para>
+
+    <para>
+      <parameter>--with-help</parameter>: Without this switch, the help files
+      are not built.
+    </para>
+
+    <para>
+      <parameter>--with-alloc=system</parameter>: This switch tells
+      <application>LibreOffice</application> to use system allocator
+      instead of the internal one.
+    </para>
+
+    <para>
+      <option>--without-java</option>: This switch disables
+      <application>Java</application> support in
+      <application>LibreOffice</application>.
+    </para>
+
+    <para>
+      <option>--disable-gconf</option>: This switch disables compiling
+      <application>LibreOffice</application> with the deprecated
+      <application>GNOME</application> configuration system support.
+    </para>
+
+    <para>
+      <option>--disable-odk</option>: This switch disables installing the
+      office development kit. Remove if you want to develop a
+      <application>LibreOffice</application> based application.
+    </para>
+
+    <para>
+      <option>--disable-postgresql-sdbc</option>: This switch disables compiling
+      <application>LibreOffice</application> with the ability to connect to a
+      <application>PostgreSQL</application> database. Remove it if you would
+      like <application>LibreOffice</application> to be able to connect to a
+      <application>PostgreSQL</application> database. If you have installed
+      <application>PostgreSQL</application> on your system and would like
+      <application>LibreOffice</application> to use that rather than compile its
+      own copy, use the <option>--with-system-postgresql</option> switch.
+    </para>
+
+    <para>
+      <parameter>--enable-python=system</parameter>: This switch tells
+      <application>LibreOffice</application> to use installed
+      <application>Python 3</application> to build the translations
+      instead of the bundled one. If you don't need to build any
+      translations, you can use <option>--disable-python</option>
+      instead.
+    </para>
+
+    <para>
+      <option>--with-system-*</option>: These switches prevent
+      <application>LibreOffice</application> from trying to compile its own
+      versions of these dependencies. If you've not installed some of the
+      dependencies, remove the corresponding switches.
+    </para>
+
+    <para>
+      <option>--with-parallelism=$(getconf _NPROCESSORS_ONLN)</option>: This
+      switch tells <application>LibreOffice</application> to use all your
+      CPUs to compile in parallel and speed up the build.
+    </para>
+
+    <para>
+      <option>--disable-cups</option>: Use this switch if you don't need
+      printing support.
+    </para>
+
+    <para>
+      <option>--disable-gstreamer-0.10</option>: Use this switch if you've
+      not installed <xref linkend="gst-plugins-base"/>.
+    </para>
+
+    <para>
+      <option>--disable-dbus</option>: Use this switch if you've not installed
+      <xref linkend="dbus"/>. It also disables Bluetooth support and font
+      install via PackageKit.
+    </para>
+
+    <para>
+      <option>--enable-gstreamer</option>: Use this switch if you want to
+      use <xref linkend="gst10-plugins-base"/> instead of
+      <xref linkend="gst-plugins-base"/> for the avmedia module.
+    </para>
+
+    <para>
+      <option>--enable-gtk3</option>: Use this switch if you want to
+      build the <application>GTK+ 3</application> integration module.
+    </para>
+
+    <para>
+      <option>--enable-kde4</option>: Use this switch if you want to
+      build the <application>KDE</application> integration module.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>
+          libreoffice, lobase, localc, lodraw, loffice, lofromtemplate,
+          loimpress, lomath, loweb, lowriter, soffice and unopkg
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          /usr/lib/libreoffice
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="lobase">
+        <term><command>lobase</command></term>
+        <listitem>
+          <para>
+            is a database manager.
+          </para>
+          <indexterm zone="libreoffice lobase">
+            <primary sortas="b-lobase">lobase</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="localc">
+        <term><command>localc</command></term>
+        <listitem>
+          <para>
+            is a spreadsheet program.
+          </para>
+          <indexterm zone="libreoffice localc">
+            <primary sortas="b-localc">localc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lodraw">
+        <term><command>lodraw</command></term>
+        <listitem>
+          <para>
+            is a vector graphics editor and diagramming tool.
+          </para>
+          <indexterm zone="libreoffice lodraw">
+            <primary sortas="b-lodraw">lodraw</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="loimpress">
+        <term><command>loimpress</command></term>
+        <listitem>
+          <para>
+            can edit and display PowerPoint presentations.
+          </para>
+          <indexterm zone="libreoffice loimpress">
+            <primary sortas="b-loimpress">loimpress</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lomath">
+        <term><command>lomath</command></term>
+        <listitem>
+          <para>
+            is a mathematical formula editor. 
+          </para>
+          <indexterm zone="libreoffice lomath">
+            <primary sortas="b-lomath">lomath</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lowriter">
+        <term><command>lowriter</command></term>
+        <listitem>
+          <para>
+            is a word processor.
+          </para>
+          <indexterm zone="libreoffice lowriter">
+            <primary sortas="b-lowriter">lowriter</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="unopkg">
+        <term><command>unopkg</command></term>
+        <listitem>
+          <para>
+            is a tool to manage <application>LibreOffice</application>
+            extensions from the command line. 
+          </para>
+          <indexterm zone="libreoffice unopkg">
+            <primary sortas="b-unopkg">unopkg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
