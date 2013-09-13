@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<preface id="foreword" xreflabel="Foreword">
+  <?dbhtml filename="foreword.html"?>
+
+  <prefaceinfo>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </prefaceinfo>
+
+  <title>Foreword</title>
+
+  <para>After five years, The BLFS Team is happy to present version 7.4 of
+  Beyond Linx From Scratch.  This version includes approximately 750 
+  packages beyond the base Linux From Scratch Version 7.4 book.</para>
+
+  <para>Keeping up to date with released packages that are useful to users is a
+  challenge.  On average, three new packages are released every day, seven days
+  a week.  As of this writing, BLFS is current.  The vast majority of packages
+  in the book have been verified ot work in an LFS-7.4 environment, however a
+  few (26) packages have only been built and not tested primarily due to
+  hardware constraints.</para>
+
+  <para>This release would not have been possible without the help of
+  a lot of people over the years.  Sepcific thanks for the many hours 
+  spent making BLFS what it is goes to the following:</para>
+
+  <itemizedlist>
+  <title> </title>
+  <listitem><para>Andy Benton</para></listitem>
+  <listitem><para>Wayne Blaszczyk</para></listitem>
+  <listitem><para>Guy Dalziel</para></listitem>
+  <listitem><para>Ag Hatzimanikas</para></listitem>
+  <listitem><para>Armin Krejzi</para></listitem>
+  <listitem><para>DJ Lucas</para></listitem>
+  <listitem><para>Randy McMurchy</para></listitem>
+  <listitem><para>Ken Moffat</para></listitem>
+  <listitem><para>Fernando de Oliveria</para></listitem>
+  <listitem><para>Chris Staub</para></listitem>
+  <listitem><para>Ragnar Thomsen</para></listitem>
+  <listitem><para>Thomas Trepl</para></listitem>
+  <listitem><para>Igor Zivkovic</para></listitem>
+  </itemizedlist>
+
+  <blockquote>
+<literallayout>Bruce Dubbs
+September 13, 2013</literallayout>
+  </blockquote>
+
+</preface>
