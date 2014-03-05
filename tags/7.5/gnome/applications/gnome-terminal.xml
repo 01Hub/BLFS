@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gnome-terminal-download-http
+           "&gnome-download-http;/gnome-terminal/&gnome-minor;/gnome-terminal-&gnome-terminal-version;.tar.xz">
+  <!ENTITY gnome-terminal-download-ftp
+           "&gnome-download-ftp;/gnome-terminal/&gnome-minor;/gnome-terminal-&gnome-terminal-version;.tar.xz">
+  <!ENTITY gnome-terminal-md5sum        "746417ef4b6252ed3deb8388d8a1a02a">
+  <!ENTITY gnome-terminal-size          "1.7 MB">
+  <!ENTITY gnome-terminal-buildsize     "40 MB">
+  <!ENTITY gnome-terminal-time          "0.3 SBU">
+]>
+
+<sect1 id="gnome-terminal" xreflabel="gnome-terminal-&gnome-terminal-version;">
+  <?dbhtml filename="gnome-terminal.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>gnome-terminal-&gnome-terminal-version;</title>
+
+  <indexterm zone="gnome-terminal">
+    <primary sortas="a-gnome-terminal">gnome-terminal</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to GNOME Terminal</title>
+
+    <para>
+      The <application>GNOME Terminal</application> package contains the
+      terminal emulator for <application>GNOME</application> Desktop.
+    </para>
+
+    &lfs75_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&gnome-terminal-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&gnome-terminal-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &gnome-terminal-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &gnome-terminal-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &gnome-terminal-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &gnome-terminal-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">GNOME Terminal Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="dconf"/>,
+      <xref linkend="gsettings-desktop-schemas"/>,
+      <xref linkend="vte"/>, and
+      <xref linkend="yelp-xsl"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="nautilus"/>
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+      <ulink url="&blfs-wiki;/gnome-terminal"/>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of GNOME Terminal</title>
+
+    <para>
+      Install <application>GNOME Terminal</application> by
+      running the following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr             \
+            --disable-static          \
+            --disable-migration       \
+            --with-nautilus-extension &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <option>--with-nautilus-extension</option>: This switch enables
+      building of the <application>Nautilus</application> extension.
+      Remove it if you don't have <application>Nautilus</application>
+      installed.
+    </para>
+
+    <para>
+      <option>--disable-migration</option>: This switch disables
+      building of the <application>GNOME Terminal</application>
+      <application>GConf</application> migration tool which is
+      not necessary for BLFS.
+    </para>
+
+    <para><option>--libexecdir=/usr/lib/gnome-terminal</option>: This option
+    creates a <filename class="directory">gnome-terminal</filename> directory in
+    <filename class="directory">/usr/lib</filename> instead of putting the
+    private <command>gnome-terminal-server</command> program into
+    <filename class="directory">/usr/libexec</filename> in accordance with
+    the old version of the FHS used before LFS-7.5.</para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          gnome-terminal
+        </seg>
+       <seg>
+          None
+        </seg>
+        <seg>
+          /usr/lib/gnome-terminal and
+          /usr/share/help/*/gnome-terminal
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gnome-terminal-prog">
+        <term><command>gnome-terminal</command></term>
+        <listitem>
+          <para>
+            is the <application>GNOME</application> Terminal Emulator.
+          </para>
+          <indexterm zone="gnome-terminal gnome-terminal-prog">
+            <primary sortas="b-gnome-terminal">gnome-terminal</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
