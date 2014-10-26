@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY changelogs  "http://www.linuxfromscratch.org/blfs">
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<!-- vim: set expandtab: -->
+
+<sect1 id="changelog" xreflabel="Change Log">
+  <?dbhtml filename="changelog.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Change Log</title>
+
+  <!-- <para>Please note that the Change Log only lists which editor was
+  responsible for putting the changes into SVN; please read the
+  <xref linkend="credits"/> page in Chapter 1 for details on
+  who wrote what.</para> -->
+
+  <para>Current release: &version; &ndash; &releasedate;</para>
+
+  <itemizedlist>
+    <title>Changelog Entries:</title>
+
+<!-- Changelog template
+
+    <listitem>
+      <para>MMMM DD{nd,st,th}, YYYY</para>
+      <itemizedlist>
+        <listitem>
+          <para>[name] - Changelog entry.</para>
+        </listitem>
+        <listitem>
+          <para>[name] - Another changelog entry.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+-->
+
+    <listitem>
+      <para>October 26th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[krejzi] - .</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Added geoclue-2.1.10, libnice-0.1.8 and uhttpmock-0.3.1.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Removed initd-tools.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Converted Acpid, At, AutoFS, BlueZ, Colord, FCron, GPM, Sysstat, UDisks and UDisks2 instructions to work on systemd setups..</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Added cups-pk-helper-0.2.5, ModemManager-1.4.0 and weston-1.6.0.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Updated to upower-0.99.1.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Improved and simplified subversion instructions.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Converted PHP and SVN Server instructions to work on systemd setups.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Added Jinja2-2.7.3, MarkupSafe-0.23, pyatspi-2.14.0, setuptools-7.0 and PyYAML-3.11 - Python Modules.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Changed and simplified CMake and Poppler instructions so they use qtchooser in case of two Qt installations.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Improved and expanded libwebp instructions.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Added libmediaart-0.7.0.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Added bogofilter-1.2.4, highlight-3.19, ibus-1.5.9 and qtchooser-39.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Updated to appstream-glib-0.3.1.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Moved appstream-glib to General Libraries section.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Added libinput-0.6.0, libmbim-1.10.0, liboauth-1.0.3, libpwquality-1.2.4, libqmi-1.10.4, libxbkcommon-0.5.0, wayland-1.6.0 and yaml-0.1.6.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Moved libevdev to General Libraries section.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Updated to xapian-core-1.2.19.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Converted libgcrypt and libgpg-error instructions so systemd can safely be linked against them.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Converted Cyrus-SASL, Firewalling, Haveged, Iptables, MIT Kerberos V5, OpenSSH and Stunnel instructions to work on systemd setups.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Converted Polkit instructions to use systemd-logind.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Removed ConsoleKit and Udev-Extras pages.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Imported systemd specific D-Bus and post LFS systemd instructions.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Improved and simplified the GnuPG instructions.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Rewrote libcap instructions to only install the PAM module.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Converted ISC DHCP and DHCPCD instructions to work on systemd setups.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Adjusted Qemu instructions to use the "Advanced Network Configuration" instead of bridge-utils.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Stripped configuration paragraph from bridge-utils instructions in favor of systemd-networkd ones.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Imported "Advanced Network Configuration" instructions for configuring the Network Bridge with systemd-networkd.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Adjusted Postlfs Configuration for use with LFS systemd.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Imported systemd-units from main systemd branch.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Rebranded the book into systemd-ng book.</para>
+        </listitem>
+        <listitem>
+          <para>[krejzi] - Imported BLFS revision 14732.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+  </itemizedlist>
+
+</sect1>
