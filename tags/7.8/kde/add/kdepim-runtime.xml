@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY kdepim-runtime-download-http "&kde-download-http;applications/&kde-apps-version;/src/kdepim-runtime-&kdepim-version;.tar.xz">
+  <!ENTITY kdepim-runtime-download-ftp  " ">
+  <!ENTITY kdepim-runtime-md5sum        "7dd2063acf9b6920920d0118f5576db6">
+  <!ENTITY kdepim-runtime-size          "1.1 MB">
+  <!ENTITY kdepim-runtime-buildsize     "126 MB">
+  <!ENTITY kdepim-runtime-time          "7.4 SBU">
+]>
+
+<sect1 id="kdepim-runtime" xreflabel="kdepim-runtime-&kdepim-version;">
+  <?dbhtml filename="kdepim-runtime.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Kdepim-runtime-&kdepim-version;</title>
+
+  <indexterm zone="kdepim-runtime">
+    <primary sortas="a-kdepim-runtime">kdepim-runtime</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Kdepim-runtime</title>
+
+    <para>This package provides additional resources for <application>Akonadi</application>.
+    </para>
+
+    &lfs78_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&kdepim-runtime-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&kdepim-runtime-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &kdepim-runtime-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &kdepim-runtime-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &kdepim-runtime-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &kdepim-runtime-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Kdepim-runtime Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+    <xref linkend="kdepimlibs"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+    <ulink url="http://git.kolab.org">KolabLibraries</ulink> (for Kolab Groupware Resource),
+    <ulink url="http://projects.kde.org/libkgapi">libKGAPI</ulink> (to access Google services), and
+    <ulink url="http://projects.kde.org/libkfbapi">libKFbAPI</ulink> (to access Facebook services)
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/kdepim-runtime"/>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Kdepim-runtime</title>
+
+    <para>Install <application>Kdepim-runtime</application> by running
+    the following commands:</para>
+
+<screen><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+cmake -DCMAKE_INSTALL_PREFIX=&kde-dir; \
+      -DCMAKE_BUILD_TYPE=Release         \
+      -Wno-dev .. &amp;&amp;
+make</userinput></screen>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>accountwizard, akonadi_nepomuk_feeder, akonadi_*_agent, 
+        akonadi_*_resource, akonaditray, gidmigrator, 
+        kaddressbookmigrator, kjotsmigrator, kmail-migrator, 
+        knotes-migrator, and kres-migrator</seg>
+        <seg>libakonadi-xml.so, libkdepim-copy.so, libkmindexreader.so, 
+        libmaildir.so, and several in &kde-dir;/lib/kde4</seg>
+        <seg>several in &kde-dir;/share</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+</sect1>

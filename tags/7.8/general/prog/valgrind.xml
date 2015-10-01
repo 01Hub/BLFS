@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY valgrind-download-http "http://valgrind.org/downloads/valgrind-&valgrind-version;.tar.bz2">
+  <!ENTITY valgrind-download-ftp  " ">
+  <!ENTITY valgrind-md5sum        "60ddae962bc79e7c95cfc4667245707f">
+  <!ENTITY valgrind-size          "10.5 MB">
+  <!ENTITY valgrind-buildsize     "401 MB and an additional 20 MB for tests">
+  <!ENTITY valgrind-time          "1.1 SBU and an additional 4.7 SBU for tests">
+]>
+
+<sect1 id="valgrind" xreflabel="Valgrind-&valgrind-version;">
+  <?dbhtml filename="valgrind.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Valgrind-&valgrind-version;</title>
+
+  <indexterm zone="valgrind">
+    <primary sortas="a-Valgrind">Valgrind</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Valgrind</title>
+
+    <para>
+      <application>Valgrind</application> is an instrumentation framework for
+      building dynamic analysis tools. There are Valgrind tools that can
+      automatically detect many memory management and threading bugs, and
+      profile programs in detail. Valgrind can also be used to build new
+      tools. 
+    </para>
+
+    &lfs78_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&valgrind-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&valgrind-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &valgrind-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &valgrind-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &valgrind-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &valgrind-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+<!-- Replaced by a sed
+   <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink
+            url="&patch-root;/valgrind-&valgrind-version;-glibc_2.21-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+-->
+    <bridgehead renderas="sect3">Valgrind Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="boost"/>,
+      <xref linkend="llvm"/> (with Clang), 
+      <xref linkend="gdb"/> (for tests), and
+      <ulink url="http://www.openmp.org">OpenMP</ulink>
+    </para>
+
+    <bridgehead renderas="sect4">Optional for regenerating the documentation</bridgehead>
+    <para role="optional">
+      <xref linkend="libxslt"/> and 
+      <xref linkend="texlive"/> (or <xref linkend="tl-installer"/>)
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+      <ulink url="&blfs-wiki;/valgrind"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Valgrind</title>
+
+<!--
+    <para>
+      First apply the following patch for allowing the
+      <command>configure</command> script to use glibc-2.21:
+    </para>
+
+<screen><userinput>patch -Np1 -i ../valgrind-&valgrind-version;-glibc_2.21-1.patch</userinput></screen>
+-->
+    <para>
+      Install <application>Valgrind</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>sed -e 's#|3.\*#&amp;|4.\*#'     \
+    -e 's/-mt//g'            \
+    -e 's/2\.20)/2.2[0-9])/' \
+    -i configure             &amp;&amp;
+sed -i 's|/doc/valgrind||' docs/Makefile.in &amp;&amp;
+
+./configure --prefix=/usr \
+            --datadir=/usr/share/doc/valgrind-&valgrind-version; &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make regtest</command>. The tests
+      may hang forever if <xref linkend="gdb"/> is not installed.
+    </para>
+<!--  Note to maintainer: Recheck when next texlive (2015) is released.
+    <para>
+      If you wish to regenerate the documentation, run:
+    </para>
+
+<screen><userinput>make -C docs download-docs</userinput></screen>
+-->
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>sed -e ... configure</command>: The first expression fixes an 
+      issue that prevents Valgrind from compiling on systems with a linux-4.x 
+      based kernel, the second expression fixes the configure script to
+      find newer versions of Boost, and the last one fixes an issue that
+      prevents compilation with glibc versions greater than 2.20.
+    </para>
+
+    <para>
+      <command>sed -i ... docs/Makefile.in </command>: This sed provides for
+      installing the documentation in a versioned directory.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          callgrind_annotate, 
+          callgrind_control, 
+          cg_annotate, 
+          cg_diff, 
+          cg_merge, 
+          ms_print, 
+          valgrind, 
+          valgrind-di-server,
+          valgrind-listener, and 
+          vgdb
+        </seg>
+        <seg>
+          libcoregrind-&lt;Arch&gt;-linux.a,
+          libreplacemalloc_toolpreload-&lt;Arch&gt;-linux.a,
+          libvex-&lt;Arch&gt;-linux.a,
+          vgpreload_core-&lt;Arch&gt;-linux.so,
+          vgpreload_drd-&lt;Arch&gt;-linux.so,
+          vgpreload_exp-dhat-&lt;Arch&gt;-linux.so,
+          vgpreload_exp-sgcheck-&lt;Arch&gt;-linux.so,
+          vgpreload_helgrind-&lt;Arch&gt;-linux.so,
+          vgpreload_massif-&lt;Arch&gt;-linux.so, and
+          vgpreload_memcheck-&lt;Arch&gt;-linux.so, where
+          &lt;Arch&gt;=x86, amd64
+        </seg>
+        <seg>
+          /usr/lib/valgrind,
+          /usr/include/valgrind, and 
+          /usr/share/doc/valgrind-&valgrind-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="valgrind-prog">
+        <term><command>valgrind</command></term>
+        <listitem>
+          <para>
+            is a program for debugging and profiling Linux executables.
+          </para>
+          <indexterm zone="valgrind valgrind-prog">
+            <primary sortas="b-valgrind">valgrind</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="callgrind_annotate">
+        <term><command>callgrind_annotate</command></term>
+        <listitem>
+          <para>
+            takes an output file produced by the
+            <application>Valgrind</application> tool Callgrind and prints the
+            information in an easy-to-read form.
+          </para>
+          <indexterm zone="callgrind_annotate">
+            <primary sortas="b-callgrind_annotate">callgrind_annotate</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="callgrind_control">
+        <term><command>callgrind_control</command></term>
+        <listitem>
+          <para>
+            controls programs being run by the <application>Valgrind</application> 
+            tool Callgrind.
+          </para>
+          <indexterm zone="valgrind callgrind_control">
+            <primary sortas="b-callgrind_control">callgrind_control</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cg_annotate">
+        <term><command>cg_annotate</command></term>
+        <listitem>
+          <para>
+            is a post-processing tool for the <application>Valgrind</application> 
+            tool Cachegrind.
+          </para>
+          <indexterm zone="valgrind cg_annotate">
+            <primary sortas="b-cg_annotate">cg_annotate</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cg_diff">
+        <term><command>cg_diff</command></term>
+        <listitem>
+          <para>
+            compares two Cachegrind output files.
+          </para>
+          <indexterm zone="valgrind cg_diff">
+            <primary sortas="b-cg_diff">cg_diff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cg_merge">
+        <term><command>cg_merge</command></term>
+        <listitem>
+          <para>
+            merges multiple Cachegrind output files into one.
+          </para>
+          <indexterm zone="valgrind cg_merge">
+            <primary sortas="b-cg_merge">cg_merge</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ms_print">
+        <term><command>ms_print</command></term>
+        <listitem>
+          <para>
+            takes an output file produced by the <application>Valgrind</application>
+            tool Massif and prints the information in an easy-to-read form.
+          </para>
+          <indexterm zone="valgrind ms_print">
+            <primary sortas="b-ms_print">ms_print</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="valgrind-di-server">
+        <term><command>valgrind-di-server</command></term>
+        <listitem>
+          <para>
+            is a server that reads debuginfo from objects stored on a 
+            different machine.
+          </para>
+          <indexterm zone="valgrind valgrind-di-server">
+            <primary sortas="b-valgrind-di-server">valgrind-di-server</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="valgrind-listener">
+        <term><command>valgrind-listener</command></term>
+        <listitem>
+          <para>
+            listens on a socket for Valgrind commentary.
+          </para>
+          <indexterm zone="valgrind valgrind-listener">
+            <primary sortas="b-valgrind-listener">valgrind-listener</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="vgdb">
+        <term><command>vgdb</command></term>
+        <listitem>
+          <para>
+            is an intermediary between Valgrind and GDB or a shell.
+          </para>
+          <indexterm zone="valgrind vgdb">
+            <primary sortas="b-vgdb">vgdb</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
