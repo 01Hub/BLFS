@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+ <!ENTITY % general-entities SYSTEM "../../general.ent">
+ %general-entities;
+
+  <!ENTITY plasma5-download-http "http://download.kde.org/stable/plasma/&plasma5-version;">
+  <!ENTITY plasma5-download-ftp  " ">
+  <!ENTITY plasma5-md5sum        "See Below">
+  <!ENTITY plasma5-size          "105 MB">
+  <!ENTITY plasma5-buildsize     "1.2 GB">
+  <!ENTITY plasma5-time          "43 SBU">
+]>
+
+<sect1 id="plasma5-build" xreflabel="Plasma-&plasma5-version;">
+  <?dbhtml filename="plasma-all.html"?>
+
+  <sect1info>
+     <othername>$LastChangedBy: bdubbs $</othername>
+     <date>$Date: 2015-09-24 16:44:04 -0500 (Thu, 24 Sep 2015) $</date>
+  </sect1info>
+
+  <title>Building Plasma 5</title>
+
+  <indexterm zone="plasma5-build">
+     <primary sortas="a-kf5">KDE Plasma 5</primary>
+  </indexterm>
+
+  <para>KDE Plasma 5 is a collection of packages based on top of KDE Frameworks
+  5 and QML. It has been derived from the monolithic KDE 4 desktop.
+  They implement the KDE Display Environment (Plasma 5).</para>
+
+  &lfs79_checked;
+
+  <para>The instructions below build all of the Plasma 5 packages in one
+  step by using a bash script.</para>
+
+  <bridgehead renderas="sect3">Package Information</bridgehead>
+  <itemizedlist spacing="compact">
+    <listitem>
+      <para>Download (HTTP): <ulink url="&plasma5-download-http;"/></para>
+    </listitem>
+    <listitem>
+      <para>Download (FTP): <ulink url="&plasma5-download-ftp;"/></para>
+    </listitem>
+    <listitem>
+      <para>Download MD5 sum: &plasma5-md5sum;</para>
+    </listitem>
+    <listitem>
+      <para>Download size: &plasma5-size;</para>
+    </listitem>
+    <listitem>
+      <para>Estimated disk space required: &plasma5-buildsize;</para>
+    </listitem>
+    <listitem>
+      <para>Estimated build time: &plasma5-time;</para>
+    </listitem>
+  </itemizedlist>
+
+  <bridgehead renderas="sect3">Plasma 5 Dependencies</bridgehead>
+
+  <bridgehead renderas="sect4">Required</bridgehead>
+  <para role="required">
+    <xref linkend="fontforge"/>,
+    <xref linkend="gtk2"/>,
+    <xref linkend="gtk3"/>,
+    <xref linkend="kf5-frameworks"/>,
+    <xref linkend="libpwquality"/>,
+    <xref linkend="libxkbcommon"/>,
+    <xref linkend="mesa"/> built with <xref linkend="wayland"/>,
+    <xref linkend="NetworkManager"/>,
+    <xref linkend="pulseaudio"/>,
+    <xref linkend="python2"/>,
+    <xref linkend="qca"/> (built with qt5),
+    <xref linkend="taglib"/>, and
+    <xref linkend="xcb-util-cursor"/>
+  </para>
+
+  <bridgehead renderas="sect4">Recommended</bridgehead>
+  <para role="recommended">
+    <xref linkend="libdbusmenu-qt"/>,
+    <xref linkend="libcanberra"/>,
+    <xref linkend="libinput"/>,
+    <xref linkend="linux-pam"/>,
+    <xref linkend="lm_sensors"/>,
+    <xref linkend="oxygen-icons"/>, and
+    <xref linkend="pciutils"/>
+  </para>
+
+  <bridgehead renderas="sect4">Optional</bridgehead>
+  <para role="optional">
+    <xref linkend="glu"/>,
+    <xref linkend="xorg-synaptics-driver"/>,
+    <ulink url="https://github.com/ibus/ibus/wiki">ibus</ulink>,
+    <ulink url="http://gpsd.berlios.de">libgps</ulink>,
+    <ulink url="https://github.com/libhybris/libhybris">libhybris</ulink>,
+    <ulink url="http://sourceforge.net/projects/libraw1394/">libraw1394</ulink>,
+    <ulink url="https://bitbucket.org/godsme/mockcpp">mockcpp</ulink>,
+    <ulink url="http://qalculate.sourceforge.net">Qalculate</ulink>,
+    <ulink url="https://launchpad.net/qapt">Qapt</ulink>, and
+    <ulink url="https://github.com/osiam/osiam">SCIM</ulink>
+  </para>
+
+  <para condition="html" role="usernotes">User Notes:
+  <ulink url="&blfs-wiki;/kf5"/></para>
+
+  <sect2>
+    <title>Downloading KDE Plasma5</title>
+
+    <para>
+      The easiest way to get the KDE Plasma5 packages is to use a single
+      <command>wget</command> to fetch them all at once:
+    </para>
+
+<screen><userinput>url=http://download.kde.org/stable/plasma/&plasma5-version;/
+wget -r -nH --cut-dirs=3 -A '*.xz' -np $url</userinput>
+<literal>
+The options used here are:
+  -r            recurse through child directories
+  -nH           disable generation of host-prefixed directories
+  --cut-dirs=3  remove three levels of directories when saving
+  -A '*.xz'     just get the *.xz files
+  -np           don't get parent directories</literal></screen>
+
+   </sect2>
+
+  <sect2>
+    <title>Setting Package Order</title>
+
+    <para>
+      The order of building files is important due to internal dependencies.
+      Create the list of files in the proper order as follows:
+    </para>
+
+<screen><userinput>cat &gt; plasma-&plasma5-version;.md5 &lt;&lt; "EOF"
+<literal>3a56e727477dc28d51c10d5d2eb91dc2  kde-cli-tools-5.5.4.tar.xz
+f30791e38e7eccd5b6a8643d606d4e3b  kdecoration-5.5.4.tar.xz
+c0e92aa7fd9f868bb565b5d39a382d81  kwayland-5.5.4.tar.xz
+bc23b108f5e5dccdc03183e4b72c354d  libkscreen-5.5.4.tar.xz
+af74ab9d18f156c16c542892c9148731  libksysguard-5.5.4.tar.xz
+e284a850879f33ccbfea22fae5d93a6e  breeze-5.5.4.tar.xz
+d7bcd2d966533519ca7bd7c8d83f2490  breeze-gtk-5.5.4.tar.xz
+5073ee898dac459f53200daba96d73ba  kscreenlocker-5.5.4.tar.xz
+d79eaaf8d24918a7a3dd0e95bf4f7b95  oxygen-5.5.4.tar.xz
+e47e2afb0bdef8733408467d24199694  khelpcenter-5.5.4.tar.xz
+4eddff6767cf1a2d47b6ddf711a4655e  kinfocenter-5.5.4.tar.xz
+36158a670305ecd8ef29415448917d5a  ksysguard-5.5.4.tar.xz
+d719b7258a5fa9bf2dae770a20fa4e2d  kwin-5.5.4.tar.xz
+d745f6cd41f9d248fda24db9d491d973  systemsettings-5.5.4.tar.xz
+e6450622646f5361a71830912320fd64  plasma-workspace-5.5.4.tar.xz
+725f2046c787929d71162dada5fd1bf3  bluedevil-5.5.4.tar.xz
+6a3a8e2dc4c19205802d3cee52f21abc  kde-gtk-config-5.5.4.tar.xz
+7dae9526e136fd1a842f83c33a703acb  khotkeys-5.5.4.tar.xz
+6b4f74c63e78f019d9a7e219ebf2b57e  kmenuedit-5.5.4.tar.xz
+6a353bae593f9519773be8f9529adb1f  kscreen-5.5.4.tar.xz
+b744d8f115ef2d2764d83a9fe9071957  kwallet-pam-5.5.4.tar.xz
+5a2b6d89e9ae11abe0d4b04c372fbaa8  kwayland-integration-5.5.4.tar.xz
+d2eb5b40976639f3571bc5cee74854c9  kwrited-5.5.4.tar.xz
+4719f8c76bc8b7bdca544fdaf5e836a9  milou-5.5.4.tar.xz
+70287df57f1869801d4cab8179c20f2e  plasma-nm-5.5.4.tar.xz
+bfc8507bf610b8738047bf59c4e32327  plasma-pa-5.5.4.tar.xz
+996d8eb8b7a0a4ed26d13d09a0038709  plasma-workspace-wallpapers-5.5.4.tar.xz
+3236cf46b260b7c3bcbc22fecfda0aca  polkit-kde-agent-1-5.5.4.tar.xz
+4822113c9a2366e8ec406d6e709ed2c5  powerdevil-5.5.4.tar.xz
+2ec4ddd309582c91c39f1921415cc059  plasma-desktop-5.5.4.tar.xz
+1265fb2c9e28437dda3c5af00102e041  kdeplasma-addons-5.5.4.tar.xz
+a6d759ea14f106701202b8c536dfb62c  kgamma5-5.5.4.tar.xz
+90793d76613ed4f3a2f46c2c417527ed  ksshaskpass-5.5.4.tar.xz
+4a1a4a6b6196d3f115de53a6d220f9cd  plasma-mediacenter-5.5.4.tar.xz
+03ab7ffd49c9c6cd266f43b6b1b31571  plasma-sdk-5.5.4.tar.xz
+0cc50236023b0baf02ccbcd4e373337a  sddm-kcm-5.5.4.tar.xz
+f545a6e63b0953b777a1709f6f6f9248  user-manager-5.5.4.tar.xz
+277ad0f67e0b101d109e93a03902bf49  discover-5.5.4.tar.xz</literal>
+EOF</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Plasma5</title>
+
+    &as_root;
+
+    <para>
+      First, start a subshell that will exit on error:
+    </para>
+
+
+<screen><userinput>bash -e</userinput></screen>
+
+    <para>
+      Install all of the packages by running the following
+      commands:
+    </para>
+
+<screen><userinput>while read -r line; do
+
+    # Get the file name, ignoring comments and blank lines
+    if $(echo $line | grep -E -q '^ *$|^#' ); then continue; fi
+    file=$(echo $line | cut -d" " -f2)
+
+    pkg=$(echo $file|sed 's|^.*/||')          # Remove directory
+    packagedir=$(echo $pkg|sed 's|\.tar.*||') # Package directory
+
+    tar -xf $file
+    pushd $packagedir
+
+       mkdir build
+       cd    build
+
+       OPTS=""
+
+       case $packagedir in
+         kwayland-&plasma5-version; )
+           OPTS="-DECM_MKSPECS_INSTALL_DIR=$KF5_PREFIX/share/mkspecs/modules"
+           ;;
+
+         libksysguard-&plasma5-version; )
+           sed -i "1 i using namespace std;" ../signalplotter/ksignalplotter.cpp
+           ;;
+       esac
+
+       cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
+             -DCMAKE_BUILD_TYPE=Release         \
+             -DLIB_INSTALL_DIR=lib              \
+             -DBUILD_TESTING=OFF                \
+             $OPTS                              \
+             -Wno-dev ..  &amp;&amp;
+
+        make
+        as_root make install
+    popd
+
+    rm -rf $packagedir
+    as_root /sbin/ldconfig
+
+done &lt; plasma-&plasma5-version;.md5
+
+exit
+
+cd $KF5_PREFIX/share/plasma/plasmoids
+
+for j in $(find -name \*.js); do
+  as_root ln -sfv ../code/$(basename $j) $(dirname $j)/../ui/
+done</userinput></screen>
+
+  </sect2>
+
+    <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>ln -sfv ../code/$(basename $j) $(dirname $j)/../ui/</command>:
+      Create symbolic links so qml files can find needed javascript modules.
+    </para>
+
+  </sect2>
+  <sect2 role="starting">
+    <title>Starting Plasma5</title>
+
+    <caution>
+      <para>If you have KDE4 installed as well as Plasma 5, make sure the 
+      PATH environment setting has the Plasma 5 binaries before the KDE4 entry.
+      You can ensure this by running:</para>
+
+      <screen><userinput>pathprepend /opt/kf5/bin</userinput></screen>
+
+      <para>before running startx.</para>
+    </caution>
+
+    <para>
+      You can start <application>Plasma5</application> from runlevel 3, using
+      <xref linkend="xinit"/>, or from runlevel 5, using a Display Manager,
+      such as <xref linkend="sddm"/>.
+    </para>
+
+    <para>
+      To start <application>Plasma 5</application> using <xref linkend="xinit"/>,
+      run the following commands:
+    </para>
+
+<screen><userinput>cat &gt; ~/.xinitrc &lt;&lt; "EOF"
+<literal>ck-launch-session dbus-launch --exit-with-session $KF5_PREFIX/bin/startkde</literal>
+EOF
+
+startx</userinput></screen>
+
+    <para>
+      The X session starts on the first unused virtual terminal, normally vt7.
+      You can switch to another vt<emphasis>n</emphasis> simultaneously
+      pressing the keys Ctrl-Alt-F<emphasis>n</emphasis>
+      (<emphasis>n</emphasis>=1, 2, ...).  To switch back to the X session,
+      normally started at vt7, use Ctrl-Alt-F7. The vt where the command
+      <command>startx</command> was executed will display many messages,
+      including X starting messages, applications automatically started with
+      the session, and eventually, some warning and error messages. You may
+      prefer to redirect those messages to a log file, which not only will keep
+      the initial vt uncluttered, but can also be used for debugging purposes. This
+      can be done starting X with:
+    </para>
+
+    <screen><userinput>startx &amp;&gt; ~/.x-session-errors</userinput></screen>
+
+    <note>
+      <para>
+        You may wish to drop consolekit and/or dbus-launch, e.g., just using
+        startkde in ~/.xinitrc. However some capabilities such as mounting or
+        umounting file systems from a file manager will not be possible, or the
+        reboot option may be absent or inoperative, among other problems.
+      </para>
+    </note>
+    <para>
+      When shutting down or rebooting, the shutdown messages appear on the vt
+      where X was running. If you wish to see those messages, simultaneously
+      press keys Alt-F7 (assuming that X was running on vt7).
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+           There are too many plasma programs (50 in /opt/kf5/bin) to list
+           separately here.
+        </seg>
+        <seg>
+           There are too many plasma libraries (39 in /opt/kf5/lib) to list
+           separately here.
+        </seg>
+        <seg>
+           There are too many plasma directories (over 1000 in /opt/kf5) to
+           list separately here.
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+</sect1>
+

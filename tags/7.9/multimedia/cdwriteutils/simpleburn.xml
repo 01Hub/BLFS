@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY simpleburn-download-http "http://simpleburn.tuxfamily.org/IMG/bz2/simpleburn-&simpleburn-version;.tar.bz2">
+  <!ENTITY simpleburn-download-ftp  " ">
+  <!ENTITY simpleburn-md5sum        "de658ab5af00e7bcb1e948d5c45da7b9">
+  <!ENTITY simpleburn-size          "44 KB">
+  <!ENTITY simpleburn-buildsize     "1.7 MB">
+  <!ENTITY simpleburn-time          "0.1 SBU">
+]>
+
+<sect1 id="simpleburn" xreflabel="SimpleBurn-&simpleburn-version;">
+  <?dbhtml filename="simpleburn.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>SimpleBurn-&simpleburn-version;</title>
+
+  <indexterm zone="simpleburn">
+    <primary sortas="a-SimpleBurn">SimpleBurn</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to SimpleBurn</title>
+
+    <para>
+      <application>SimpleBurn</application> is a minimalistic application for
+      burning and extracting CDs and DVDs.
+    </para>
+
+    &lfs79_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&simpleburn-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&simpleburn-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &simpleburn-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &simpleburn-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &simpleburn-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &simpleburn-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">SimpleBurn Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="cmake"/> and
+      <xref linkend="gtk2"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="libisoburn"/>,
+      <xref linkend="cdparanoia"/>, and
+      <xref linkend="cdrdao"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="libcdio"/> (to identify and play CDs),
+      <xref linkend="flac"/>,
+      <xref linkend="mpg123"/>,
+      <xref linkend="vorbistools"/>,
+      <xref linkend="lame"/>,
+      <xref linkend="mplayer"/>,
+      <ulink url="http://mpg321.sourceforge.net/">mpg321</ulink>,
+      <ulink url="http://normalize.nongnu.org/">normalize</ulink>,
+      <ulink url="http://cdrecord.berlios.de/private/cdrecord.html">cdrtools</ulink>, and
+      <ulink url="http://www.cdrkit.org/">cdrkit</ulink>
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+      <ulink url="&blfs-wiki;/simpleburn"/>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of SimpleBurn</title>
+
+    <para>
+      Install <application>SimpleBurn</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>sed -i -e 's|DESTINATION doc|DESTINATION share/doc|' CMakeLists.txt &amp;&amp;
+
+mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+cmake -DCMAKE_BUILD_TYPE=Release  \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DBURNING=LIBBURNIA .. &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>
+      All optical devices are not accessible for any user except <systemitem
+      class="username">root</systemitem> and members of the <systemitem
+      class="groupname">cdrom</systemitem> group. Add any users that might use
+      the optical devices to that group:
+    </para>
+
+<screen role="root"><userinput>usermod -a -G cdrom <replaceable>&lt;username&gt;</replaceable></userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>sed ...</command>: Ensure the documentation is installed
+      in /usr/share/doc.
+    </para>
+
+    <para>
+      <parameter>-DBURNING=LIBBURNIA</parameter>: This switch changes the
+      burning suite from the default cdrtools.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          simpleburn,
+          simpleburn-abort-operation,
+          simpleburn-blank-media,
+          simpleburn-burn-audio,
+          simpleburn-burn-data,
+          simpleburn-burning-suite,
+          simpleburn-burn-iso,
+          simpleburn-copy-audio,
+          simpleburn-copy-data,
+          simpleburn-extract-audio,
+          simpleburn-extract-iso,
+          simpleburn-gauges,
+          simpleburn-get-datasize,
+          simpleburn-media-detection,
+          simpleburn-ripdvd-detection, and
+          simpleburn-ripdvd-encoding
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          /usr/share/doc/simpleburn-&simpleburn-version; and
+          /usr/share/simpleburn
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="simpleburn-prog">
+        <term><command>simpleburn</command></term>
+        <listitem>
+          <para>
+            is the graphical program.
+          </para>
+          <indexterm zone="simpleburn simpleburn-prog">
+            <primary sortas="b-simpleburn">simpleburn</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpleburn-abort-operation">
+        <term><command>simpleburn-abort-operation</command></term>
+        <listitem>
+          <para>
+            is a bash script to abort an operation.
+          </para>
+          <indexterm zone="simpleburn simpleburn-abort-operation">
+           <primary sortas="b-simpleburn-abort-operation">simpleburn-abort-operation</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpleburn-blank-media">
+        <term><command>simpleburn-blank-media</command></term>
+        <listitem>
+          <para>
+            is a bash script used to blank a CD.
+          </para>
+          <indexterm zone="simpleburn simpleburn-blank-media">
+            <primary sortas="b-simpleburn-blank-media">simpleburn-blank-media</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpleburn-burn-audio">
+        <term><command>simpleburn-burn-audio</command></term>
+        <listitem>
+          <para>
+            is a bash script used to burn an audio CD.
+          </para>
+          <indexterm zone="simpleburn simpleburn-burn-audio">
+            <primary sortas="b-simpleburn-burn-audio">simpleburn-burn-audio</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpleburn-burn-data">
+        <term><command>simpleburn-burn-data</command></term>
+        <listitem>
+          <para>
+            is a bash script used to burn a data CD.
+          </para>
+          <indexterm zone="simpleburn simpleburn-burn-data">
+            <primary sortas="b-simpleburn-burn-data">simpleburn-burn-data</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpleburn-burning-suite">
+        <term><command>simpleburn-burning-suite</command></term>
+        <listitem>
+          <para>
+            is a bash script used to print information about the burn tools.
+          </para>
+          <indexterm zone="simpleburn simpleburn-burning-suite">
+            <primary sortas="b-simpleburn-burning-suite">simpleburn-burning-suite</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpleburn-burn-iso">
+        <term><command>simpleburn-burn-iso</command></term>
+        <listitem>
+          <para>
+            is a bash script used to burn an iso CD.
+          </para>
+          <indexterm zone="simpleburn simpleburn-burn-iso">
+            <primary sortas="b-simpleburn-burn-iso">simpleburn-burn-iso</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpleburn-copy-audio">
+        <term><command>simpleburn-copy-audio</command></term>
+        <listitem>
+          <para>
+            is a bash script used to copy an audio CD.
+          </para>
+          <indexterm zone="simpleburn simpleburn-copy-audio">
+            <primary sortas="b-simpleburn-copy-audio">simpleburn-copy-audio</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpleburn-copy-data">
+        <term><command>simpleburn-copy-data</command></term>
+        <listitem>
+          <para>
+            is a bash script used to copy a data CD.
+          </para>
+          <indexterm zone="simpleburn simpleburn-copy-data">
+            <primary sortas="b-simpleburn-copy-data">simpleburn-copy-data</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpleburn-extract-audio">
+        <term><command>simpleburn-extract-audio</command></term>
+        <listitem>
+          <para>
+            is a bash script used to extract audio files from an
+            audio CD.
+          </para>
+          <indexterm zone="simpleburn simpleburn-extract-audio">
+            <primary sortas="b-simpleburn-extract-audio">simpleburn-extract-audio</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpleburn-extract-iso">
+        <term><command>simpleburn-extract-iso</command></term>
+        <listitem>
+          <para>
+            is a bash script to write an ISO file from a CD.
+          </para>
+          <indexterm zone="simpleburn simpleburn-extract-iso">
+            <primary sortas="b-simpleburn-extract-iso">simpleburn-extract-iso</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpleburn-gauges">
+        <term><command>simpleburn-gauges</command></term>
+        <listitem>
+          <para>
+            is a program used to display a gauge.
+          </para>
+          <indexterm zone="simpleburn simpleburn-gauges">
+            <primary sortas="b-simpleburn-gauges">simpleburn-gauges</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpleburn-get-datasize">
+        <term><command>simpleburn-get-datasize</command></term>
+        <listitem>
+          <para>
+            is a bash script used to get the size of a media.
+          </para>
+          <indexterm zone="simpleburn simpleburn-get-datasize">
+            <primary sortas="b-simpleburn-get-datasize">simpleburn-get-datasize</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpleburn-media-detection">
+        <term><command>simpleburn-media-detection</command></term>
+        <listitem>
+          <para>
+            is a bash script used to print information about a media.
+          </para>
+          <indexterm zone="simpleburn simpleburn-media-detection">
+            <primary sortas="b-simpleburn-media-detection">simpleburn-media-detection</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpleburn-ripdvd-detection">
+        <term><command>simpleburn-ripdvd-detection</command></term>
+        <listitem>
+          <para>
+            is a bash script used to print information about
+            the content of a video DVD.
+          </para>
+          <indexterm zone="simpleburn simpleburn-ripdvd-detection">
+            <primary sortas="b-simpleburn-ripdvd-detection">simpleburn-ripdvd-detection</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpleburn-ripdvd-encoding">
+        <term><command>simpleburn-ripdvd-encoding</command></term>
+        <listitem>
+          <para>
+            is a bash script used to rip a DVD.
+          </para>
+          <indexterm zone="simpleburn simpleburn-ripdvd-encoding">
+            <primary sortas="b-simpleburn-ripdvd-encoding">simpleburn-ripdvd-encoding</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
