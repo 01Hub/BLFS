@@ -12,7 +12,7 @@
   <!ENTITY libgee-time          "0.4 SBU (Up to an additional 3.6 SBU with tests)">
 ]>
 
-<sect1 id="libgee" xreflabel="libgee-&libgee-version;">
+<sect1 id="libgee" xreflabel="libgee-&libgee-version;" revision="systemd">
   <?dbhtml filename="libgee.html"?>
 
   <sect1info>

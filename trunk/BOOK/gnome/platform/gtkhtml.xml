@@ -12,7 +12,7 @@
   <!ENTITY gtkhtml-time          "0.5 SBU">
 ]>
 
-<sect1 id="gtkhtml" xreflabel="GtkHTML-&gtkhtml-version;">
+<sect1 id="gtkhtml" xreflabel="GtkHTML-&gtkhtml-version;" revision="systemd">
   <?dbhtml filename="gtkhtml.html"?>
 
   <sect1info>

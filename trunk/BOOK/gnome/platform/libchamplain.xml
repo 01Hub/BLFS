@@ -14,7 +14,7 @@
   <!ENTITY libchamplain-time          "0.2 SBU">
 ]>
 
-<sect1 id="libchamplain" xreflabel="libchamplain-&libchamplain-version;">
+<sect1 id="libchamplain" xreflabel="libchamplain-&libchamplain-version;" revision="systemd">
   <?dbhtml filename="libchamplain.html"?>
 
   <sect1info>
