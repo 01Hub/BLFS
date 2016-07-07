@@ -5,16 +5,16 @@
   %general-entities;
 
   <!ENTITY geocode-glib-download-http
-           "&gnome-download-http;/geocode-glib/&gnome-minor20;/geocode-glib-&geocode-glib-version;.tar.xz">
+           "&gnome-download-http;/geocode-glib/&gnome-minor-20;/geocode-glib-&geocode-glib-version;.tar.xz">
   <!ENTITY geocode-glib-download-ftp
-           "&gnome-download-ftp;/geocode-glib/&gnome-minor20;/geocode-glib-&geocode-glib-version;.tar.xz">
+           "&gnome-download-ftp;/geocode-glib/&gnome-minor-20;/geocode-glib-&geocode-glib-version;.tar.xz">
   <!ENTITY geocode-glib-md5sum        "4d9a4c666f525b8ae534be865c8b7681">
   <!ENTITY geocode-glib-size          "364 KB">
   <!ENTITY geocode-glib-buildsize     "33 MB (with tests)">
   <!ENTITY geocode-glib-time          "0.2 SBU (with tests)">
 ]>
 
-<sect1 id="geocode-glib" xreflabel="geocode-glib-&geocode-glib-version;">
+<sect1 id="geocode-glib" xreflabel="geocode-glib-&geocode-glib-version;" revision="systemd">
   <?dbhtml filename="geocode-glib.html"?>
 
   <sect1info>
