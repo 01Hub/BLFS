@@ -5,16 +5,16 @@
   %general-entities;
 
   <!ENTITY gnome-session-download-http
-           "&gnome-download-http;/gnome-session/&gnome-minor20;/gnome-session-&gnome-session-version;.tar.xz">
+           "&gnome-download-http;/gnome-session/&gnome-minor-20;/gnome-session-&gnome-session-version;.tar.xz">
   <!ENTITY gnome-session-download-ftp
-           "&gnome-download-ftp;/gnome-session/&gnome-minor20;/gnome-session-&gnome-session-version;.tar.xz">
+           "&gnome-download-ftp;/gnome-session/&gnome-minor-20;/gnome-session-&gnome-session-version;.tar.xz">
   <!ENTITY gnome-session-md5sum        "9aba2f42ce9f4eadcc89d175ee8969d2">
   <!ENTITY gnome-session-size          "768 KB">
   <!ENTITY gnome-session-buildsize     "19 MB">
   <!ENTITY gnome-session-time          "0.2 SBU">
 ]>
 
-<sect1 id="gnome-session" xreflabel="gnome-session-&gnome-session-version;">
+<sect1 id="gnome-session" xreflabel="gnome-session-&gnome-session-version;" revision="systemd">
   <?dbhtml filename="gnome-session.html"?>
 
   <sect1info>

@@ -4,15 +4,15 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY gdm-download-http "&gnome-download-http;/gdm/&gnome-minor20;/gdm-&gdm-version;.tar.xz">
-  <!ENTITY gdm-download-ftp  "&gnome-download-ftp;/gdm/&gnome-minor20;/gdm-&gdm-version;.tar.xz">
+  <!ENTITY gdm-download-http "&gnome-download-http;/gdm/&gnome-minor-20;/gdm-&gdm-version;.tar.xz">
+  <!ENTITY gdm-download-ftp  "&gnome-download-ftp;/gdm/&gnome-minor-20;/gdm-&gdm-version;.tar.xz">
   <!ENTITY gdm-md5sum        "da038d626ec82ca84bad337f076348e2">
   <!ENTITY gdm-size          "1.1 MB">
   <!ENTITY gdm-buildsize     "41 MB (with tests)">
   <!ENTITY gdm-time          "0.4 SBU (with tests)">
 ]>
 
-<sect1 id="gdm" xreflabel="GDM-&gdm-version;">
+<sect1 id="gdm" xreflabel="GDM-&gdm-version;" revision="systemd">
   <?dbhtml filename="gdm.html"?>
 
   <sect1info>
