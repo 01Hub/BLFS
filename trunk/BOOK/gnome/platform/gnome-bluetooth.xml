@@ -5,16 +5,16 @@
   %general-entities;
 
   <!ENTITY gnome-bluetooth-download-http
-           "&gnome-download-http;/gnome-bluetooth/&gnome-minor20;/gnome-bluetooth-&gnome-bluetooth-version;.tar.xz">
+           "&gnome-download-http;/gnome-bluetooth/&gnome-minor-20;/gnome-bluetooth-&gnome-bluetooth-version;.tar.xz">
   <!ENTITY gnome-bluetooth-download-ftp
-           "&gnome-download-ftp;/gnome-bluetooth/&gnome-minor20;/gnome-bluetooth-&gnome-bluetooth-version;.tar.xz">
+           "&gnome-download-ftp;/gnome-bluetooth/&gnome-minor-20;/gnome-bluetooth-&gnome-bluetooth-version;.tar.xz">
   <!ENTITY gnome-bluetooth-md5sum        "73210d66676d2d9f34b6f41ea1ceec47">
   <!ENTITY gnome-bluetooth-size          "776 KB">
   <!ENTITY gnome-bluetooth-buildsize     "17 MB">
   <!ENTITY gnome-bluetooth-time          "0.2 SBU">
 ]>
 
-<sect1 id="gnome-bluetooth" xreflabel="gnome-bluetooth-&gnome-bluetooth-version;">
+<sect1 id="gnome-bluetooth" xreflabel="gnome-bluetooth-&gnome-bluetooth-version;" revision="systemd">
   <?dbhtml filename="gnome-bluetooth.html"?>
 
   <sect1info>
