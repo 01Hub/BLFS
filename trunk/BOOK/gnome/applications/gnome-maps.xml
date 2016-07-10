@@ -5,16 +5,16 @@
   %general-entities;
 
   <!ENTITY gnome-maps-download-http
-           "&gnome-download-http;/gnome-maps/&gnome-minor20;/gnome-maps-&gnome-maps-version;.tar.xz">
+           "&gnome-download-http;/gnome-maps/&gnome-minor-20;/gnome-maps-&gnome-maps-version;.tar.xz">
   <!ENTITY gnome-maps-download-ftp
-           "&gnome-download-ftp;/gnome-maps/&gnome-minor20;/gnome-maps-&gnome-maps-version;.tar.xz">
+           "&gnome-download-ftp;/gnome-maps/&gnome-minor-20;/gnome-maps-&gnome-maps-version;.tar.xz">
   <!ENTITY gnome-maps-md5sum        "b5857ffedf11fb1272d394e3fcf1a5a2">
   <!ENTITY gnome-maps-size          "1.0 MB">
   <!ENTITY gnome-maps-buildsize     "13 MB">
   <!ENTITY gnome-maps-time          "0.1 SBU">
 ]>
 
-<sect1 id="gnome-maps" xreflabel="gnome-maps-&gnome-maps-version;">
+<sect1 id="gnome-maps" xreflabel="gnome-maps-&gnome-maps-version;" revision="systemd">
   <?dbhtml filename="gnome-maps.html"?>
 
   <sect1info>

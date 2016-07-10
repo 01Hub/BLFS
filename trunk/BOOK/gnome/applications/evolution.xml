@@ -4,15 +4,15 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY evolution-download-http "&gnome-download-http;/evolution/&gnome-minor20;/evolution-&evolution-version;.tar.xz">
-  <!ENTITY evolution-download-ftp  "&gnome-download-ftp;/evolution/&gnome-minor20;/evolution-&evolution-version;.tar.xz">
+  <!ENTITY evolution-download-http "&gnome-download-http;/evolution/&gnome-minor-20;/evolution-&evolution-version;.tar.xz">
+  <!ENTITY evolution-download-ftp  "&gnome-download-ftp;/evolution/&gnome-minor-20;/evolution-&evolution-version;.tar.xz">
   <!ENTITY evolution-md5sum        "219e25e945ffec9d7125e2f679990342">
   <!ENTITY evolution-size          "12 MB">
   <!ENTITY evolution-buildsize     "592 MB">
   <!ENTITY evolution-time          "18 SBU">
 ]>
 
-<sect1 id="evolution" xreflabel="Evolution-&evolution-version;">
+<sect1 id="evolution" xreflabel="Evolution-&evolution-version;" revision="systemd">
   <?dbhtml filename="evolution.html" ?>
 
   <sect1info>
