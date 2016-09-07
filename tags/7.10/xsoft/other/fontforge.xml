@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY fontforge-download-http "https://github.com/fontforge/fontforge/releases/download/&fontforge-version;/fontforge-dist-&fontforge-version;.tar.gz">
+  <!ENTITY fontforge-download-ftp  " ">
+  <!ENTITY fontforge-md5sum        "db98d07cfee624c21d7d6ca37fe0ca14">
+  <!ENTITY fontforge-size          "20 MB">
+  <!ENTITY fontforge-buildsize     "243 MB (plus an additional 1 MB for the tests)">
+  <!ENTITY fontforge-time          "1.7 SBU (plus an additional 0.2 SBU for the tests)">
+]>
+
+<sect1 id="fontforge" xreflabel="FontForge-&fontforge-version;">
+  <?dbhtml filename="fontforge.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>FontForge-&fontforge-version;</title>
+
+  <indexterm zone="fontforge">
+    <primary sortas="a-FontForge">FontForge</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to FontForge</title>
+
+    <para>
+      The <application>FontForge</application> package contains an
+      outline font editor that lets you create your own postscript,
+      truetype, opentype, cid-keyed, multi-master, cff, svg and
+      bitmap (bdf, FON, NFNT) fonts, or edit existing ones.
+    </para>
+
+    &lfs7a_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&fontforge-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&fontforge-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &fontforge-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &fontforge-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &fontforge-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &fontforge-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">FontForge Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="freetype2"/>,
+      <xref linkend="glib2"/>,  and
+      <xref linkend="libxml2"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="cairo"/>,
+      <xref linkend="gtk2"/>,
+      <xref linkend="harfbuzz"/>,
+      <xref linkend="pango"/> (required if Xorg libraries are present)
+      <xref linkend="desktop-file-utils"/>,
+      <xref linkend="shared-mime-info"/>, and
+      <xref linkend="xorg7-lib"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="giflib"/>,
+      <xref linkend="libjpeg"/>,
+      <xref linkend="libpng"/>,
+      <xref linkend="libtiff"/>,
+      <xref linkend="python2"/>,
+      <xref linkend="wget"/> (needed for tests),
+      <ulink url="http://ipython.org/">IPython</ulink>,
+      <ulink url="https://github.com/fontforge/libspiro">libspiro</ulink>,
+      <ulink url="https://bitbucket.org/sortsmill/libunicodenames">
+      libunicodenames</ulink>,
+      <ulink url="https://github.com/fontforge/libuninameslist">
+      libuninameslist</ulink>, and
+      <ulink url="http://www.zeromq.org/">zeromq (libzmq)</ulink>
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/fontforge"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of FontForge</title>
+
+    <note>
+      <para>
+        For this version there is a separate and much larger fontforge tarball
+        without the -dist- in its name, do not try to use that. The -dist- version
+        was created a few minutes later, but the version was typo'd and it will
+        untar to fontforge-2.0-20140101.
+      </para>
+    </note>
+
+    <para>
+      Install <application>FontForge</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>sed -i 's/20140101/20160404/g' configure inc/fontforge-config.h \
+                               tests/package.m4 tests/testsuite
+./configure --prefix=/usr     \
+            --enable-gtk2-use \
+            --disable-static  \
+            --docdir=/usr/share/doc/fontforge-&fontforge-version; &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+      This will download two ttf files.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <!-- seems to be ok now
+    <note>
+      <para>
+        <application>Fontforge</application> may need a workaround to start,
+        due to a bug in the splash screen. If you wish to start from a
+        terminal, either issue <command>fontforge -new</command>, or, after
+        issuing <command>fontforge</command>, press Ctrl-C once, after the
+        splash screen appears.  For the menu, make the following substitution,
+        as the <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>sed -e '/Exec/ s/fontforge/&amp; -new/' \
+    -i /usr/share/applications/fontforge.desktop</userinput></screen>
+    </note>-->
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>sed -i 's/20140101/20160404/g' ...</parameter> : This changes
+      the typo'd date, particularly in the pkgconfig files and the log from the
+      tests.
+    </para>
+
+    <para>
+      <parameter>--enable-gtk2-use</parameter>: uses the GTK+2 graphics
+      instead of basic Xorg graphics.
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <para>
+      <option>--enable-debug</option>: Turn on <emphasis>debug</emphasis> build
+      and FONTFORGE_DEBUG conditional code. Requires
+      <ulink url="https://github.com/fontforge/libspiro">libspiro</ulink>.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          fontforge, fontimage, fontlint and sfddiff
+        </seg>
+        <seg>
+          libfontforgeexe.so, libfontforge.so, libgdraw.so,
+          libgioftp.so, libgunicode.so, libgutils.so, and
+          /usr/lib/python&python2-majorver;/site-packages/{fontforge,psMat}.so
+        </seg>
+        <seg>
+          /usr/{include,share}/fontforge and
+          /usr/share/doc/fontforge-&fontforge-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="fontforge-prog">
+        <term><command>fontforge</command></term>
+        <listitem>
+          <para>
+            is a program that allows you to create and
+            modify font files.
+          </para>
+          <indexterm zone="fontforge fontforge-prog">
+            <primary sortas="b-fontforge">fontforge</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fontimage">
+        <term><command>fontimage</command></term>
+        <listitem>
+          <para>
+            is a program that produces an image showing
+            representative glyphs of the font.
+          </para>
+          <indexterm zone="fontforge fontimage">
+            <primary sortas="b-fontimage">fontimage</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fontlint">
+        <term><command>fontlint</command></term>
+        <listitem>
+          <para>
+            is a program that checks the font for certain
+            common errors.
+          </para>
+          <indexterm zone="fontforge fontlint">
+            <primary sortas="b-fontlint">fontlint</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sfddiff">
+        <term><command>sfddiff</command></term>
+        <listitem>
+          <para>
+            is a program that compares two font files.
+          </para>
+          <indexterm zone="fontforge sfddiff">
+            <primary sortas="b-sfddiff">sfddiff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

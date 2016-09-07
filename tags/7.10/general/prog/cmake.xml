@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY cmake-download-http "http://www.cmake.org/files/v&cmake-major-version;/cmake-&cmake-version;.tar.gz">
+  <!ENTITY cmake-download-ftp  " ">
+  <!ENTITY cmake-md5sum        "d6dd661380adacdb12f41b926ec99545">
+  <!ENTITY cmake-size          "6.6 MB">
+  <!ENTITY cmake-buildsize     "346 MB (648 MB with tests and cmake-gui)">
+  <!ENTITY cmake-time          "4.2 SBU (12.1 SBU with tests and cmake-gui)">
+]>
+
+<sect1 id="cmake" xreflabel="CMake-&cmake-version;">
+  <?dbhtml filename="cmake.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>CMake-&cmake-version;</title>
+
+  <indexterm zone="cmake">
+    <primary sortas="a-CMake">CMake</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to CMake</title>
+
+    <para>
+      The <application>CMake</application> package contains a modern
+      toolset used for generating Makefiles. It is a successor of the
+      auto-generated <command>configure</command> script and aims to
+      be platform- and compiler-independent. A significant user of
+      <application>CMake</application> is <application>KDE</application>
+      since version 4.
+    </para>
+
+    &lfs7a_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&cmake-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&cmake-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &cmake-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &cmake-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &cmake-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &cmake-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">CMake Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="curl"/> and
+      <xref linkend="libarchive"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="qt5"/> (for the Qt-based GUI),
+      <xref linkend="subversion"/> (for testing), and
+      <ulink url="http://pypi.python.org/pypi/Sphinx">Sphinx</ulink>
+      (for building documents)
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+      <ulink url="&blfs-wiki;/cmake"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of CMake</title>
+<!--
+    <para>
+       If <application>Qt4</application> and <application>Qt5</application> are
+       installed in <filename class="directory">/opt</filename>, use
+       <command>source setqt4</command> or <command>source setqt5</command> to
+       choose which one will be used to build the Qt-based GUI.
+    </para>
+-->
+    <para>
+      Install <application>CMake</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./bootstrap --prefix=/usr       \
+            --system-libs       \
+            --mandir=/share/man \
+            --no-system-jsoncpp \
+            --docdir=/share/doc/cmake-&cmake-version; &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>bin/ctest
+      -j<replaceable>&lt;N&gt;</replaceable> -O
+      cmake-&cmake-version;-test.log</command>, where
+      <replaceable>&lt;N&gt;</replaceable> is an integer between 1 and the
+      number of system cores. For some systems, it may be necessary to run the
+      tests only for Qt4 using <command>source setq4</command>
+      before the
+      <command>./bootstrap ...</command>) command.  
+      One of the problematic
+      tests relates to the test procedures finding the correct Qt files. One
+      of 444 tests is known to fail under some circumstances related to Gtk+2
+      and c++ standards.
+
+     <!-- Please, don't remove this comment, needed if tests start to fail
+      again. If you want to investigate a problem with a given "problem1-test",
+      use <command>bin/ctest -R "problem1-test"</command> and, to omit it, use
+      <command>bin/ctest -E "problem1-test"</command>. These options can be
+      used together: <command>bin/ctest -R "problem1-test" -E
+      "problem2-test"</command>.  Option -N can be used to display all
+      available tests, and you can run <command>bin/ctest</command> for a
+      sub-set of tests by using separated by spaces names or numbers as
+      options. Option -/-help can be used to show all options.-->
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--system-libs</parameter>: This switch forces the build system
+      to link against <application>Zlib</application>,
+      <application>Bzip2</application>, <application>cURL</application>,
+      <application>Expat</application> and <application>libarchive</application>
+      installed on the system.
+    </para>
+
+    <para>
+      <parameter>--no-system-jsoncpp</parameter>: This switch removes the
+      <application>JSON-C++</application> library from the list of system
+      libraries. A bundled version of that library is used instead.
+    </para>
+
+    <para>
+      <option>--qt-gui</option>: This switch enables building of the
+      <application>Qt</application>-based  GUI for
+      <application>CMake</application>.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          ccmake, cmake, cmake-gui (optional), cpack and ctest
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          /usr/share/cmake-&cmake-major-version; and
+          /usr/share/doc/cmake-&cmake-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="ccmake">
+        <term><command>ccmake</command></term>
+        <listitem>
+          <para>
+            is a curses based interactive frontend to
+            <command>cmake</command>.
+          </para>
+          <indexterm zone="cmake ccmake">
+            <primary sortas="b-ccmake">ccmake</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cmake-prog">
+        <term><command>cmake</command></term>
+        <listitem>
+          <para>
+            is the makefile generator.
+          </para>
+          <indexterm zone="cmake cmake-prog">
+            <primary sortas="b-cmake">cmake</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cmake-gui">
+        <term><command>cmake-gui</command></term>
+        <listitem>
+          <para>
+            (optional) is the <application>Qt</application>-based frontent to
+            <command>cmake</command>.
+          </para>
+          <indexterm zone="cmake cmake-gui">
+            <primary sortas="b-cmake-gui">cmake-gui</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cpack">
+        <term><command>cpack</command></term>
+        <listitem>
+          <para>
+            is the <application>CMake</application> packaging program.
+          </para>
+          <indexterm zone="cmake cpack">
+            <primary sortas="b-cpack">cpack</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ctest">
+        <term><command>ctest</command></term>
+        <listitem>
+          <para>
+            is a testing utility for cmake-generated build trees.
+          </para>
+          <indexterm zone="cmake ctest">
+            <primary sortas="b-ctest">ctest</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libinput-version "1.4.1">
+
+  <!ENTITY libinput-download-http "http://www.freedesktop.org/software/libinput/libinput-&libinput-version;.tar.xz">
+  <!ENTITY libinput-download-ftp  " ">
+  <!ENTITY libinput-md5sum        "2e7ba577ed74d8d1baeb07dbd4fb912a">
+  <!ENTITY libinput-size          "880 KB">
+  <!ENTITY libinput-buildsize     "34 MB (add 10 MB for tests)">
+  <!ENTITY libinput-time          "0.3 SBU (add 37 minutes for tests, not CPU dependent)">
+]>
+
+<sect2 id="libinput" xreflabel="libinput-&libinput-version;">
+  <?dbhtml filename="libinput.html"?>
+
+  <sect2info>
+    <othername>$LastChangedBy: renodr $</othername>
+    <date>$Date: 2015-09-14 17:42:53 -0500 (Mon, 14 Sep 2015) $</date>
+  </sect2info>
+
+  <title>libinput-&libinput-version;</title>
+
+  <indexterm zone="libinput">
+    <primary sortas="a-libinput">libinput</primary>
+  </indexterm>
+
+  <sect3 role="package">
+    <title>Introduction to libinput</title>
+
+    <para>
+      <application>libinput</application> is a library that handles
+      input devices for display servers and other applications that
+      need to directly deal with input devices.
+    </para>
+
+    &lfs7a_checked;
+
+    <bridgehead renderas="sect4">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libinput-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libinput-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libinput-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libinput-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libinput-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libinput-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect4">libinput Dependencies</bridgehead>
+
+    <bridgehead renderas="sect5">Required</bridgehead>
+    <para role="required">
+      <xref linkend="libevdev"/> and
+      <xref linkend="mtdev"/>
+    </para>
+
+    <bridgehead renderas="sect5">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="check"/> and
+      <xref linkend="valgrind"/> (to run the tests),
+      <xref linkend="doxygen"/> and
+      <xref linkend="graphviz"/> (to build the documentation)
+      <xref linkend="gtk3"/> (to build the GUI event viewer), 
+      <ulink url="http://www.nongnu.org/libunwind/">libunwind</ulink>, and
+      <ulink revision="sysv" url="https://sourceforge.net/projects/linuxwacom/files/libwacom/">libwacom</ulink>
+      <xref revision="systemd" linkend="libwacom"/>
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/libinput"/>
+    </para>
+  </sect3>
+
+  <sect3 role="installation">
+    <title>Installation of libinput</title>
+
+    <para>
+      Install <application>libinput</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure $XORG_CONFIG       \
+            --disable-libwacom \
+            --with-udev-dir=/lib/udev &amp;&amp;
+make</userinput></screen>
+
+    <note><para>
+      To run the tests for this package, valgrind requires a version of the
+      /lib/ld-2.23.so (or later) library with debugging symbols present.
+      Normally in LFS these debugging symbols are stripped at the end of
+      Chapter 6. To get this library, glibc must be rebuilt with the current
+      glibc version using the same compiler that was used to build LFS.  The
+      ld-2.23.so can then be renamed to ld-2.23.so.dbg and copied to /lib.
+      Then a symlink needs to be changed:</para>
+
+    <screen><userinput>ln -sfv ld-2.23.so.dbg /lib/ld-linux-x86-64.so.2</userinput></screen>
+
+    <para>Adjust the above instruction as needed for a 32-bit system
+    or for a different version of glibc</para>
+
+    </note>
+
+    <para>
+      Running the testsuite for this package can cause problems. 
+      It creates a number of dummy input devices on the currently
+      running system that can lead to crashing a local X server or
+      a desktop environment. If you understand the risks and have
+      the optional <xref linkend="check"/> and
+      <xref linkend="valgrind"/> packages installed, the regression
+      tests can be run as the <systemitem
+      class="username">root</systemitem> user with
+      <userinput>make check</userinput>. Note that depending on
+      the system configuration and hardware, some tests may fail.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>
+      If <xref linkend="doxygen"/> and <xref linkend="graphviz"/> were
+      present during the build, you can install the generated documentation
+      by running the following commands as the <systemitem
+      class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>install -v -dm755 $XORG_PREFIX/share/doc/libinput-&libinput-version; &amp;&amp;
+cp -rv doc/html/* $XORG_PREFIX/share/doc/libinput-&libinput-version;</userinput></screen>
+
+  </sect3>
+
+  <sect3 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--disable-libwacom</parameter>: Remove this 
+      option if you have the external library libwacom installed.
+    </para>
+
+    <para>
+      <parameter>--with-udev-dir=/lib/udev</parameter>: This switch
+      specifies where UDev rules and hwdb files will be installed.
+    </para>
+
+  </sect3>
+
+  <sect3 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          libinput-debug-events and libinput-list-devices
+        </seg>
+        <seg>
+          libinput.so
+        </seg>
+        <seg>
+          $XORG_PREFIX/share/doc/libinput-&libinput-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libinput-debug-events">
+        <term><command>libinput-debug-events</command></term>
+        <listitem>
+          <para>
+            is a debug helper for <application>libinput</application>.
+          </para>
+          <indexterm zone="libinput libinput-debug-events">
+            <primary sortas="b-libinput-debug-events">libinput-debug-events</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libinput-list-devices">
+        <term><command>libinput-list-devices</command></term>
+        <listitem>
+          <para>
+            lists local devices as recognized by
+            <application>libinput</application>.
+          </para>
+          <indexterm zone="libinput libinput-list-devices">
+            <primary sortas="b-libinput-list-devices">libinput-list-devices</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libinput-lib">
+        <term><filename class="libraryfile">libinput.so</filename></term>
+        <listitem>
+          <para>
+            contains API functions for handling input devices.
+          </para>
+          <indexterm zone="libinput libinput-lib">
+            <primary sortas="c-libinput">libinput.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect3>
+
+</sect2>
