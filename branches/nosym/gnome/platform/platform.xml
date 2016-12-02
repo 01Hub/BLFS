@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+ <!ENTITY % general-entities SYSTEM "../../general.ent">
+ %general-entities;
+]>
+
+<!--
+$LastChangedBy$
+$Date$
+-->
+
+<chapter id="gnome-core">
+  <?dbhtml filename="core.html"?>
+
+  <title><phrase revision="sysv">GNOME Libraries and Utilities</phrase>
+         <phrase revision="systemd">GNOME Libraries and Desktop</phrase></title>
+
+  <para revision="sysv">
+    The objective of this section is not to build a
+    <application>GNOME</application> desktop, because it depends on
+    <application>systemd</application>, which BLFS doesn't support. Rather, it
+    provides packages required for some platform independent
+    <application>GNOME</application> applications to build and run properly
+    under any Window Manager (e.g.
+    <application>Fluxbox</application>,
+    <application>Icewm</application>,
+    <application>Openbox</application>,
+    <application>Sawfish</application>), or Desktop Environment (e.g.
+    <application>KDE</application>,
+    <application>XFCE</application>,
+    <application>LXDE</application>).
+  </para>
+
+  <para revision="systemd">
+    The objective of this section is to build a
+    <application>GNOME</application> desktop, since we have
+    <application>systemd</application>.
+  </para>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dummy-platform.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="accountsservice.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gcr.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gsettings-desktop-schemas.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libsecret.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="rest.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="totem-pl-parser.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="vte.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="yelp-xsl.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gconf.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="geocode-glib.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gjs.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-autoar.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-desktop.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-menus.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-online-accounts.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-video-effects.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="grilo.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gtkhtml.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libchamplain.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libgdata.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libgee.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libgtop.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libgweather.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libpeas.xml"/>
+<!--  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libwacom.xml"/> --><!-- MOVED TO General Libraries -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libwnck.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="evolution-data-server.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="folks.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gfbgraph.xml"/>
+
+<!-- systemd: Telepathy Framework -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dummy-tel.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="telepathy-glib.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="telepathy-logger.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="telepathy-mission-control.xml"/>
+
+<!-- systemd: GNOME Desktop -->
+<!-- trunk: Required Runtime Dependencies -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dummy-desktop.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="caribou.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dummy-runtime.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="dconf.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-backgrounds.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gvfs.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="nautilus.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="zenity.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-bluetooth.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-keyring.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-settings-daemon.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-control-center.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mutter.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-shell.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-shell-extensions.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-session.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gdm.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-user-docs.xml"/>
+
+<!--  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="adwaita-icon-theme.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-icon-theme.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-icon-theme-extras.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-icon-theme-symbolic.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gnome-themes-standard.xml"/>-->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="yelp.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="notification-daemon.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="polkit-gnome.xml"/>
+
+</chapter>

@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY ojdk-upd                  "112">
+  <!ENTITY ojdk-bd                   "b15">
+  <!ENTITY ojdk-tarball              "jdk8u&ojdk-upd;-&ojdk-bd;.tar.bz2">
+  <!ENTITY ojdk-repo                 "http://hg.openjdk.java.net/jdk8u/jdk8u">
+  <!ENTITY ojdk-download             "&ojdk-repo;/archive/&ojdk-tarball;">
+
+  <!ENTITY anduin-download           "&sources-anduin-http;/OpenJDK/OpenJDK-&openjdk-version;">
+
+  <!ENTITY ojdk-md5sum               "d2c9c29c00609a56ec68b0f91e34a455">
+  <!ENTITY ojdk-size                 "401 KB">
+
+  <!ENTITY corba-md5sum              "9bf02dac9f3f79a220af140778ed003e">
+  <!ENTITY hotspot-md5sum            "41f78a61f81ca93d1110d417d06454b2">
+  <!ENTITY jaxp-md5sum               "2fd39b1985c8ac9af222af34d8e5f945">
+  <!ENTITY jaxws-md5sum              "15a8b60355209145680a8da1aee9b12d">
+  <!ENTITY jdk-md5sum                "b8da9095c290358a85f533a089570b66">
+  <!ENTITY langtools-md5sum          "ced983a635486e02a2a7bc3c2a9416dd">
+  <!ENTITY nashorn-md5sum            "d34ca91c7e0040635aaf9e9d9b5f86b6">
+  <!ENTITY total-download-size       "63 MB">
+
+  <!ENTITY jtreg-version             "4.2-b03-675">
+  <!ENTITY jtreg-download            "&anduin-download;/jtreg-&jtreg-version;.tar.gz">
+  <!ENTITY jtreg-md5sum              "af4d3fc659cac0c4f5e2f78c57790345">
+  <!ENTITY jtreg-size                "7.2 MB">
+
+  <!ENTITY icedtea-web-download      "http://icedtea.classpath.org/download/source/icedtea-web-&icedtea-web-version;.tar.gz">
+
+  <!ENTITY ojdk-buildsize           "3.5 GB (additional 413 MB for tests)">
+  <!ENTITY ojdk-time                "5 SBU with 4 jobs in parallel (additional 84 SBU for tests)">
+]>
+
+<sect1 id="openjdk"
+       xreflabel="OpenJDK-&openjdk-version;">
+  <?dbhtml filename="openjdk.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>OpenJDK-&openjdk-version;</title>
+
+  <indexterm zone="openjdk">
+    <primary sortas="a-OpenJDK">OpenJDK</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to OpenJDK</title>
+
+    <para>
+      <application>OpenJDK</application> is an open-source implementation
+      of Oracle's Java Standard Edition platform.
+      <application>OpenJDK</application> is useful for developing
+      <application>Java</application> programs, and provides a complete
+      runtime environment to run <application>Java</application> programs.
+    </para>
+
+    &lfs7a_checked;
+
+    <note>
+      <para>
+        A browser plugin and webstart implementation, as well as a
+        pulseaudio sound backend are provided by the Icedtea project. To provide
+        a complete implementation, you will need to later install
+        <xref linkend="icedtea-web"/> and <xref linkend="icedtea-sound"/>.
+      </para>
+    </note>
+
+    <para>
+      OpenJDK is GPL'd code, with a special exception made for non-free
+      projects to use these classes in their proprietary products.
+      In similar fashion to the LGPL, which allows non-free programs to link
+      to libraries provided by free software, the
+      <ulink url="http://openjdk.java.net/legal/gplv2+ce.html">GNU
+      General Public License, version 2, with the Classpath Exception</ulink>
+      allows third party programs to use classes provided by free software
+      without the requirement that the third party software also be free. As
+      with the LGPL, any modifications made to the free software portions of a
+      third party application, must also be made freely available.
+    </para>
+
+    <note>
+      <para>
+        The <application>OpenJDK</application> source includes a very
+        thorough, open source test suite using the
+        <application>JTreg</application> test harness. The testing instructions
+        below allow to test the just built JDK for reasonable compatibility
+        with the proprietary Oracle JDK. However, in order for an independent
+        implementation to claim compatibility, it must pass a proprietary
+        <application>JCK/TCK</application> test suite. No claims of
+        compatibility, even partial compatibility, may be made without passing
+        an approved test suite.
+      </para>
+
+      <para>
+        Oracle does provide free community access, on a case by case basis, to
+        a closed toolkit to ensure 100% compatibility with its proprietary JDK.
+        Neither the binary version provided on the <xref linkend="java"/> page
+        nor the JVM built with the instructions below have been tested against
+        the <ulink
+  url="http://openjdk.java.net/groups/conformance/JckAccess/jck-access.html">
+        TCK</ulink>. Any version that is built using the instructions given,
+        cannot claim to be compatible with the proprietary JDK, without the
+        user applying for, and completing the compatibility tests themselves.
+      </para>
+
+      <para>
+        With that in mind, the binaries produced using this build method are
+        regularly tested against the TCK by the members listed on the site
+        above. In addition to the community license above, an educational,
+        non-commercial license for the TCK can be obtained from <ulink
+        url="http://www.oracle.com/technetwork/java/index-137188.html">
+        here</ulink>.
+      </para>
+    </note>
+
+    <bridgehead renderas="sect3">Source Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>OpenJDK Root Package
+          <simplelist>
+            <member>Download: <ulink url="&ojdk-download;"/></member>
+            <member>Download MD5 sum: &ojdk-md5sum;</member>
+            <member>Download Size: &ojdk-size;</member>
+          </simplelist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          In addition to the root package, the instructions below first
+          download seven subproject tarballs,
+          whose total size is &total-download-size;.
+        </para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &ojdk-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &ojdk-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>Optional test harness
+          <simplelist>
+            <member>Download: <ulink url="&jtreg-download;"/></member>
+            <member>Download MD5 sum: &jtreg-md5sum;</member>
+            <member>Download Size: &jtreg-size;</member>
+          </simplelist>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Optional package (to get an icon for the
+          <filename>openjdk-8-policytool.desktop</filename> file):
+          <ulink url="&icedtea-web-download;"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">OpenJDK Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required Dependencies</bridgehead>
+    <para role="required">
+      An existing binary (<xref linkend="java"/> or an earlier built
+      version of this package. The instructions below assume that
+      you are using <xref linkend="ojdk-conf"/>),
+      <xref linkend="alsa-lib"/>,
+      <xref linkend="cpio"/>,
+      <xref linkend="cups"/>,
+      <xref linkend="unzip"/>,
+      <xref linkend="which"/>,
+      <xref linkend="xorg7-lib"/>, and
+      <xref linkend="zip"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="cacerts"/>,
+      <xref linkend="giflib"/>, and
+      <xref linkend="wget"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="mercurial"/> and
+      an X Window manager such as <xref linkend="twm"/> (for the tests)
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/openjdk"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of OpenJDK</title>
+
+    <para>
+      Unlike other packages in BLFS, the <application>OpenJDK</application>
+      source packages are distributed in multiple tar balls. You need to first
+      extract the source root from <filename>&ojdk-tarball;</filename>, change
+      into the extracted directory, then proceed with the following
+      instructions:
+    </para>
+
+<screen><userinput>cat &gt; subprojects.md5 &lt;&lt; EOF &amp;&amp;
+&corba-md5sum;  corba.tar.bz2
+&hotspot-md5sum;  hotspot.tar.bz2
+&jaxp-md5sum;  jaxp.tar.bz2
+&jaxws-md5sum;  jaxws.tar.bz2
+&langtools-md5sum;  langtools.tar.bz2
+&jdk-md5sum;  jdk.tar.bz2
+&nashorn-md5sum;  nashorn.tar.bz2
+EOF
+
+for subproject in corba hotspot jaxp jaxws langtools jdk nashorn; do
+  wget -c &ojdk-repo;/${subproject}/archive/&ojdk-tarball; \
+       -O ${subproject}.tar.bz2
+done &amp;&amp;
+
+md5sum -c subprojects.md5 &amp;&amp;
+
+for subproject in corba hotspot jaxp jaxws langtools jdk nashorn; do
+  mkdir -pv ${subproject} &amp;&amp;
+  tar -xf ${subproject}.tar.bz2 --strip-components=1 -C ${subproject}
+done</userinput></screen>
+
+    <para>
+      If you have downloaded the optional test harness, unpack it too:
+    </para>
+
+<screen><userinput>tar -xf ../jtreg-&jtreg-version;.tar.gz</userinput></screen>
+
+<!--TODO: it might be better to add instructions for the cacerts file at
+this place and to use the switch "with-cacerts-file" -->
+
+    <note>
+      <para>
+        Before proceeding, you should ensure that your environment
+        <envar>PATH</envar> variable contains the location of the Java
+        compilers used for bootstrapping <application>OpenJDK</application>.
+        This is the only requirement for the environment. Modern Java
+        installations do not need <envar>JAVA_HOME</envar> and
+        <envar>CLASSPATH</envar> is not used here. Furthermore, OpenJDK
+        developers recommend to unset <envar>JAVA_HOME</envar>.
+      </para>
+
+      <para>
+        The build system does not support the <option>-j</option> switch in
+        <envar>MAKEFLAGS</envar>.
+      </para>
+    </note>
+
+    <para>
+      Configure and build the package with the following commands
+      (--with-milestone value can be modified to fit user preferences):
+    </para>
+
+<screen><userinput>unset JAVA_HOME               &amp;&amp;
+sh ./configure                \
+   --with-update-version=&ojdk-upd;   \
+   --with-build-number=&ojdk-bd;    \
+   --with-milestone=BLFS      \
+   --enable-unlimited-crypto  \
+   --with-zlib=system         \
+   --with-giflib=system       \
+   --with-extra-cflags="-std=c++98 -Wno-error -fno-delete-null-pointer-checks -fno-lifetime-dse" \
+   --with-extra-cxxflags="-std=c++98 -fno-delete-null-pointer-checks -fno-lifetime-dse" &amp;&amp;
+make DEBUG_BINARIES=true SCTP_WERROR= all  &amp;&amp;
+find build/*/images/j2sdk-image -iname \*.diz -delete
+</userinput></screen>
+
+    <note>
+      <para>
+        Testing will involve the interplay of pairs of JVMs using the
+        networking interface, so networking must be started.  If it
+        isn't, not only will these tests fail, but the test cleanup
+        will leave orphaned JVMs running.  There will be many of
+        them.  Rebooting may be the easiest recovery.
+      </para>
+    </note>
+
+    <para>
+      Testing the newly built JVM involves several steps.
+      First, it is better to run the test suite in a frame buffer on a
+      different display, using Xvfb:
+    </para>
+
+<!-- Careful with the && below:
+"export DISPLAY=... && somecommand &" exports only DISPLAY to "somecommand"
+but not to the current environment, and
+"echo $! .... &&" does not echo the right PID. So all && suppressed.-->
+<screen role='nodump'><userinput>if [ -n "$DISPLAY" ]; then
+  OLD_DISP=$DISPLAY
+fi
+export DISPLAY=:20
+nohup Xvfb $DISPLAY                              \
+           -fbdir $(pwd)                         \
+           -pixdepths 8 16 24 32 > Xvfb.out 2>&amp;1 &amp;
+echo $! > Xvfb.pid
+echo Waiting for Xvfb to initialize; sleep 1
+nohup twm -display $DISPLAY \
+          -f /dev/null > twm.out 2>&amp;1            &amp;
+echo $! > twm.pid
+echo Waiting for twm to initialize; sleep 1
+xhost +</userinput></screen>
+
+    <para>
+      Then, it is necessary to modify some files<!-- (replace &lt;N&gt; with the
+      number of JAVA VM allowed to run concurrently)-->:
+    </para>
+
+<screen role='nodump'><userinput>echo -e "
+jdk_all = :jdk_core           \\
+          :jdk_svc            \\
+          :jdk_beans          \\
+          :jdk_imageio        \\
+          :jdk_sound          \\
+          :jdk_sctp           \\
+          com/sun/awt         \\
+          javax/accessibility \\
+          javax/print         \\
+          sun/pisces          \\
+          com/sun/java/swing" >> jdk/test/TEST.groups &amp;&amp;
+sed -e 's/all:.*jck.*/all: jtreg/'      \
+    -e '/^JTREG /s@\$(JT_PLATFORM)/@@'  \
+    -i langtools/test/Makefile<!--          &amp;&amp;
+sed -i 's@/win32@@' jdk/test/Makefile   &amp;&amp;
+sed -e 's@JTREG_HOME@JT_PLATFORM="" &amp;@' \
+    -e 's@TEST="@CONCURRENCY=&lt;N&gt; &amp;@'    \
+    -i test/Makefile--></userinput></screen>
+
+    <para>
+      Some variables have to be set:
+    </para>
+
+<screen role='nodump'><userinput>JT_JAVA=$(type -p javac | sed 's@/bin.*@@') &amp;&amp;
+JT_HOME=$(pwd)/jtreg                        &amp;&amp;
+PRODUCT_HOME=$(echo $(pwd)/build/*/images/j2sdk-image)</userinput></screen>
+
+    <para>
+      The tests are run as follows:
+    </para>
+
+<!-- no && here either, because the first "make" may return an error -->
+<screen role='nodump'><userinput>LANG=C make -k -C test                      \
+            JT_HOME=${JT_HOME}              \
+            JT_JAVA=${JT_JAVA}              \
+            PRODUCT_HOME=${PRODUCT_HOME} all
+LANG=C ${JT_HOME}/bin/jtreg -a -v:fail,error \
+                -dir:$(pwd)/hotspot/test     \
+                -k:\!ignore                  \
+                -jdk:${PRODUCT_HOME}         \
+<!--                -agentvm -conc:&lt;N&gt;           \
+-->                :jdk</userinput></screen>
+
+    <para>
+      The test results can be compared to <ulink
+      url="http://download.java.net/openjdk/testresults/8/">these
+      results</ulink>, although they usually are run on a newer version.  Some
+      failures can be expected, the number of which depends on various
+      conditions, like whether the computer is connected to network. Also, some
+      tests may timeout if the machine is under load. Those are the reasons for
+      considering the tests optional, although we would rather recommend them.
+    </para>
+
+    <para>
+      Next some cleanup has to be done. The instructions below only stop the
+      frame buffer, but it has been reported that some java VM may be left
+      running after the tests, so it is necessary to check orphaned processes:
+    </para>
+
+<screen role='nodump'><userinput>kill -9 `cat twm.pid`  &amp;&amp;
+kill -9 `cat Xvfb.pid` &amp;&amp;
+rm -f Xvfb.out twm.out &amp;&amp;
+rm -f Xvfb.pid twm.pid &amp;&amp;
+if [ -n "$OLD_DISP" ]; then
+  DISPLAY=$OLD_DISP
+fi</userinput></screen>
+
+    <para>Install the package with the following commands as the
+    <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>cp -RT build/*/images/j2sdk-image /opt/OpenJDK-&openjdk-version; &amp;&amp;
+chown -R root:root /opt/OpenJDK-&openjdk-version;</userinput></screen>
+
+    <para>
+      There are now two <application>OpenJDK</application> SDKs installed
+      in <filename class="directory">/opt</filename>. You should decide on
+      which one you would like to use as the default. Normally, you would opt
+      for the just installed <application>OpenJDK</application>. If so, do
+      the following as the <systemitem class="username">root</systemitem>
+      user:
+    </para>
+
+<screen role="root"><userinput>ln -v -nsf OpenJDK-&openjdk-version; /opt/jdk</userinput></screen>
+
+    <para>If desired, you may install a .desktop file corresponding to an entry
+    in a desktop menu for <command>policytool</command>. First, you need to
+    obtain an icon from <xref linkend="icedtea-web"/>:</para>
+
+<screen><userinput>tar -xf ../icedtea-web-&icedtea-web-version;.tar.gz  \
+        icedtea-web-&icedtea-web-version;/javaws.png \
+        --strip-components=1</userinput></screen>
+
+    <para>Now, as <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>mkdir -pv /usr/share/applications &amp;&amp;
+
+cat &gt; /usr/share/applications/openjdk-8-policytool.desktop &lt;&lt; "EOF" &amp;&amp;
+<literal>[Desktop Entry]
+Name=OpenJDK Java Policy Tool
+Name[pt_BR]=OpenJDK Java - Ferramenta de Pol&#237;tica
+Comment=OpenJDK Java Policy Tool
+Comment[pt_BR]=OpenJDK Java - Ferramenta de Pol&#237;tica
+Exec=/opt/jdk/bin/policytool
+Terminal=false
+Type=Application
+Icon=javaws
+Categories=Settings;</literal>
+EOF
+
+install -v -Dm0644 javaws.png /usr/share/pixmaps/javaws.png</userinput></screen>
+
+    <para>The choice of pt_BR is just an example. You can add any translation
+    by adding lines corresponding to your locale, e.g. for fr_FR,
+    <quote>Name[fr_FR]=</quote> and <quote>Comment[fr_FR]=</quote> with the
+    appropriate text as values.</para>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>sh configure...</command>: the top level
+      <filename>configure</filename> is a wrapper around the autotools one.
+      It is not executable and must be run through <command>sh</command>.
+    </para>
+
+    <para>
+      <option>--with-boot-jdk</option>: This switch provides the
+      location of the temporary <application>JDK</application>. It is normally
+      not needed if <command>java</command> is found in the <envar>PATH</envar>.
+    </para>
+
+    <para>
+      <parameter>--with-update-version</parameter>: Currently, the build
+      system does not include the update number in the version string. It has
+      to be specified here.
+    </para>
+
+    <para>
+      <parameter>--with-build-number</parameter>: Again, the build
+      system does not include the build number in the version string. It has
+      to be specified here too.
+    </para>
+
+    <para>
+      <parameter>--with-milestone</parameter>: Used to customize the
+      version string.
+    </para>
+
+    <para>
+      <parameter>--enable-unlimited-crypto</parameter>: Because of limitations
+      on the usage of cryptography in some countries, there is the possibility
+      to limit the size of encryption keys and the use of some algorithms in a
+      policy file. This switch allows to ship a policy file with no
+      restriction. It is the responsibility of the user to ensure proper
+      adherence to the law.
+    </para>
+
+    <para>
+      <parameter>--with-zlib=system, --with-giflib=system</parameter>: Allows
+      to use the system libraries instead of the bundled ones.
+    </para>
+
+    <para>
+      <parameter>--with-extra-cflags=... --with-extra-cxxflags=...</parameter>:
+      Works around some defects in the code brought to light by the GCC 6
+      more rigorous checking of the C/C++ constructs. Remove those switches
+      if compiling with GCC 5.
+    </para>
+
+    <para>
+      <option>--with-jobs=N</option>: Allows setting the number
+      of jobs for <command>make</command> equal to N. The default is the
+      result of a calculation involving the available memory and the number
+      of processors. Note that even if you specify N=1, some parallelization
+      may be used during the build. The SBU given above are with N=4, on
+      a single processor, 4-core, virtual machine, with 4 GB of memory.
+    </para>
+
+    <para>
+      <option>--with-cacerts-file=...</option>: Specifies where to find a
+      <filename>cacerts</filename> file, typically <filename>
+      /opt/jdk/jre/lib/security</filename>. Otherwise, an empty one is created.
+      You can get it from an earlier version of the package, or use the
+      script below to generate one.
+    </para>
+
+    <para>
+      <command>make DEBUG_BINARIES=true SCTP_WERROR= all</command>: The build
+      fails on 32 bit machines if DEBUG_BINARIES is not set to true. Unsetting
+      SCTP_WERROR is part of the workarounds needed to use GCC 6. You may omit
+      that part of the command if using GCC 5.
+    </para>
+
+    <para>
+      <command>find ... -iname '*.diz' -delete</command>: This command
+      removes redundant files.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration"
+         id="openjdk-config"
+         xreflabel="Configuring OpenJDK">
+    <title>Configuring OpenJDK</title>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>
+        Normally, the JAVA environment has been configured after installing
+        the binary version, and can be used with the just built package as well.
+        Review <xref linkend="ojdk-conf"/> in case you want to modify
+        something.
+      </para>
+
+      <para>
+        To test if the man pages are correctly installed, issue
+        <command>source /etc/profile</command> and <command>man java</command>
+        to display the respective man page.
+      </para>
+
+    </sect3>
+
+    <sect3 id='ojdk-certs' xreflabel='JRE Certificate Authority Certificates'>
+      <title>Install or update the JRE Certificate Authority Certificates
+      (cacerts) file</title>
+
+      <para>
+        <application>OpenJDK</application> uses its own format for the
+        CA certificates. Those certificates are located in a file named
+        <filename>/etc/ssl/java/cacerts</filename>. That file should be
+        generated using the system PKI trust store. The instructions
+        on the <xref linkend="cacerts"/> page should be used to update the file
+        located in <filename>/etc/ssl/java</filename>. Setup a symlink in the
+        defualt location as the <systemitem class="username">root</systemitem>
+        user:
+      </para>
+
+<screen role="root"><userinput>ln -sfv /etc/ssl/java/cacerts /opt/jdk/jre/lib/security/cacerts</userinput></screen>
+
+    <para>Use the following commands to check if the
+    <filename>cacerts</filename> file has been successfully installed:</para>
+
+<screen role="root"><userinput>cd /opt/jdk
+bin/keytool -list -keystore /etc/ssl/java/cacerts</userinput></screen>
+
+    <para>At the prompt "Enter keystore password:", enter "changeit" (the
+    default). If the <filename>cacerts</filename> file was installed
+    correctly, you will see a list of the certificates with related
+    information for each one. If not, you need to reinstall them.</para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>appletviewer, extcheck, idlj, jar,
+        jarsigner, java, javac, javadoc, javah, javap, java-rmi.cgi,
+        jcmd, jconsole, jdb, jdeps, jhat, jinfo, jjs, jmap, jps,
+        jrunscript, jsadebugd, jstack, jstat, jstatd, keytool,
+        native2ascii, orbd, pack200, policytool, rmic, rmid, rmiregistry,
+        schemagen, serialver, servertool, tnameserv, unpack200,
+        wsgen, wsimport, and xjc</seg>
+        <seg>/opt/OpenJDK-&openjdk-version;/lib/*, and
+        /opt/OpenJDK-&openjdk-version;/jre/lib/*</seg>
+        <seg>/opt/OpenJDK-&openjdk-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="appletviewer">
+        <term><command>appletviewer</command></term>
+        <listitem>
+          <para>allows to run applets outside of a web browser.</para>
+          <indexterm zone="openjdk appletviewer">
+            <primary sortas="b-appletviewer">appletviewer</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="extcheck">
+        <term><command>extcheck</command></term>
+        <listitem>
+          <para>checks a specified jar file for title and version conflicts
+          with any extensions installed in the
+          <application>OpenJDK</application> software.</para>
+          <indexterm zone="openjdk extcheck">
+            <primary sortas="b-extcheck">extcheck</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="idlj">
+        <term><command>idlj</command></term>
+        <listitem>
+          <para>generates Java bindings from a given IDL file.</para>
+          <indexterm zone="openjdk idlj">
+            <primary sortas="b-idlj">idlj</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jar">
+        <term><command>jar</command></term>
+        <listitem>
+          <para>combines multiple files into a single jar archive.</para>
+          <indexterm zone="openjdk jar">
+            <primary sortas="b-jar">jar</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jarsigner">
+        <term><command>jarsigner</command></term>
+        <listitem>
+          <para>signs jar files and verifies the signatures and integrity
+          of a signed jar file.</para>
+          <indexterm zone="openjdk jarsigner">
+            <primary sortas="b-jarsigner">jarsigner</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="java-prog">
+        <term><command>java</command></term>
+        <listitem>
+          <para>launches a Java application by starting a Java runtime
+          environment, loading a specified class and invoking its main
+          method.</para>
+          <indexterm zone="openjdk java-prog">
+            <primary sortas="b-java-prog">java</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="javac">
+        <term><command>javac</command></term>
+        <listitem>
+          <para>reads class and interface definitions, written in the
+          Java programming language, and compiles them into bytecode
+          class files.</para>
+          <indexterm zone="openjdk javac">
+            <primary sortas="b-javac">javac</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="javadoc">
+        <term><command>javadoc</command></term>
+        <listitem>
+          <para>parses the declarations and documentation comments in a
+          set of Java source files and produces a corresponding set of
+          HTML pages describing the classes, interfaces, constructors,
+          methods, and fields.</para>
+          <indexterm zone="openjdk javadoc">
+            <primary sortas="b-javadoc">javadoc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="javah">
+        <term><command>javah</command></term>
+        <listitem>
+          <para>generates C header and source files
+          that are needed to implement native methods.</para>
+          <indexterm zone="openjdk javah">
+            <primary sortas="b-javah">javah</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="javap">
+        <term><command>javap</command></term>
+        <listitem>
+          <para>disassembles a Java class file.</para>
+          <indexterm zone="openjdk javap">
+            <primary sortas="b-javap">javap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="java-rmi.cgi">
+        <term><command>java-rmi.cgi</command></term>
+        <listitem>
+          <para>is the Java RMI client.</para>
+          <indexterm zone="openjdk java-rmi.cgi">
+            <primary sortas="b-java-rmi.cgi">java-rmi.cgi</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jcmd">
+        <term><command>jcmd</command></term>
+        <listitem>
+          <para>is a utility to send diagnostic command requests to a running
+          Java Virtual Machine.</para>
+          <indexterm zone="openjdk jcmd">
+            <primary sortas="b-jcmd">jcmd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jconsole">
+        <term><command>jconsole</command></term>
+        <listitem>
+          <para>is a graphical console tool to monitor and manage both
+          local and remote Java applications and virtual machines.</para>
+          <indexterm zone="openjdk jconsole">
+            <primary sortas="b-jconsole">jconsole</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jdb">
+        <term><command>jdb</command></term>
+        <listitem>
+          <para>is a simple command-line debugger for Java classes.</para>
+          <indexterm zone="openjdk jdb">
+            <primary sortas="b-jdb">jdb</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jdeps">
+        <term><command>jdeps</command></term>
+        <listitem>
+          <para>shows the package-level or class-level dependencies of
+          Java class files.</para>
+          <indexterm zone="openjdk jdeps">
+            <primary sortas="b-jdeps">jdeps</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jhat">
+        <term><command>jhat</command></term>
+        <listitem>
+          <para>parses a java heap dump file and allows viewing it
+          in a web browser.</para>
+          <indexterm zone="openjdk jhat">
+            <primary sortas="b-jhat">jhat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jinfo">
+        <term><command>jinfo</command></term>
+        <listitem>
+          <para>prints Java configuration information for a given Java
+          process, core file, or a remote debug server.</para>
+          <indexterm zone="openjdk jinfo">
+            <primary sortas="b-jinfo">jinfo</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jjs">
+        <term><command>jjs</command></term>
+        <listitem>
+          <para>is a command-line tool used to invoke the Nashorn engine. It
+          can be used to interpret one or several script files, or to run
+          an interactive shell.</para>
+          <indexterm zone="openjdk jjs">
+            <primary sortas="b-jjs">jjs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jmap">
+        <term><command>jmap</command></term>
+        <listitem>
+          <para>prints shared object memory maps or heap memory details
+          of a given process, core file, or a remote debug server.</para>
+          <indexterm zone="openjdk jmap">
+            <primary sortas="b-jmap">jmap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jps">
+        <term><command>jps</command></term>
+        <listitem>
+          <para>lists the instrumented JVMs on the target system.</para>
+          <indexterm zone="openjdk jps">
+            <primary sortas="b-jps">jps</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jrunscript">
+        <term><command>jrunscript</command></term>
+        <listitem>
+          <para>is a command line script shell.</para>
+          <indexterm zone="openjdk jrunscript">
+            <primary sortas="b-jrunscript">jrunscript</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jsadebugd">
+        <term><command>jsadebugd</command></term>
+        <listitem>
+          <para>attaches to a Java process or core file and acts as a
+          debug server.</para>
+          <indexterm zone="openjdk jsadebugd">
+            <primary sortas="b-jsadebugd">jsadebugd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jstack">
+        <term><command>jstack</command></term>
+        <listitem>
+          <para>prints Java stack traces of Java threads for a given
+          Java process, core file, or a remote debug server.</para>
+          <indexterm zone="openjdk jstack">
+            <primary sortas="b-jstack">jstack</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jstat">
+        <term><command>jstat</command></term>
+        <listitem>
+          <para>displays performance statistics for an instrumented JVM.</para>
+          <indexterm zone="openjdk jstat">
+            <primary sortas="b-jstat">jstat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jstatd">
+        <term><command>jstatd</command></term>
+        <listitem>
+          <para>is an RMI server application that monitors for the creation
+          and termination of instrumented JVMs.</para>
+          <indexterm zone="openjdk jstatd">
+            <primary sortas="b-jstatd">jstatd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="keytool">
+        <term><command>keytool</command></term>
+        <listitem>
+          <para>is a key and certificate management utility.</para>
+          <indexterm zone="openjdk keytool">
+            <primary sortas="b-keytool">keytool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="native2ascii">
+        <term><command>native2ascii</command></term>
+        <listitem>
+          <para> converts files that contain non-supported character encoding
+          into files containing Latin-1 or Unicode-encoded characters.</para>
+          <indexterm zone="openjdk native2ascii">
+            <primary sortas="b-native2ascii">native2ascii</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="orbd">
+        <term><command>orbd</command></term>
+        <listitem>
+          <para>is used to enable clients to transparently locate and invoke
+          persistent objects on servers in the CORBA environment.</para>
+          <indexterm zone="openjdk orbd">
+            <primary sortas="b-orbd">orbd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pack200">
+        <term><command>pack200</command></term>
+        <listitem>
+          <para>is a Java application that transforms a jar file into a
+          compressed pack200 file using the Java gzip compressor.</para>
+          <indexterm zone="openjdk pack200">
+            <primary sortas="b-pack200">pack200</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="policytool">
+        <term><command>policytool</command></term>
+        <listitem>
+          <para>creates and manages a policy file graphically.</para>
+          <indexterm zone="openjdk policytool">
+            <primary sortas="b-policytool">policytool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rmic">
+        <term><command>rmic</command></term>
+        <listitem>
+          <para>generates stub and skeleton class files for remote objects
+          from the names of compiled Java classes that contain remote
+          object implementations.</para>
+          <indexterm zone="openjdk rmic">
+            <primary sortas="b-rmic">rmic</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rmid">
+        <term><command>rmid</command></term>
+        <listitem>
+          <para>starts the activation system daemon.</para>
+          <indexterm zone="openjdk rmid">
+            <primary sortas="b-rmid">rmid</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rmiregistry">
+        <term><command>rmiregistry</command></term>
+        <listitem>
+          <para>creates and starts a remote object registry on the specified
+          port on the current host.</para>
+          <indexterm zone="openjdk rmiregistry">
+            <primary sortas="b-rmiregistry">rmiregistry</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="schemagen">
+        <term><command>schemagen</command></term>
+        <listitem>
+          <para>is a Java XML binding schema generator.</para>
+          <indexterm zone="openjdk schemagen">
+            <primary sortas="b-schemagen">schemagen</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="serialver">
+        <term><command>serialver</command></term>
+        <listitem>
+          <para>returns the serialVersionUID for one or more classes in a
+          form suitable for copying into an evolving class.</para>
+          <indexterm zone="openjdk serialver">
+            <primary sortas="b-serialver">serialver</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="servertool">
+        <term><command>servertool</command></term>
+        <listitem>
+          <para>provides an ease-of-use interface for application programmers
+          to register, unregister, startup and shutdown a server.</para>
+          <indexterm zone="openjdk servertool">
+            <primary sortas="b-servertool">servertool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tnameserv">
+        <term><command>tnameserv</command></term>
+        <listitem>
+          <para>starts the Java IDL name server.</para>
+          <indexterm zone="openjdk tnameserv">
+            <primary sortas="b-tnameserv">tnameserv</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="unpack200">
+        <term><command>unpack200</command></term>
+        <listitem>
+          <para>is a native implementation that transforms a packed file
+          produced by <application>pack200</application> into a jar
+          file.</para>
+          <indexterm zone="openjdk unpack200">
+            <primary sortas="b-unpack200">unpack200</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="wsgen">
+        <term><command>wsgen</command></term>
+        <listitem>
+          <para>generates JAX-WS portable artifacts used in JAX-WS
+          web services.</para>
+          <indexterm zone="openjdk wsgen">
+            <primary sortas="b-wsgen">wsgen</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="wsimport">
+        <term><command>wsimport</command></term>
+        <listitem>
+          <para>generates JAX-WS portable artifacts.</para>
+          <indexterm zone="openjdk wsimport">
+            <primary sortas="b-wsimport">wsimport</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xjc">
+        <term><command>xjc</command></term>
+        <listitem>
+          <para>is a Java XML binding compiler.</para>
+          <indexterm zone="openjdk xjc">
+            <primary sortas="b-xjc">xjc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
