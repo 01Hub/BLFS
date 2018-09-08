@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY changelogs  "http://www.linuxfromscratch.org/blfs">
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<!-- vim: set expandtab: -->
+
+<sect1 id="changelog" xreflabel="Change Log">
+  <?dbhtml filename="changelog.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Change Log</title>
+
+  <!-- <para>Please note that the Change Log only lists which editor was
+  responsible for putting the changes into SVN; please read the
+  <xref linkend="credits"/> page in Chapter 1 for details on
+  who wrote what.</para> -->
+
+  <para>Current release: &version; &ndash; &releasedate;</para>
+
+  <itemizedlist>
+    <title>Changelog Entries:</title>
+
+<!-- Changelog template
+    <listitem>
+      <para>MMMM DD{nd,st,th}, YYYY</para>
+      <itemizedlist>
+        <listitem>
+          <para>[name] - Changelog entry.</para>
+        </listitem>
+        <listitem>
+          <para>[name] - Another changelog entry.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+-->
+    <listitem>
+      <para>September 6th, 2018</para>
+      <itemizedlist>
+        <listitem>
+          <para>[renodr] - Update to gtk+-3.24.0. Fixes
+          <ulink url="&blfs-ticket-root;11106">#11106</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[renodr] - Update to gdk-pixbuf-2.38.0. Fixes
+          <ulink url="&blfs-ticket-root;11105">#11105</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[renodr] - Update to pyatspi2-2.30.0. Fixes
+          <ulink url="&blfs-ticket-root;11102">#11102</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[renodr] - Update to at-spi2-atk/at-spi2-core-2.30.0. Fixes
+          <ulink url="&blfs-ticket-root;11104">#11104</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[renodr] - Update to gsettings-desktop-schemas-3.28.1. Partially fixes
+          <ulink url="&blfs-ticket-root;11090">#11090</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[renodr] - Added libpsl. Fixes
+          <ulink url="&blfs-ticket-root;11121">#11121</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[renodr] - Update to libsoup-2.64.0. Fixes
+          <ulink url="&blfs-ticket-root;11103">#11103</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[renodr] - Update to glib-networking-2.58.0. Fixes
+          <ulink url="&blfs-ticket-root;11094">#11094</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to libarchive-3.3.3. Fixes
+          <ulink url="&blfs-ticket-root;11115">#11115</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to keyutils-1.5.11. Fixes
+          <ulink url="&blfs-ticket-root;11073">#11073</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to stunnel-5.49. Fixes
+          <ulink url="&blfs-ticket-root;11099">#11099</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to zsh-5.6. Fixes
+          <ulink url="&blfs-ticket-root;11100">#11100</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[thomas] - Update to tidy-html5-5.6.0. Fixes
+          <ulink url="&blfs-ticket-root;11109">#11109</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[dj] - Update to make-ca-0.9. Fixes
+          <ulink url="&blfs-ticket-root;11114">#11114</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>September 5th, 2018</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to iso-codes-4.1. Fixes
+          <ulink url="&blfs-ticket-root;11116">#11116</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to fuse-3.2.6. Fixes
+          <ulink url="&blfs-ticket-root;11087">#11087</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to gnupg-2.2.10. Fixes
+          <ulink url="&blfs-ticket-root;11084">#11084</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to p11-kit-0.23.14. Fixes
+          <ulink url="&blfs-ticket-root;11072">#11072</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to sysstat-11.6.5. Fixes
+          <ulink url="&blfs-ticket-root;11078">#11078</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to nspr-4.20. Fixes
+          <ulink url="&blfs-ticket-root;11074">#11074</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to xfsprogs-4.18.0. Fixes
+          <ulink url="&blfs-ticket-root;11057">#11057</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[ken] - Update to firefox-62.0. Fixes
+          <ulink url="&blfs-ticket-root;11111">#11111</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[renodr] - Update to vala-0.42.0. Fixes
+          <ulink url="&blfs-ticket-root;11042">#11042</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[renodr] - Update to samba-4.8.5. Fixes
+          <ulink url="&blfs-ticket-root;11059">#11059</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>September 4th, 2018</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to gobject-introspection-1.58.0. Fixes
+          <ulink url="&blfs-ticket-root;11088">#11088</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to sshfs-3.5.0. Fixes
+          <ulink url="&blfs-ticket-root;11080">#11080</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to mesa-18.1.7. Fixes
+          <ulink url="&blfs-ticket-root;11060">#11060</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to glib-2.58.0. Fixes
+          <ulink url="&blfs-ticket-root;11028">#11028</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>September 3rd, 2018</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to gtk-doc-1.29. Fixes
+          <ulink url="&blfs-ticket-root;11075">#11075</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to wayland-1.16.0. Fixes
+          <ulink url="&blfs-ticket-root;11058">#11058</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to nghttp2-1.33.0. Fixes
+          <ulink url="&blfs-ticket-root;11064">#11064</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to fontconfig-2.13.1. Fixes
+          <ulink url="&blfs-ticket-root;11085">#11085</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to pango-1.42.4. Fixes
+          <ulink url="&blfs-ticket-root;11044">#11044</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to openssh-7.8p1 (includes ssh-askpass-7.8p1). Fixes
+          <ulink url="&blfs-ticket-root;11052">#11052</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to sudo-1.8.25. Fixes
+          <ulink url="&blfs-ticket-root;11032">#11032</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[thomas] - Update to at-3.1.23. Fixes
+          <ulink url="&blfs-ticket-root;11077">#11077</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[thomas] - Update to dhcpcd-7.0.8. Fixes
+          <ulink url="&blfs-ticket-root;11043">#11043</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>September 2nd, 2018</para>
+      <itemizedlist>
+        <listitem>
+          <para>[ken] - The command to build firefox is './mach build'
+          not './mach'. Apologies to everyone who hits this.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to nss-3.39. Fixes
+          <ulink url="&blfs-ticket-root;11086">#11086</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to hexchat-2.14.2. Fixes
+          <ulink url="&blfs-ticket-root;11083">#11083</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to libuv-v1.23.0. Fixes
+          <ulink url="&blfs-ticket-root;11025">#11025</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to iso-codes-4.0. Fixes
+          <ulink url="&blfs-ticket-root;11063">#11063</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to rpcbind-1.25. Fixes
+          <ulink url="&blfs-ticket-root;11024">#11024</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to libtirpc-1.1.4. Fixes
+          <ulink url="&blfs-ticket-root;11069">#11069</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to Archive-Zip-1.63 (Perl Module). Fixes
+          <ulink url="&blfs-ticket-root;11053">#11053</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to Text-CSV-1.97 (Perl Module). Fixes
+          <ulink url="&blfs-ticket-root;11030">#11030</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>September 1st, 2018</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Release of BLFS-8.3.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+  </itemizedlist>
+
+</sect1>
