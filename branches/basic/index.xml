@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY xinclude "http://www.w3.org/2001/XInclude">
+]>
+<!--
+$LastChangedBy$
+$Date$
+-->
+
+<book>
+
+  <!-- Front Matter -->
+  <xi:include xmlns:xi="&xinclude;" href="book/bookinfo.xml"/>
+  <xi:include xmlns:xi="&xinclude;" href="intro.xml"/>
+
+  <!-- Content -->
+  <xi:include xmlns:xi="&xinclude;" href="postlfs/config/config.xml"/>
+  <xi:include xmlns:xi="&xinclude;" href="cmdline.xml"/>
+  <xi:include xmlns:xi="&xinclude;" href="admin.xml"/>
+  <xi:include xmlns:xi="&xinclude;" href="support.xml"/>
+  <xi:include xmlns:xi="&xinclude;" href="libraries.xml"/>
+
+  <!-- Appendices -->
+  <xi:include xmlns:xi="&xinclude;" href="appendices/creat-comm.xml"/>
+  <xi:include xmlns:xi="&xinclude;" href="appendices/mit-lic.xml"/>
+
+  <index/>
+
+</book>

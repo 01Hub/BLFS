@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<bookinfo>
+
+  <othername>$LastChangedBy$</othername>
+  <date>$Date$</date>
+
+  <title>Basic Packages for Linux<superscript>&reg;</superscript> From Scratch</title>
+  <subtitle>Version &version;</subtitle>
+
+  <authorgroup>
+    <corpauthor>
+      &copyholder;
+    </corpauthor>
+  </authorgroup>
+
+  <pubdate>&pubdate;</pubdate>
+
+  <copyright id="copyright">
+    <year>2018-&year;</year>  <!-- Yes it will be 2018-1018 for now -->
+    <holder>&copyholder;</holder>
+  </copyright>
+
+  <legalnotice>
+    <para>Copyright &copy; &copyrightdate;, &copyholder;</para>
+
+    <para>All rights reserved.</para>
+
+    <para>This book is licensed under a <xref linkend="CC"/>.</para>
+
+    <para>Computer instructions may be extracted from the book under the
+    <xref linkend="MIT"/>.</para>
+
+    <para><trademark class='registered'>Linux</trademark> is a registered trademark of
+    Linus Torvalds.</para>
+  </legalnotice>
+
+  <revhistory>
+    <revision>
+      <!--<revnumber>&version;</revnumber>-->
+      <date>&pubdate;</date>
+      <revremark>Development Release</revremark>
+    </revision>
+
+  </revhistory>
+
+  <abstract>
+    <para>
+      This book is an excerpt of the Beyond Linux From Scratch book. It 
+      provides suggested applications that are useful for all LFS users.
+    </para>
+  </abstract>
+
+</bookinfo>
