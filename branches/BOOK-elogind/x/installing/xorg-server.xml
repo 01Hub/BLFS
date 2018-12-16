@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY xorg-server-download-http "&xorg-download-http;/xserver/xorg-server-&xorg-server-version;.tar.bz2">
+  <!ENTITY xorg-server-download-ftp  "&xorg-download-ftp;/xserver/xorg-server-&xorg-server-version;.tar.bz2">
+  <!ENTITY xorg-server-md5sum        "8ee29e8b24cef6b3cfa747ec01b9155a">
+  <!ENTITY xorg-server-size          "5.9 MB">
+  <!ENTITY xorg-server-buildsize     "333 MB (with tests)">
+  <!ENTITY xorg-server-time          "0.9 SBU (using parallelism=4; with tests)">
+]>
+
+<sect1 id="xorg-server" xreflabel="Xorg-Server-&xorg-server-version;">
+  <?dbhtml filename="xorg-server.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Xorg-Server-&xorg-server-version;</title>
+
+  <indexterm zone="xorg-server">
+    <primary sortas="a-xorg-server">xorg-server</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Xorg Server</title>
+
+    <para>
+      The <application>Xorg</application> Server is the core
+      of the X Window system.
+    </para>
+
+    &lfs83_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&xorg-server-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&xorg-server-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &xorg-server-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &xorg-server-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &xorg-server-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &xorg-server-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+<!-- Prime support is now automatically added in DRI3, and this patch
+     may break things on some setups.
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Optional patch:
+          <ulink url="&patch-root;/xorg-server-&xorg-server-version;-add_prime_support-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>-->
+
+    <bridgehead renderas="sect3">Xorg Server Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="pixman"/> and
+      <xref linkend="xorg7-font"/> (for the font-util package), and at runtime:
+      <xref role="runtime" linkend="xkeyboard-config"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended" revision="sysv">
+      <xref linkend="libepoxy"/> (required for glamor, see command
+      explanations below)
+    </para>
+    <para role="recommended" revision="systemd">
+      <xref linkend="libepoxy"/> (needed for glamor and Xwayland),
+      <xref linkend="wayland"/> (needed for Xwayland),
+      <xref linkend="wayland-protocols"/>, and
+      <xref linkend="systemd"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref role="runtime" linkend="acpid"/> (runtime),
+      <xref linkend="doxygen"/> (to build API documentation),
+      <xref linkend="fop"/> (to build documentation),
+      <xref linkend="nettle"/>,
+      <xref linkend="libgcrypt"/>,
+      <xref linkend="xcb-util-keysyms"/>,
+      <xref linkend="xcb-util-image"/>,
+      <xref linkend="xcb-util-renderutil"/>,
+      <xref linkend="xcb-util-wm"/> (all three to build Xephyr),
+      <xref linkend="xmlto"/> (to build documentation),
+      <phrase revision="sysv"><xref linkend="wayland"/> (needed for Xwayland),
+      <xref linkend="wayland-protocols"/>,</phrase>
+      <ulink url="http://download.savannah.gnu.org/releases/libunwind">libunwind</ulink>, and
+      <ulink url="https://www.x.org/archive/individual/doc/">xorg-sgml-doctools</ulink> (to build documentation)
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+      <ulink url='&blfs-wiki;/Xorg7Server'/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Xorg Server</title>
+<!-- Patch removed
+    <para>
+      If you have downloaded the optional patch, apply it by running the
+      following command:
+    </para>
+
+<screen><userinput>patch -Np1 -i ../xorg-server-&xorg-server-version;-add_prime_support-1.patch</userinput></screen>-->
+
+    <para>
+      Install the server by running the following commands:
+    </para>
+
+<screen revision="sysv"><userinput>./configure $XORG_CONFIG            \
+           --enable-glamor          \
+           --enable-install-setuid  \
+           --enable-suid-wrapper    \
+           --disable-systemd-logind \
+           --with-xkb-output=/var/lib/xkb &amp;&amp;
+make</userinput></screen>
+
+<screen revision="systemd"><userinput>./configure $XORG_CONFIG          \
+            --enable-glamor       \
+            --enable-suid-wrapper \
+            --with-xkb-output=/var/lib/xkb &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>. You
+      will need to run <command>ldconfig</command> as the <systemitem
+      class="username">root</systemitem> user first or some tests may fail.
+    </para>
+
+    <para>
+      Now as the <systemitem class="username">root</systemitem>
+      user:
+    </para>
+
+<screen role="root" revision="sysv"><userinput>make install &amp;&amp;
+mkdir -pv /etc/X11/xorg.conf.d &amp;&amp;
+cat &gt;&gt; /etc/sysconfig/createfiles &lt;&lt; "EOF"
+<literal>/tmp/.ICE-unix dir 1777 root root
+/tmp/.X11-unix dir 1777 root root</literal>
+EOF</userinput></screen>
+
+<screen role="root" revision="systemd"><userinput>make install &amp;&amp;
+mkdir -pv /etc/X11/xorg.conf.d</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--enable-glamor</parameter>: Build the Glamor DIX (Device
+      Independent X) module which is currently used by: R600 or later radeon
+      video chipsets, the modesetting driver (which is part of this package)
+      for hardware using KMS which offers acceleration, and (optionally) the
+      intel driver.
+    </para>
+
+    <para revision="sysv">
+      <parameter>--enable-install-setuid</parameter>: The Xorg binary must run
+      as the root user. This switch ensures that the binary is installed
+      setuid when <command>make</command> is run by an unprivileged user.
+    </para>
+
+    <para>
+      <parameter>--enable-suid-wrapper</parameter>: Build suid-root wrapper for
+      legacy driver support on rootless xserver systems.
+    </para>
+
+    <para revision="sysv">
+      <parameter>--disable-systemd-logind</parameter>: Do not build
+      systemd-logind support, otherwise, an error (EE), logged in
+      <filename>/var/log/Xorg.0.log</filename>, occurs when starting the X
+      server.  Systemd is not supported by this (sysv) version of BLFS.
+    </para>
+
+    <para revision="systemd">
+      <option>--disable-systemd-logind --enable-install-setuid</option>:
+      These switches disable systemd-logind integration and restore the setuid
+      bit to the Xorg executable, allowing Xorg Server to work
+      without having the systemd PAM module installed and set up.
+    </para>
+
+    <para revision="sysv">
+      <command>cat &gt;&gt; /etc/sysconfig/createfiles...</command>: This
+      command creates the <filename class="directory">/tmp/.ICE-unix</filename>
+      and <filename class="directory">/tmp/.X11-unix</filename> directories at
+      startup, and ensures that the permissions and ownership are correct as
+      required by the server.
+    </para>
+
+    <para>
+      <option>--enable-dmx</option>: Build DMX (Distributed Multihead X)
+      server.
+    </para>
+
+    <para>
+      <option>--enable-kdrive</option>: this option allows the
+      <command>configure</command> script to enable Xephyr if its dependencies
+      are met.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          cvt, gtf, X, Xnest, Xorg, and Xvfb; optional: dmxaddinput,
+          dmxaddscreen, dmxinfo, dmxreconfig, dmxresize, dmxrminput,
+          dmxrmscreen, dmxtodmx, dmxwininfo, vdltodmx, Xdmx, xdmxconfig, Xephyr,
+          Xfbdev and Xwayland
+        </seg>
+        <seg>
+          several under $XORG_PREFIX/lib/xorg/modules/{,drivers,extensions}
+          including modesetting_drv.so
+        </seg>
+        <seg>
+          $XORG_PREFIX/{include/xorg,lib/xorg,share/X11/xorg.conf.d} and
+          /var/lib/xkb
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="cvt-x7">
+        <term><command>cvt</command></term>
+        <listitem>
+          <para>
+            calculates VESA CVT mode lines.
+          </para>
+          <indexterm zone="xorg-server cvt-x7">
+            <primary sortas="b-cvt">cvt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="dmx-x7">
+        <term><command>dmx*</command></term>
+        <listitem>
+          <para>
+            are various tools used for manipulating the dmx server.
+          </para>
+          <indexterm zone="xorg-server dmx-x7">
+            <primary sortas="b-dmx">dmx*</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gtf-x7">
+        <term><command>gtf</command></term>
+        <listitem>
+          <para>
+            calculates VESA GTF mode lines.
+          </para>
+          <indexterm zone="xorg-server gtf-x7">
+            <primary sortas="b-gtf">gtf</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="vdltodmx-x7">
+        <term><command>vdltodmx</command></term>
+        <listitem>
+          <para>
+            is a tool used to convert VDL config files to DMX config
+            files.
+          </para>
+          <indexterm zone="xorg-server vdltodmx-x7">
+            <primary sortas="b-vdltodmx">vdltodmx</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="X-x7">
+        <term><command>X</command></term>
+        <listitem>
+          <para>
+            is a symbolic link to Xorg.
+          </para>
+          <indexterm zone="xorg-server X-x7">
+            <primary sortas="b-X">X</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+     <varlistentry id="Xdmx">
+        <term><command>Xdmx</command></term>
+        <listitem>
+          <para>
+            is a proxy X server that uses one or more other X servers as
+            its display devices.
+          </para>
+          <indexterm zone="xorg-server Xdmx">
+            <primary sortas="b-Xdmx">Xdmx</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="Xephyr-x7">
+        <term><command>Xephyr</command></term>
+        <listitem>
+          <para>
+            is a nested X server which supports modern X extensions.
+          </para>
+          <indexterm zone="xorg-server Xephyr-x7">
+            <primary sortas="b-Xephyr">Xephyr</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="Xnest-x7">
+        <term><command>Xnest</command></term>
+        <listitem>
+          <para>
+            is a nested X server.
+          </para>
+          <indexterm zone="xorg-server Xnest-x7">
+            <primary sortas="b-Xnest">Xnest</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="Xorg-x7">
+        <term><command>Xorg</command></term>
+        <listitem>
+          <para>
+            is the X11R7 X Server.
+          </para>
+          <indexterm zone="xorg-server Xorg-x7">
+            <primary sortas="b-Xorg">Xorg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="Xvfb-x7">
+        <term><command>Xvfb</command></term>
+        <listitem>
+          <para>
+            is the virtual framebuffer X server for X Version 11.
+          </para>
+          <indexterm zone="xorg-server Xvfb-x7">
+            <primary sortas="b-Xvfb">Xvfb</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xdmxconfig-x7">
+        <term><command>xdmxconfig</command></term>
+        <listitem>
+          <para>
+            is a graphical configuration utility for the dmx server.
+          </para>
+          <indexterm zone="xorg-server xdmxconfig-x7">
+            <primary sortas="b-xdmxconfig">xdmxconfig</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="Xwayland-x7">
+        <term><command>Xwayland</command></term>
+        <listitem>
+          <para>
+            allows the X server to run X clients under wayland (i.e. wayland
+            provides the input devices and handles the presentation of the
+            windows).
+          </para>
+          <indexterm zone="xorg-server Xwayland-x7">
+            <primary sortas="b-Xwayland">Xwayland</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="modesetting_drv-x7">
+        <term><filename class="libraryfile">modesetting_drv.so</filename></term>
+        <listitem>
+          <para>
+            provides a video driver for machines using Kernel Mode Setting (KMS).
+            This will use glamor if that has been enabled and the hardware offers
+            acceleration.
+          </para>
+          <indexterm zone="xorg-server modesetting_drv-x7">
+            <primary sortas="c-modesetting_drv">modesetting_drv.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
