@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+  <!ENTITY inkscape-download-http "https://media.inkscape.org/dl/resources/file/inkscape-&inkscape-version;.tar.bz2">
+  <!ENTITY inkscape-download-ftp  " ">
+  <!ENTITY inkscape-md5sum        "ac30f6d5747fd9c620c00dad500f414f">
+  <!ENTITY inkscape-size          "30 MB">
+  <!ENTITY inkscape-buildsize     "399 MB (add 135 MB for tests)">
+  <!ENTITY inkscape-time          "4.5 SBU (add 0.2 SBU for tests, both with parallelism=4)">
+]>
+
+<sect1 id="inkscape" xreflabel="Inkscape-&inkscape-version;">
+  <?dbhtml filename="inkscape.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Inkscape-&inkscape-version;</title>
+
+  <indexterm zone="inkscape">
+    <primary sortas="a-Inkscape">Inkscape</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Inkscape</title>
+
+    <para>
+      <application>Inkscape</application> is a what you see is what you get
+      Scalable Vector Graphics editor. It is useful for creating, viewing and
+      changing SVG images.
+    </para>
+
+    &lfs83_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&inkscape-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&inkscape-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &inkscape-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &inkscape-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &inkscape-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &inkscape-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Required patch: <ulink url="&patch-root;/inkscape-&inkscape-version;-use_versioned_ImageMagick6-1.patch"/></para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Inkscape Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="boost"/>,
+      <xref linkend="gc"/>,
+      <xref linkend="gsl"/>,
+      <xref linkend="gtkmm2"/>
+      (or <xref linkend="gtkmm3"/> and
+      <ulink url="http://ftp.gnome.org/pub/gnome/sources/gdl/">gnome docking library</ulink>
+      for the experimental gtk+-3 build),
+      <xref linkend="libxslt"/>,
+      <xref linkend="poppler"/>,
+      <xref linkend="popt"/> and
+      <xref linkend="wget"/> (to download the test dependencies)
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="imagemagick6"/>,
+      <xref linkend="lcms2"/> or
+      <xref linkend="lcms"/>,
+      <xref linkend="potrace"/> (for the bucket-fill tool),
+      <xref role="runtime" linkend="lxml"/> and
+      <xref role="runtime" linkend="scour"/> (both at runtime, for Save As
+        Optimized SVG).
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="aspell"/>,
+      <xref linkend="dbus"/> (to run inkscape from scripts),
+      <xref linkend="doxygen"/>,
+
+      <!-- these document foundation links work from firefox's address bar, or
+      from google (pages telling you how to get it from git), but when I link
+      them here I get "There is currently no text in this page...". Ken or
+      developer: wiki.documentfoundation.org pages don't like trailing / -->
+      <!--<ulink url="https://wiki.documentfoundation.org/DLP/Libraries/libcdr">libcdr</ulink>,
+      <ulink url="https://wiki.documentfoundation.org/DLP/Libraries/libvisio">libvisio</ulink>,-->
+      <ulink url="https://github.com/LibreOffice/libcdr">libcdr</ulink>,
+      <ulink url="https://github.com/LibreOffice/libvisio">libvisio</ulink>,
+      <ulink url="http://libwpg.sourceforge.net/">libwpg</ulink> (or
+      <ulink url="http://libwpd.sourceforge.net/">libwpd</ulink>) and
+      <ulink role="runtime"
+             url="https://sourceforge.net/projects/NumPy/files/">NumPy</ulink>
+      (at runtime for some extensions)
+    </para>
+
+    <bridgehead renderas="sect4">Optional Runtime Dependencies
+    (for some of the Inkscape extensions)</bridgehead>
+    <para role="optional">
+      <ulink role="runtime"
+             url="https://metacpan.org/pod/release/TJMATHER/XML-XQL-0.68/lib/XML/XQL.pm">XML::XQL</ulink>
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/inkscape"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Inkscape</title>
+ 
+    <para>
+      Ensure that the libraries from <xref linkend="imagemagick6"/> can be used:
+    </para>
+
+<screen><userinput>patch -Np1 -i ../inkscape-&inkscape-version;-use_versioned_ImageMagick6-1.patch</userinput></screen>
+
+<!-- If there is no test suite, then this is not needed.
+     There is none if the command below is not run. -->
+    <para>
+      If you wish to run the testsuite, download the required versions of
+      <application>googletest</application> and
+      <application>googlemock</application> by running:
+    </para>
+
+<screen><userinput>bash download-gtest.sh</userinput></screen>
+
+    <para>
+      Install <application>Inkscape</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      ..                          &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.<!-- Ken or
+      other devs, there is no test suite in this package. -renodr
+      A small test suite is built if you download the necessary programs
+      with the command above (bash download-gtest.sh) -pierre
+      This package does not come with a test suite. -->
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install                      &amp;&amp;
+rm -v /usr/lib/inkscape/lib*_LIB.a</userinput></screen>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/update-icons-and-desktop.xml"/>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>-DCMAKE_BUILD_TYPE=Release</parameter>: This switch is used to
+      build the release library without any debug `assert` in the code.
+    </para>
+
+    <para>
+      <parameter>rm -v /usr/lib/inkscape/lib*_LIB.a</parameter>: The conversion
+      of the package to use <command>cmake</command> has led to these libraries
+      getting installed, but they are not usable (there are no header files to
+      let a program know what they contain). So remove them.
+    </para>
+
+    <para>
+      <option>-DWITH_DBUS=ON</option>: use this if you wish to use
+      <command>inkscape</command> in interactive scripts which manipulate
+      images.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          inkscape and inkview
+        </seg>
+        <seg>
+          libinkscape_base.so
+        </seg>
+        <seg>
+          /usr/lib/inkscape and /usr/share/inkscape
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="inkscape-prog">
+        <term><command>inkscape</command></term>
+        <listitem>
+          <para>
+            an SVG (Scalable Vector Graphics) editing program.
+          </para>
+          <indexterm zone="inkscape inkscape-prog">
+            <primary sortas="b-inkscape">inkscape</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="inkview">
+        <term><command>inkview</command></term>
+        <listitem>
+          <para>
+            is a simple program for displaying SVG files.
+          </para>
+          <indexterm zone="inkscape inkview">
+            <primary sortas="b-inkview">inkview</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libinkscape_base">
+        <term><filename class="libraryfile">libinkscape_base.so</filename></term>
+        <listitem>
+          <para>
+            provides the routines used by inkscape and inkview.
+          </para>
+          <indexterm zone="inkscape libinkscape_base">
+            <primary sortas="c-libinkscape_base">libinkscape_base.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

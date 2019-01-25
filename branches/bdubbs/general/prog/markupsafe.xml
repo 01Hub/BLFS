@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY MarkupSafe-download-http "&pymodules-dl;/M/MarkupSafe/MarkupSafe-&MarkupSafe-version;.tar.gz">
+  <!ENTITY MarkupSafe-download-ftp  " ">
+  <!ENTITY MarkupSafe-md5sum        "49e3f3230cedb7ae34faf06913db83fc">
+  <!ENTITY MarkupSafe-size          "18 KB">
+  <!ENTITY MarkupSafe-buildsize     "548 KB">
+  <!ENTITY MarkupSafe-time          "less than 0.1 SBU">
+]>
+
+  <!-- Begin MarkupSafe -->
+  <sect2 id="MarkupSafe" xreflabel="MarkupSafe-&MarkupSafe-version;">
+
+    <title>MarkupSafe-&MarkupSafe-version;</title>
+
+    <indexterm zone="MarkupSafe">
+      <primary sortas="a-MarkupSafe">MarkupSafe</primary>
+    </indexterm>
+
+    <sect3 role="package">
+      <title>Introduction to MarkupSafe Module</title>
+
+      <para>
+        <application>MarkupSafe</application> is a <application>Python</application>
+        module that implements a XML/HTML/XHTML Markup safe string.
+      </para>
+
+      &lfs83_checked;
+
+      <bridgehead renderas="sect4">Package Information</bridgehead>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            Download (HTTP): <ulink url="&MarkupSafe-download-http;"/>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Download (FTP): <ulink url="&MarkupSafe-download-ftp;"/>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Download MD5 sum: &MarkupSafe-md5sum;
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Download size: &MarkupSafe-size;
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Estimated disk space required: &MarkupSafe-buildsize;
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Estimated build time: &MarkupSafe-time;
+          </para>
+        </listitem>
+      </itemizedlist>
+
+      <para condition="html" role="usernotes">
+        User Notes: <ulink url="&blfs-wiki;/MarkupSafe"/>
+      </para>
+    </sect3>
+
+    <sect3 role="installation">
+      <title>Installation of MarkupSafe</title>
+<!-- Editors note: Use - -root= instead of DESTDIR= when updating. -->
+
+      <para>
+        To build the module, run the following command:
+      </para>
+
+<screen><userinput>python3 setup.py build</userinput></screen>
+
+      <para>
+        To install the module, run the following command as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>python3 setup.py install --optimize=1</userinput></screen>
+
+    </sect3>
+
+    <sect3 role="content">
+      <title>Contents</title>
+
+      <segmentedlist>
+        <segtitle>Installed Programs</segtitle>
+        <segtitle>Installed Libraries</segtitle>
+        <segtitle>Installed Directories</segtitle>
+
+        <seglistitem>
+          <seg>
+            None
+          </seg>
+          <seg>
+            None
+          </seg>
+          <seg>
+            /usr/lib/python&python3-majorver;/site-packages/markupsafe and 
+            /usr/lib/python&python3-majorver;/site-packages/MarkupSafe-&MarkupSafe-version;-py&python3-majorver;.egg-info
+          </seg>
+        </seglistitem>
+      </segmentedlist>
+
+    </sect3>
+
+  </sect2>
+  <!--End MarkupSafe -->
