@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY boost-download-http "https://dl.bintray.com/boostorg/release/&boost-version;/source/boost_&boost-dl-version;.tar.bz2">
+  <!ENTITY boost-download-ftp  " ">
+  <!ENTITY boost-md5sum        "a1332494397bf48332cb152abfefcec2">
+  <!ENTITY boost-size          "91 MB">
+  <!ENTITY boost-buildsize     "927 MB (168 MB installed)">
+  <!ENTITY boost-time          "1.7 SBU (Using parallelism=4; add 1.1 SBU for tests)">
+]>
+
+<sect1 id="boost" xreflabel="Boost-&boost-version;">
+  <?dbhtml filename="boost.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Boost-&boost-version;</title>
+
+  <indexterm zone="boost">
+    <primary sortas="a-Boost">Boost</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Boost</title>
+
+    <para>
+      <application>Boost</application> provides a set of free peer-reviewed
+      portable C++ source libraries. It includes libraries for linear algebra,
+      pseudorandom number generation, multithreading, image processing, regular
+      expressions and unit testing.
+    </para>
+
+    &lfs84_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&boost-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&boost-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &boost-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &boost-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &boost-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &boost-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Boost Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="which"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="icu"/>,
+      <xref linkend="python2"/>, and
+      <ulink url="https://www.open-mpi.org/">Open MPI</ulink>
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+      <ulink url="&blfs-wiki;/boost"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Boost</title>
+<!--
+    <para>
+      First, fix a bug with the header files path, when Python3 is used:
+    </para>
+
+<screen><userinput>sed -e '/using python/ s@;@: /usr/include/python${PYTHON_VERSION/3*/${PYTHON_VERSION}m} ;@' \
+    -i bootstrap.sh</userinput></screen>
+-->
+    <para>
+      Install <application>Boost</application> by running the following
+      commands:
+    </para>
+
+
+<screen><userinput>./bootstrap.sh --prefix=/usr &amp;&amp;
+./b2 stage threading=multi link=shared</userinput></screen>
+
+    <para>
+      To run the Boost.Build's regression test, <xref linkend="python2"/>
+      is required.
+      Run the tests with: issue <command>pushd tools/build/test; 
+      python test_all.py; popd</command>. 
+      All 150 tests should pass.
+    </para>
+
+    <para>
+      To run every library's regression tests, issue <command>pushd status;
+      ../b2; popd</command>.  A few tests may fail. They take a very long time
+      (over 119 SBU at -j4) and use a very large amount of disk space
+      (46 GB). You should use the <parameter>-jN</parameter> switch to
+      speed them up.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<!-- dev note: ./b2 - -prefix=<DESTDIR>/usr install threading=multi link=shared -->
+
+<screen role="root"><userinput>./b2 install threading=multi link=shared                 &amp;&amp;
+ln -svf detail/sha1.hpp /usr/include/boost/uuid/sha1.hpp</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>threading=multi</parameter>: This parameter ensures that
+      <application>Boost</application> is built with multithreading support.
+    </para>
+
+    <para>
+      <parameter>link=shared</parameter>: This parameter ensures that only
+      shared libraries are created, except for libboost_exception and
+      libboost_test_exec_monitor which are created as static. Most people
+      will not need the static libraries, and most programs using
+      <application>Boost</application> only use the headers. Omit
+      this parameter if you do need static libraries.
+    </para>
+
+    <para>
+      <parameter>ln -svf detail/sha1.hpp ...</parameter>: The
+      <filename>uuid/sha1.hpp</filename> used to be a regular header, but by
+      boost_1_66_0 it had been changed to load the similar
+      <filename>detail/sha1.hpp</filename> header, with a message that it had
+      been deprecated. It has now been removed, but not every package which uses
+      it has been changed. An example is one of the libraries downloaded as a
+      git version by libreoffice. The symlink enables this and similar packages
+      to build.
+    </para>
+
+    <para>
+       <option>-jN</option>: This switch may be added to the
+       <command>b2</command> command lines, to run up to N processes in
+       parallel.
+    </para>
+
+    <para>
+      <option>--with-python=python3</option>: Add this switch to the <command>
+      bootstrap</command> command, if you want Boost
+      to use Python3 instead of Python2.  Using Python3 is known to cause the
+      installation to fail on some systems.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>
+          None
+        </seg>
+        <seg>
+          libboost_atomic.so, libboost_chrono.a, libboost_chrono.so,
+          libboost_container.so, libboost_context.so, libboost_coroutine.so,
+          libboost_date_time.so, libboost_exception.a, libboost-fiber.so,
+          libboost_filesystem.so,
+          libboost_graph.so, libboost_iostreams.so, libboost_locale.so,
+          libboost_log_setup.so, libboost_log.so, libboost_math_c99.so,
+          libboost_math_c99f.so, libboost_math_c99l.so, libboost_math_tr1.so,
+          libboost_math_tr1f.so, libboost_math_tr1l.so,
+          libboost_prg_exec_monitor.so, libboost_program_options.so,
+          libboost_python27.so or libboost_python3.so, libboost_random.so,
+          libboost_regex.so, libboost_serialization.so, libboost_signals.so,
+          libboost_stacktrace_addr2line.so, libboost_stacktrace_basic.so,
+          libboost_stacktrace_noop.so,
+          libboost_system.a, libboost_system.so, libboost_test_exec_monitor.a,
+          libboost_thread.so, libboost_timer.a, libboost_timer.so,
+          libboost_type_erasure.so,
+          libboost_unit_test_framework.so,
+          libboost_wave.so, and libboost_wserialization.so
+        </seg>
+        <seg>
+          /usr/include/boost
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY cryptsetup-download-http "&kernel-dl;/linux/utils/cryptsetup/v&cryptsetup-minor;/cryptsetup-&cryptsetup-version;.tar.xz">
+  <!ENTITY cryptsetup-download-ftp  " ">
+  <!ENTITY cryptsetup-md5sum        "ec03e09cbe978a19fa6d6194ac642bae">
+  <!ENTITY cryptsetup-size          "10 MB">
+  <!ENTITY cryptsetup-buildsize     "25 MB (add 9 MB for tests)">
+  <!ENTITY cryptsetup-time          "0.2 SBU (add 12 SBU for tests)">
+]>
+
+<sect1 id="cryptsetup" xreflabel="cryptsetup-&cryptsetup-version;">
+  <?dbhtml filename="cryptsetup.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>cryptsetup-&cryptsetup-version;</title>
+
+  <indexterm zone="cryptsetup">
+    <primary sortas="a-cryptsetup">cryptsetup</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to cryptsetup</title>
+
+    <para>
+      cryptsetup is used to set up transparent encryption of block devices
+      using the kernel crypto API. 
+    </para>
+
+    &lfs84_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&cryptsetup-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&cryptsetup-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &cryptsetup-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &cryptsetup-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &cryptsetup-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &cryptsetup-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">cryptsetup Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="json-c"/>,
+      <xref linkend="libgcrypt"/>,
+      <xref linkend="lvm2"/>, and
+      <xref linkend="popt"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="libpwquality"/>,
+      <xref linkend="python2"/>, and
+      <ulink url="http://www.openwall.com/passwdqc/">passwdqc</ulink>
+    </para>
+
+
+    <para condition="html" role="usernotes">User Notes:
+      <ulink url="&blfs-wiki;/cryptsetup"/>
+    </para>
+  </sect2>
+
+  <sect2 role="kernel" id="cryptsetup-kernel">
+    <title>Kernel Configuration</title>
+
+    <para>
+      Encrypted block devices require kernel support.  To use it, the
+      appropriate kernel configuration parameters need to be set:
+    </para>
+
+<screen><literal>Device Drivers  ---&gt;          
+  [*] Multiple devices driver support (RAID and LVM) ---&gt; [CONFIG_MD]
+       &lt;*/M&gt; Device mapper support                        [CONFIG_BLK_DEV_DM]
+       &lt;*/M&gt; Crypt target support                         [CONFIG_DM_CRYPT]
+
+Cryptographic API  ---&gt;                                    
+  &lt;*/M&gt; XTS support                                       [CONFIG_CRYPTO_XTS]
+  &lt;*/M&gt; SHA224 and SHA256 digest algorithm                [CONFIG_CRYPTO_SHA256]
+  &lt;*/M&gt; AES cipher algorithms                             [CONFIG_CRYPTO_AES]
+  &lt;*/M&gt; AES cipher algorithms (x86_64)                    [CONFIG_CRYPTO_AES_X86_64] 
+  &lt;*/M&gt; User-space interface for symmetric key cipher algorithms
+                                                          [CONFIG_CRYPTO_USER_API_SKCIPHER]
+  For tests:
+  &lt;*/M&gt; Twofish cipher algorithm                          [CONFIG_CRYPTO_TWOFISH]</literal></screen>
+
+    <indexterm zone="cryptsetup cryptsetup-kernel">
+      <primary sortas="d-cryptsetup">cryptsetup</primary>
+    </indexterm>
+
+  </sect2>
+
+    <sect2 role="installation">
+      <title>Installation of cryptsetup</title>
+
+    <para>
+      Install <application>cryptsetup</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr \
+            --with-crypto_backend=openssl &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the result, issue as the <systemitem
+      class="username">root</systemitem> user: <command>make check</command>.
+      Some tests may fail if the kernel configuration parameters above are not
+      set. One (of 12) tests is known to fail.
+    </para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--with-crypto_backend=openssl</parameter>:
+    This parameter selects the cryptographic libraries to use
+    with the application.  <application>gcrypt</application>
+    is the default.</para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring cryptsetup</title>
+
+    <para>
+      Because of the number of possible configurations, setup of encrypted
+      volumes is beyond the scope of the BLFS book. Please see the
+      configuration guide in the cryptsetup <ulink
+      url="https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions#2-setup">
+      FAQ</ulink>.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          cryptsetup,
+          cryptsetup-reencrypt,
+          integritysetup, and
+          veritysetup
+        </seg>
+        <seg>
+          libcryptsetup.so
+        </seg>
+        <seg>
+          None          
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="cryptsetup-prog">
+        <term><command>cryptsetup</command></term>
+        <listitem>
+          <para>
+             is used to setup dm-crypt managed device-mapper mappings.
+          </para>
+          <indexterm zone="cryptsetup cryptsetup-prog">
+            <primary sortas="b-cryptsetup">cryptsetup</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cryptsetup-reencrypt">
+        <term><command>cryptsetup-reencrypt</command></term>
+        <listitem>
+          <para>
+             is a for offline LUKS device re-encryption.
+          </para>
+          <indexterm zone="cryptsetup cryptsetup-reencrypt">
+            <primary sortas="b-cryptsetup-reencrypt">cryptsetup-reencrypt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="integritysetup">
+        <term><command>integritysetup</command></term>
+        <listitem>
+          <para>
+             is a tool to manage dm-integrity (block level integrity) volumes.
+          </para>
+          <indexterm zone="cryptsetup integritysetup">
+            <primary sortas="b-integritysetup">integritysetup</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="veritysetup">
+        <term><command>veritysetup</command></term>
+        <listitem>
+          <para>
+             is used to configure dm-verity managed device-mapper mappings.
+             Device-mapper verity target provides read-only transparent integrity
+             checking of block devices using kernel crypto API.
+          </para>
+          <indexterm zone="cryptsetup veritysetup">
+            <primary sortas="b-veritysetup">veritysetup</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
