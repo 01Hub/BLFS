@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+ <!ENTITY % general-entities SYSTEM "../../general.ent">
+ %general-entities;
+
+  <!-- kf5-download-http is defined on patches.ent
+  <!ENTITY kf5-download-http "&kf5-download-http;"> -->
+  <!ENTITY kf5-download-ftp  " ">
+  <!ENTITY kf5-md5sum        "See Below">
+  <!ENTITY kf5-size          "261 MB">
+  <!ENTITY kf5-buildsize     "1.1 GB (228 MB installed)">
+  <!ENTITY kf5-time          "16 SBU (using parallelism=4)">
+]>
+
+<sect1 id="kf5-frameworks" xreflabel="KDE Frameworks-&kf5-version;">
+  <?dbhtml filename="krameworks5.html"?>
+
+  <sect1info>
+     <othername>$LastChangedBy$</othername>
+     <date>$Date$</date>
+  </sect1info>
+
+  <title>Building KDE Frameworks 5 (KF5)</title>
+
+  <indexterm zone="kf5-frameworks">
+     <primary sortas="a-kde-frameworks">KDE Frameworks</primary>
+  </indexterm>
+
+  <para>KDE Frameworks 5 is a collection of libraries based on top of Qt5 and
+  QML derived from the monolithic KDE 4 libraries. They can be used
+  independent of the KDE Display Environment (Plasma 5).</para>
+
+  &lfs90_checked;
+
+  <para>The instructions below build all of the KDE Frameworks packages in one
+  step by using a bash script.  </para>
+
+  <bridgehead renderas="sect3">Package Information</bridgehead>
+  <itemizedlist spacing="compact">
+    <listitem>
+      <para>Download (HTTP): <ulink url="&kf5-download-http;"/></para>
+    </listitem>
+    <listitem>
+      <para>Download (FTP): <ulink url="&kf5-download-ftp;"/></para>
+    </listitem>
+    <listitem>
+      <para>Download MD5 sum: &kf5-md5sum;</para>
+    </listitem>
+    <listitem>
+      <para>Download size: &kf5-size;</para>
+    </listitem>
+    <listitem>
+      <para>Estimated disk space required: &kf5-buildsize;</para>
+    </listitem>
+    <listitem>
+      <para>Estimated build time: &kf5-time;</para>
+    </listitem>
+  </itemizedlist>
+
+  <bridgehead renderas="sect3">KF5 Dependencies</bridgehead>
+
+  <bridgehead renderas="sect4">Required</bridgehead>
+  <para role="required">
+    <xref linkend="boost"/>,
+    <xref linkend="extra-cmake-modules"/>,
+    <xref linkend="DocBook"/>,
+    <xref linkend="docbook-xsl"/>,
+    <xref linkend="giflib"/>,
+    <xref linkend="libepoxy"/>,
+    <xref linkend="libgcrypt"/>,
+    <xref linkend="libjpeg"/>,
+    <xref linkend="libpng"/>,
+    <xref linkend="libxslt"/>,
+    <xref linkend="lmdb"/>,
+    <!--<xref linkend="openssl10"/>,-->
+    <!--<xref linkend="qtwebkit5"/>,-->
+    <xref linkend="phonon"/>,
+    <xref linkend="shared-mime-info"/>,
+    <xref linkend="perl-uri"/>, and
+    <xref linkend="wget"/> (required to download the packages)
+  </para>
+
+  <bridgehead renderas="sect4">Recommended</bridgehead>
+  <para role="recommended">
+    <xref linkend="aspell"/> (Dictionary backend for Sonnet),
+    <xref linkend="avahi"/> (DNS-SD backend for KDNSSD),
+    <xref linkend="libdbusmenu-qt"/> (built with qt5),
+    <xref linkend="NetworkManager"/> (needed to build NetworkManager-Qt), and
+    <xref linkend="polkit-qt"/> (Authentication backend for KAuth)
+  </para>
+
+  <para role="recommended">
+    Furthermore, the instructions below assume that the environment has been
+    set up as described in <xref linkend="kf5-intro"/>.
+  </para>
+
+  <bridgehead renderas="sect4">Optional</bridgehead>
+  <para role="optional">
+    <xref linkend="bluez"/> (needed to build Bluez-Qt),
+    <xref linkend="ModemManager"/> (needed to build ModemManager-Qt)
+  </para>
+
+  <bridgehead renderas="sect4">Runtime dependency for FrameworkIntegration</bridgehead>
+  <para role="optional">
+    <xref role="runtime" linkend="oxygen-fonts"/> and 
+    <xref role="runtime" linkend="noto-fonts"/> 
+  </para>
+
+  <bridgehead renderas="sect4">Runtime dependencies for kapidox</bridgehead>
+  <para role="optional">
+    <xref role="runtime" linkend="doxygen"/>,
+    <xref role="runtime" linkend="Jinja2"/>, and
+    <xref role="runtime" linkend="PyYAML"/>
+  </para>
+
+  <bridgehead renderas="sect4">Additional image formats support in KImageFormats</bridgehead>
+  <para role="optional">
+    <xref linkend="jasper"/> and
+    <ulink url="http://www.openexr.com/">OpenEXR</ulink>
+  </para>
+
+  <bridgehead renderas="sect4">Optional dependencies for KIO</bridgehead>
+  <para role="optional">
+    <xref linkend="mitkrb"/>
+  </para>
+
+  <bridgehead renderas="sect4">Optional dependencies for Solid</bridgehead>
+  <para role="optional">
+    <xref linkend="udisks2"/>,
+    <xref linkend="upower"/> and
+    <ulink role="runtime" url="http://www.freedesktop.org/software/media-player-info/">media-player-info</ulink> (runtime)
+  </para>
+
+  <bridgehead renderas="sect4">Optional dependency for KWallet</bridgehead>
+  <para role="optional">
+    <ulink url="&kf5apps-download-http;">gpgmepp</ulink>
+  </para>
+
+  <bridgehead renderas="sect4">Optional dictionary backends for Sonnet</bridgehead>
+  <para role="optional">
+    <ulink url="http://hspell.ivrix.org.il/">Hspell</ulink> and
+    <ulink url="http://hunspell.sourceforge.net/">Hunspell</ulink>
+  </para>
+
+  <bridgehead renderas="sect4">Required dependencies for Prison</bridgehead>
+  <para role="optional"> <!-- Leaving as optional since these are external -->
+    <ulink url="http://libdmtx.sourceforge.net/">Datamatrix</ulink> and
+    <ulink url="http://megaui.net/fukuchi/works/qrencode/index.html/">QRencode</ulink>
+  </para>
+
+  <para condition="html" role="usernotes">User Notes:
+  <ulink url="&blfs-wiki;/kf5"/></para>
+
+  <sect2>
+    <title>Downloading KDE Frameworks</title>
+
+    <para>
+      The easiest way to get the KDE Frameworks packages is to use a single
+      <command>wget</command> to fetch them all at once:
+    </para>
+
+<screen><userinput>url=http://download.kde.org/stable/frameworks/&kf5-short-version;/
+wget -r -nH -nd -A '*.xz' -np $url</userinput>
+<literal>
+The options used here are:
+  -r            recurse through child directories
+  -nH           disable generation of host-prefixed directories
+  -nd           do not create a hierarchy of directories 
+  -A '*.xz'     just get the *.xz files
+  -np           don't get parent directories</literal></screen>
+
+   </sect2>
+
+  <sect2>
+    <title>Setting Package Order</title>
+
+    <para>
+      The order of building files is important due to internal dependencies.
+      Create the list of files in the proper order as follows:
+    </para>
+
+<screen><userinput>cat &gt; frameworks-&kf5-version;.md5 &lt;&lt; "EOF"
+<literal>9ad93d635ed42f46ea5d0ba3d4922431  attica-5.61.0.tar.xz
+#2f6f98d6c7cfd0d55eecd7516f415193  extra-cmake-modules-5.61.0.tar.xz
+f972bac89585fd6ecbfa60285316ea65  kapidox-5.61.0.tar.xz
+d8c20050abd157c665b5a6cd41a70d51  karchive-5.61.0.tar.xz
+a0996305dec1ffc5228a2b03b688ba22  kcodecs-5.61.0.tar.xz
+5aa453b71070a63837ba2b0e6f199fae  kconfig-5.61.0.tar.xz
+b0b128fde7ab143de3f638d063411700  kcoreaddons-5.61.0.tar.xz
+3d979f571e2b622e3e5e5cae0742ac0a  kdbusaddons-5.61.0.tar.xz
+d89166c11d9d253c93bebf28e7687576  kdnssd-5.61.0.tar.xz
+2c4769e8ca0dda1faa4f38484e6d889d  kguiaddons-5.61.0.tar.xz
+576b52330b4f520613b1d0e59a28f24c  ki18n-5.61.0.tar.xz
+53e175bb8168badcf7621f8fc118dd5e  kidletime-5.61.0.tar.xz
+1d2789d6aebf2eb315a151631056b3a6  kimageformats-5.61.0.tar.xz
+958f070cc6d0928dbee067ddca301b59  kitemmodels-5.61.0.tar.xz
+2ba2ab1e56617c798f359155e44582c6  kitemviews-5.61.0.tar.xz
+fe93d2709c8051599af633dda8aabe06  kplotting-5.61.0.tar.xz
+706a9a215db46a8e086d63525763ce14  kwidgetsaddons-5.61.0.tar.xz
+7f890d4583f0bb3e7f668ea8c8fbfc2d  kwindowsystem-5.61.0.tar.xz
+74814129eed17c2611dfdce10369b965  networkmanager-qt-5.61.0.tar.xz
+c9236f64de78c54d148270e85cd15a3d  solid-5.61.0.tar.xz
+720d552ccb814fe0038342c8425163f2  sonnet-5.61.0.tar.xz
+0be971c196d328f766c6c2b60aae0b21  threadweaver-5.61.0.tar.xz
+73863244f37c68ff2042fd7039da9480  kauth-5.61.0.tar.xz
+39c8b31802d32fe59bc9487a542bdb18  kcompletion-5.61.0.tar.xz
+afd0f85ae16277ab081d4cac99ac2d05  kcrash-5.61.0.tar.xz
+1857490f170337542bae5cda72f27b85  kdoctools-5.61.0.tar.xz
+33b46dcce54439c3b9d05fff2788abad  kpty-5.61.0.tar.xz
+5ec7713d7b7d2360903014e628b596bd  kunitconversion-5.61.0.tar.xz
+ee1cf04225a7478a94442c9b4ee52224  kconfigwidgets-5.61.0.tar.xz
+83a94d40e694cb32dd5ebe4166dc1c7f  kservice-5.61.0.tar.xz
+6ebfee9fe099e3250b47ac59d7c624b2  kglobalaccel-5.61.0.tar.xz
+84eaf54cdb480a108257772a77296514  kpackage-5.61.0.tar.xz
+c471bdb119e220195d8419d5dbe8ee3b  kdesu-5.61.0.tar.xz
+3c2c9f857e4f07489c217e22b75ad324  kemoticons-5.61.0.tar.xz
+eafb575ee24c3d5856df5d0b5e97ad4e  kiconthemes-5.61.0.tar.xz
+fa63977264e16079fd69c694ef61122e  kjobwidgets-5.61.0.tar.xz
+a31859ea6498b2c9df2354c12877f0a9  knotifications-5.61.0.tar.xz
+0906bd87ee084c95c3bb012d1ad4b68f  ktextwidgets-5.61.0.tar.xz
+8c95b1077024b1768ae40b6f906b7c6c  kxmlgui-5.61.0.tar.xz
+4f610828fb9aa410fce3f878908bac5b  kbookmarks-5.61.0.tar.xz
+45f80f2454ec9cd7f7f7ec0ffc1a56ce  kwallet-5.61.0.tar.xz
+884e6d240f179851c247ff498b258f45  kio-5.61.0.tar.xz
+a2c5065aec2a192d7cfd978cea09be84  kdeclarative-5.61.0.tar.xz
+c9f2b551f32221892d746feb9c6fc7f8  kcmutils-5.61.0.tar.xz
+bf7a57a1088076a79e7992ca9be53018  kirigami2-5.61.0.tar.xz
+1d2e4149a415d9b621edf03addeae55d  knewstuff-5.61.0.tar.xz
+fb69e4769b4958e52213de614f3be5c5  frameworkintegration-5.61.0.tar.xz
+f20ed3efe486b9a6b909ac8adf3c6c38  kinit-5.61.0.tar.xz
+40689423f1452f9d7e05883cce93a7ec  knotifyconfig-5.61.0.tar.xz
+7f01d6ae022e3ae0ea5c77442805394c  kparts-5.61.0.tar.xz
+5a3c59535fd778bc8afd95dae121a957  kactivities-5.61.0.tar.xz
+671f84a09bc489d863a1734043591ae2  kded-5.61.0.tar.xz
+#9075fbe8ca7afcd8ca263dbe41a823b4  kdewebkit-5.61.0.tar.xz
+4036e7bcb0c3fb6c5907d0efac365234  syntax-highlighting-5.61.0.tar.xz
+07ea86451c4ddbe097d1e87fa161a0d0  ktexteditor-5.61.0.tar.xz
+cea06789eb647b75c92f4b6a2f4016ba  kdesignerplugin-5.61.0.tar.xz
+fab6a981a5c604d45466bdfce204848f  kwayland-5.61.0.tar.xz
+d40534ff8a7f9abd595e2fcb93374472  plasma-framework-5.61.0.tar.xz
+#b1854ae5022c5a41533f0dcac2ca2cb9  modemmanager-qt-5.61.0.tar.xz
+7861b72a4f4d16f49d9a84f956c20386  kpeople-5.61.0.tar.xz
+424f8d787c02dc1c9729171b2c591eb7  kxmlrpcclient-5.61.0.tar.xz
+5596cd4e9a134cce689d24887912edfe  bluez-qt-5.61.0.tar.xz
+911774517abc301a303e2e429c875d74  kfilemetadata-5.61.0.tar.xz
+3ef703414987f2e494eee19d101c34e4  baloo-5.61.0.tar.xz
+#bd2441e04540b82849fc3144dcd6dbca  breeze-icons-5.61.0.tar.xz
+#a08326c6e10855f47e5f1b63c31f2f0e  oxygen-icons5-5.61.0.tar.xz
+f98a2e990aa25b0e56ee0b50f8baf1e8  kactivities-stats-5.61.0.tar.xz
+661d9760f81218d7eccd5dda0762e53c  krunner-5.61.0.tar.xz
+#af2125c297606f167ce8b9a182e30526  prison-5.61.0.tar.xz
+50f3acf3668529a5c77ae4d6edf8b7d7  qqc2-desktop-style-5.61.0.tar.xz
+c95e4ec5fb82dc53627ddcddd5b5ec10  kjs-5.61.0.tar.xz
+7ee8ec810e00830dfeeb924c1b9242d0  kdelibs4support-5.61.0.tar.xz
+fe66740ed0df257c1695eb0abd8ca9ed  khtml-5.61.0.tar.xz
+8895a81c6b993e901de031c67a261464  kjsembed-5.61.0.tar.xz
+4f6bd8b8a44295e2470fbd73816a8cdc  kmediaplayer-5.61.0.tar.xz
+f7d9d1b5089dddafd9a55bdec47d1fbf  kross-5.61.0.tar.xz
+591b24c0a31a5b9ba86a73e6cffdf4a9  kholidays-5.61.0.tar.xz
+008208928903b40a2fdee3e1fcfa4448  purpose-5.61.0.tar.xz
+fd8a4690fb00e3e627554394d948a1f7  syndication-5.61.0.tar.xz</literal>
+EOF</userinput></screen>
+
+  <para>In the above list, notice that some files have been commented out with
+  a hash (#) character. The extra-cmake-modules entry has been commented out
+  because it was built earlier in the <xref linkend="kde-prereq"/>. The icon
+  packages are covered separately at <xref linkend="breeze-icons"/> and <xref
+  linkend="oxygen-icons5"/>.  The modemmanager-qt package may be built if its
+  optional dependency has been installed. The prison package (bar code reader)
+  may be built if the required external libraries are installed. The kdewebkit
+  may be built if the external package 
+  <ulink url="https://download.qt.io/community_releases/5.9/5.9.0-final/">
+  QtWebkit</ulink> has been built. </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of KDE Frameworks</title>
+
+    &as_root;
+
+    <caution>
+
+      <para>If installing in /opt and there is an existing /opt/kf5 either as a
+      regular directory or a symbolic link, it should be reinitialized (as
+      root):</para>
+
+      <screen role="root"><userinput>mv -v /opt/kf5 /opt/kf5.old                         &amp;&amp;
+install -v -dm755           $KF5_PREFIX/{etc,share} &amp;&amp;
+ln -sfv /etc/dbus-1         $KF5_PREFIX/etc         &amp;&amp;
+ln -sfv /usr/share/dbus-1   $KF5_PREFIX/share</userinput></screen>
+    </caution>
+
+    <para>
+      First, start a subshell that will exit on error:
+    </para>
+
+
+<screen><userinput>bash -e</userinput></screen>
+
+    <para>
+      Install all of the packages by running the following
+      commands:
+    </para>
+
+<screen><userinput>while read -r line; do
+
+    # Get the file name, ignoring comments and blank lines
+    if $(echo $line | grep -E -q '^ *$|^#' ); then continue; fi
+    file=$(echo $line | cut -d" " -f2)
+
+    pkg=$(echo $file|sed 's|^.*/||')          # Remove directory
+    packagedir=$(echo $pkg|sed 's|\.tar.*||') # Package directory
+
+    name=$(echo $pkg|sed 's|-5.*$||') # Isolate package name
+
+    tar -xf $file
+    pushd $packagedir
+   
+      mkdir build
+      cd    build
+
+      cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
+            -DCMAKE_PREFIX_PATH=$QT5DIR        \
+            -DCMAKE_BUILD_TYPE=Release         \
+            -DBUILD_TESTING=OFF                \
+            -Wno-dev ..
+      make
+      as_root make install
+    popd
+<!-- some packages end with files owned by root in $packagedir, so use as_root
+     in the following -->
+  as_root rm -rf $packagedir
+  as_root /sbin/ldconfig
+
+done &lt; frameworks-&kf5-version;.md5
+
+exit</userinput></screen>
+
+    <note><para>Any modules that have been omitted can be installed later by
+    using the same mkdir build; cd build; cmake; make; make install procedure
+    as above.</para></note>
+
+    <para>Sometimes the installation paths are hardcoded into installed files.
+    If the installed directory is not /usr, rename the directory and create a
+    symlink:</para>
+
+    <screen role="root"><userinput>mv -v /opt/kf5 /opt/kf5-&kf5-version;
+ln -sfvn kf5-&kf5-version; /opt/kf5</userinput></screen>
+
+  </sect2>
+
+    <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>-DCMAKE_PREFIX_PATH=$QT5DIR</parameter>: This switch is used
+      to allow cmake to find the proper Qt libraries.
+    </para>
+
+    <para>
+      <parameter>-DCMAKE_BUILD_TYPE=Release</parameter>: This switch is used
+      to apply higher level of the compiler optimizations.
+    </para>
+
+    <para>
+      <parameter>-DBUILD_TESTING=OFF</parameter>: This switch is used to prevent
+      building test programs and libraries that are of no use to an end user.
+    </para>
+
+  </sect2>
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          There are 48 programs installed in /opt/kf5/bin.
+        </seg>
+        <seg>
+          There are too many kf5 libraries (191) to list separately.
+        </seg>
+        <seg>
+          /opt/kf5 (symlink to /opt/kf5-&kf5-version;)
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="checkXML5">
+        <term><command>checkXML5</command></term>
+        <listitem>
+          <para>
+            is a tool to check for syntax errors in KDE DocBook XML
+       files.
+          </para>
+          <indexterm zone="kf5-frameworks checkXML5">
+            <primary sortas="b-checkXML5">checkXML5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="depdiagram-generate">
+        <term><command>depdiagram-generate</command></term>
+        <listitem>
+          <para>
+            is a tool to generate a dependency diagram.
+          </para>
+          <indexterm zone="kf5-frameworks depdiagram-generate">
+            <primary sortas="b-depdiagram-generate">depdiagram-generate</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="depdiagram-generate-all">
+        <term><command>depdiagram-generate-all</command></term>
+        <listitem>
+          <para>
+            is a tool to generate a dependency diagram for all frameworks at once.
+          </para>
+          <indexterm zone="kf5-frameworks depdiagram-generate-all">
+            <primary sortas="b-depdiagram-generate-all">depdiagram-generate-all</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="depdiagram-prepare">
+        <term><command>depdiagram-prepare</command></term>
+        <listitem>
+          <para>
+            is a tool to prepare dot files.
+          </para>
+          <indexterm zone="kf5-frameworks depdiagram-prepare">
+            <primary sortas="b-depdiagram-prepare">depdiagram-prepare</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="desktoptojson">
+        <term><command>desktoptojson</command></term>
+        <listitem>
+          <para>
+            is a tool to convert a .desktop file to a .json file.
+          </para>
+          <indexterm zone="kf5-frameworks desktoptojson">
+            <primary sortas="b-desktoptojson">desktoptojson</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kactivitymanagerd">
+        <term><command>kactivitymanagerd</command></term>
+        <listitem>
+          <para>
+            is the KDE Plasma Workspace Activity Manager.
+          </para>
+          <indexterm zone="kf5-frameworks kactivitymanagerd">
+            <primary sortas="b-kactivitymanagerd">kactivitymanagerd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kbuildsycoca5">
+        <term><command>kbuildsycoca5</command></term>
+        <listitem>
+          <para>
+            rebuilds the KService desktop file system configuration
+       cache.
+          </para>
+          <indexterm zone="kf5-frameworks kbuildsycoca5">
+            <primary sortas="b-kbuildsycoca5">kbuildsycoca5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kcookiejar5">
+        <term><command>kcookiejar5</command></term>
+        <listitem>
+          <para>
+            is a command line interface to the HTTP cookie store used by KDE,
+            a D-BUS service to store/retrieve/clean cookies.
+          </para>
+          <indexterm zone="kf5-frameworks kcookiejar5">
+            <primary sortas="b-kcookiejar5">kcookiejar5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kded5">
+        <term><command>kded5</command></term>
+        <listitem>
+          <para>
+            consolidates several small services in one process.
+          </para>
+          <indexterm zone="kf5-frameworks kded5">
+            <primary sortas="b-kded5">kded5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kdeinit5">
+        <term><command>kdeinit5</command></term>
+        <listitem>
+          <para>
+            is a process launcher somewhat similar to the famous init used
+            for booting UNIX.
+          </para>
+          <indexterm zone="kf5-frameworks kdeinit5">
+            <primary sortas="b-kdeinit5">kdeinit5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kf5-config">
+        <term><command>kf5-config</command></term>
+        <listitem>
+          <para>
+            is a command line program used to retrieve information about
+            KDE installation or user paths.
+          </para>
+          <indexterm zone="kf5-frameworks kf5-config">
+            <primary sortas="b-kf5-config">kf5-config</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kf5kross">
+        <term><command>kf5kross</command></term>
+        <listitem>
+          <para>
+            executes kross scripts written in KDE Javascript, Python, Ruby,
+            Java and Falcon.
+          </para>
+          <indexterm zone="kf5-frameworks kf5kross">
+            <primary sortas="b-kf5kross">kf5kross</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kgenapidox">
+        <term><command>kgenapidox</command></term>
+        <listitem>
+          <para>
+            is a tool to generate API documentation in the KDE style.
+          </para>
+          <indexterm zone="kf5-frameworks kgenapidox">
+            <primary sortas="b-kgenapidox">kgenapidox</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kgendesignerplugin">
+        <term><command>kgendesignerplugin</command></term>
+        <listitem>
+          <para>
+            generates widget plugins for Qt(TM) Designer.
+          </para>
+          <indexterm zone="kf5-frameworks kgendesignerplugin">
+            <primary sortas="b-kgendesignerplugin">kgendesignerplugin</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kglobalaccel5">
+        <term><command>kglobalaccel5</command></term>
+        <listitem>
+          <para>
+            is a daemon use to register the key bindings and for getting
+            notified when the action triggered.
+          </para>
+          <indexterm zone="kf5-frameworks kglobalaccel5">
+            <primary sortas="b-kglobalaccel5">kglobalaccel5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kjs5">
+        <term><command>kjs5</command></term>
+        <listitem>
+          <para>
+            is KDE ECMAScript/JavaScript engine.
+          </para>
+          <indexterm zone="kf5-frameworks kjs5">
+            <primary sortas="b-kjs5">kjs5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kjscmd5">
+        <term><command>kjscmd5</command></term>
+        <listitem>
+          <para>
+             is a tool for launching KJSEmbed scripts from the command line.
+          </para>
+          <indexterm zone="kf5-frameworks kjscmd5">
+            <primary sortas="b-kjscmd5">kjscmd5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kjsconsole">
+        <term><command>kjsconsole</command></term>
+        <listitem>
+          <para>
+            is a console for <command>kjs5</command>.
+          </para>
+          <indexterm zone="kf5-frameworks kjsconsole">
+            <primary sortas="b-kjsconsole">kjsconsole</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kmailservice5">
+        <term><command>kmailservice5</command></term>
+        <listitem>
+          <para>
+            is a mail service.
+          </para>
+          <indexterm zone="kf5-frameworks kmailservice5">
+            <primary sortas="b-kmailservice5">kmailservice5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kpackagelauncherqml">
+        <term><command>kpackagelauncherqml</command></term>
+        <listitem>
+          <para>
+            is a commandline tool for launching kpackage QML application
+          </para>
+          <indexterm zone="kf5-frameworks kpackagelauncherqml">
+            <primary sortas="b-kpackagelauncherqml">kpackagelauncherqml</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kpackagetool5">
+        <term><command>kpackagetool5</command></term>
+        <listitem>
+          <para>
+            is a command line kpackage tool.
+          </para>
+          <indexterm zone="kf5-frameworks kpackagetool5">
+            <primary sortas="b-kpackagetool5">kpackagetool5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kreadconfig5">
+        <term><command>kreadconfig5</command></term>
+        <listitem>
+          <para>
+            is a command line tool to retrieve values from KDE
+            configuration files.
+          </para>
+          <indexterm zone="kf5-frameworks kreadconfig5">
+            <primary sortas="b-kreadconfig5">kreadconfig5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kshell5">
+        <term><command>kshell5</command></term>
+        <listitem>
+          <para>
+            start applications via kdeinit.
+          </para>
+          <indexterm zone="kf5-frameworks kshell5">
+            <primary sortas="b-kshell5">kshell5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ktelnetservice5">
+        <term><command>ktelnetservice5</command></term>
+        <listitem>
+          <para>
+            is a telnet service.
+          </para>
+          <indexterm zone="kf5-frameworks ktelnetservice5">
+            <primary sortas="b-ktelnetservice5">ktelnetservice5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ktrash5">
+        <term><command>ktrash5</command></term>
+        <listitem>
+          <para>
+            is a helper program to handle the KDE trash can.
+          </para>
+          <indexterm zone="kf5-frameworks ktrash5">
+            <primary sortas="b-ktrash5">ktrash5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kwalletd5">
+        <term><command>kwalletd5</command></term>
+        <listitem>
+          <para>
+           is the wallet manager daemon.
+          </para>
+          <indexterm zone="kf5-frameworks kwalletd5">
+            <primary sortas="b-kwalletd5">kwalletd5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kwriteconfig5">
+        <term><command>kwriteconfig5</command></term>
+        <listitem>
+          <para>
+            is a command line tool to write values in KDE
+            configuration files.
+          </para>
+          <indexterm zone="kf5-frameworks kwriteconfig5">
+            <primary sortas="b-kwriteconfig5">kwriteconfig5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="meinproc5">
+        <term><command>meinproc5</command></term>
+        <listitem>
+          <para>
+            converts DocBook files to HTML.
+          </para>
+          <indexterm zone="kf5-frameworks meinproc5">
+            <primary sortas="b-meinproc5">meinproc5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="plasmapkg2">
+        <term><command>plasmapkg2</command></term>
+        <listitem>
+          <para>
+            is a tool to install, list, remove Plasma packages
+          </para>
+          <indexterm zone="kf5-frameworks plasmapkg2">
+            <primary sortas="b-plasmapkg2">plasmapkg2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="preparetips5">
+        <term><command>preparetips5</command></term>
+        <listitem>
+          <para>
+            is a script to extract the text from a tips file.
+          </para>
+          <indexterm zone="kf5-frameworks preparetips5">
+            <primary sortas="b-preparetips5">preparetips5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="solid-hardware5">
+        <term><command>solid-hardware5</command></term>
+        <listitem>
+          <para>
+            is a command line tool to investigate available devices.
+         </para>
+          <indexterm zone="kf5-frameworks solid-hardware5">
+            <primary sortas="b-solid-hardware5">solid-hardware5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+   </variablelist>
+
+  </sect2>
+
+</sect1>
+

@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+ <!ENTITY % general-entities SYSTEM "../../general.ent">
+ %general-entities;
+
+  <!ENTITY plasma5-download-http "http://download.kde.org/stable/plasma/&plasma5-version;">
+  <!ENTITY plasma5-download-ftp  " ">
+  <!ENTITY plasma5-md5sum        "See Below">
+  <!ENTITY plasma5-size          "97 MB">
+  <!ENTITY plasma5-buildsize     "1.1 GB (294 MB installed)">
+  <!ENTITY plasma5-time          "20 SBU (using parallelism=4)">
+]>
+
+<sect1 id="plasma5-build" xreflabel="Plasma-&plasma5-version;">
+  <?dbhtml filename="plasma-all.html"?>
+
+  <sect1info>
+     <othername>$LastChangedBy: bdubbs $</othername>
+     <date>$Date: 2015-09-24 16:44:04 -0500 (Thu, 24 Sep 2015) $</date>
+  </sect1info>
+
+  <title>Building Plasma 5</title>
+
+  <indexterm zone="plasma5-build">
+     <primary sortas="a-kde-plasma">KDE Plasma 5</primary>
+  </indexterm>
+
+  <para>KDE Plasma 5 is a collection of packages based on top of KDE Frameworks
+  5 and QML. They implement the KDE Display Environment (Plasma 5).</para>
+
+  &lfs90_checked;
+
+  <para>The instructions below build all of the Plasma 5 packages in one
+  step by using a bash script.</para>
+
+  <bridgehead renderas="sect3">Package Information</bridgehead>
+  <itemizedlist spacing="compact">
+    <listitem>
+      <para>Download (HTTP): <ulink url="&plasma5-download-http;"/></para>
+    </listitem>
+    <listitem>
+      <para>Download (FTP): <ulink url="&plasma5-download-ftp;"/></para>
+    </listitem>
+    <listitem>
+      <para>Download MD5 sum: &plasma5-md5sum;</para>
+    </listitem>
+    <listitem>
+      <para>Download size: &plasma5-size;</para>
+    </listitem>
+    <listitem>
+      <para>Estimated disk space required: &plasma5-buildsize;</para>
+    </listitem>
+    <listitem>
+      <para>Estimated build time: &plasma5-time;</para>
+    </listitem>
+  </itemizedlist>
+
+  <bridgehead renderas="sect3">Plasma 5 Dependencies</bridgehead>
+
+  <bridgehead renderas="sect4">Required</bridgehead>
+  <para role="required">
+    <!--<xref linkend="fontforge"/>,-->
+    <xref linkend="GConf"/>,
+    <xref linkend="gtk2"/>,
+    <xref linkend="gtk3"/>,
+    <xref linkend="kf5-frameworks"/>,
+    <xref linkend="libpwquality"/>,
+    <xref linkend="libxkbcommon"/>,
+    <xref linkend="mesa"/> built with <xref linkend="wayland"/>,
+    <xref linkend="NetworkManager"/>,
+    <xref linkend="pipewire"/>,
+    <xref linkend="pulseaudio"/>,
+    <xref linkend="qca"/>,
+    <xref linkend="sassc"/>,
+    <xref linkend="taglib"/>, and
+    <xref linkend="xcb-util-cursor"/>
+  </para>
+
+  <bridgehead renderas="sect4">Recommended</bridgehead>
+  <para role="recommended">
+    <xref linkend="fftw"/>,
+    <xref linkend="gsettings-desktop-schemas"/>,
+    <xref linkend="libdbusmenu-qt"/>,
+    <xref linkend="libcanberra"/>,
+    <xref linkend="libinput"/>,
+    <xref linkend="linux-pam"/>,
+    <xref linkend="lm_sensors"/>,
+    <xref linkend="oxygen-icons5"/>, and
+    <xref linkend="pciutils"/>
+  </para>
+
+  <bridgehead renderas="sect4">Optional</bridgehead>
+  <para role="optional">
+    <xref linkend="glu"/>,
+    <xref linkend='ibus'/>,
+    <xref linkend="xorg-synaptics-driver"/>,
+    <ulink url="http://distributions.freedesktop.org/wiki/AppStream">appstream-qt</ulink>, 
+    <ulink url="https://www.kdevelop.org/">KDevPlatform</ulink>,
+    <ulink url="http://www.catb.org/gpsd/libgps.html">libgps</ulink>,
+    <ulink url="https://github.com/libhybris/libhybris">libhybris</ulink>,
+    <ulink url="http://sourceforge.net/projects/libraw1394/">libraw1394</ulink>,
+    <ulink url="https://bitbucket.org/godsme/mockcpp">mockcpp</ulink>,
+    <ulink url="https://www.freedesktop.org/software/PackageKit/releases/">packagekit-qt</ulink>,
+    <ulink url="http://qalculate.github.io/">Qalculate</ulink>,
+    <ulink url="https://launchpad.net/qapt">Qapt</ulink>, 
+    <ulink url="https://github.com/osiam/osiam">SCIM</ulink>, and
+    <ulink url="http://www.dest-unreach.org/socat/">socat</ulink> (for pam_kwallet)
+  </para>
+
+  <para condition="html" role="usernotes">User Notes:
+  <ulink url="&blfs-wiki;/kf5"/></para>
+
+  <sect2>
+    <title>Downloading KDE Plasma5</title>
+
+    <para>
+      The easiest way to get the KDE Plasma5 packages is to use a single
+      <command>wget</command> to fetch them all at once:
+    </para>
+
+<screen><userinput>url=http://download.kde.org/stable/plasma/&plasma5-version;/
+wget -r -nH -nd -A '*.xz' -np $url</userinput>
+<literal>
+The options used here are:
+  -r            recurse through child directories
+  -nH           disable generation of host-prefixed directories
+  -nd           do not create a hierarchy of directories
+  -A '*.xz'     just get the *.xz files
+  -np           don't get parent directories</literal></screen>
+
+   </sect2>
+
+  <sect2>
+    <title>Setting Package Order</title>
+
+    <para>
+      The order of building files is important due to internal dependencies.
+      Create the list of files in the proper order as follows:
+    </para>
+
+<screen><userinput>cat &gt; plasma-&plasma5-version;.md5 &lt;&lt; "EOF"
+<literal>5e44ce8c340a2776d0c26c01e052de98  kdecoration-5.16.4.tar.xz
+e9a04fac01548ed807f1e74afa6cecbc  libkscreen-5.16.4.tar.xz
+54f83ba22b7bffb8b29ecb4304eba290  libksysguard-5.16.4.tar.xz
+b9669c56c282a3a99ad8b5c8ab9e28e7  breeze-5.16.4.tar.xz
+6800789a7165d7d0ea5cab3f37a412d8  breeze-gtk-5.16.4.tar.xz
+68d3ce5b520f3295cdf449d129163f31  kscreenlocker-5.16.4.tar.xz
+37b8aa51e815547a0ca7891f6f28bfd1  oxygen-5.16.4.tar.xz
+f0aca5810cbf7d6fe9b234dd188bf866  kinfocenter-5.16.4.tar.xz
+42ad987f068e263e2c04bd46203748aa  ksysguard-5.16.4.tar.xz
+03e03a0d82a2c7a44357a0b70a818364  kwin-5.16.4.tar.xz
+28ecbe477db45e0ec87d04d89cd00a5e  plasma-workspace-5.16.4.tar.xz
+2f5c188ec483ba13a141d01f914fbdca  bluedevil-5.16.4.tar.xz
+d57f164978aa8ddaa2029834197cd79c  kde-gtk-config-5.16.4.tar.xz
+d665005eee4c4f286d02352f3ed1cca8  khotkeys-5.16.4.tar.xz
+8411a6adb83f6d07ce57d68518524a60  kmenuedit-5.16.4.tar.xz
+3e8620ef18c1a077da5b94d2d8da221f  kscreen-5.16.4.tar.xz
+578af3befcb637107e38ef68904549b1  kwallet-pam-5.16.4.tar.xz
+95e8f7c97d92ce842f4cd88e4244164f  kwayland-integration-5.16.4.tar.xz
+0193b8e80dcdff29b9bde53bfcbe57e7  kwrited-5.16.4.tar.xz
+40f100f10fc791b636c90a890d6a72d0  milou-5.16.4.tar.xz
+fdfc54509ba708cc341a0e0b5925c04c  plasma-nm-5.16.4.tar.xz
+243d1a5f17ea39cae8df5051a4d57a74  plasma-pa-5.16.4.tar.xz
+1c6dcff4dd988d57e8666d29436cd770  plasma-workspace-wallpapers-5.16.4.tar.xz
+251a7f86e34c718c76b5463ff923f1f4  polkit-kde-agent-1-5.16.4.tar.xz
+d7d1e680ebb4bd522e09cd3d7c485809  powerdevil-5.16.4.tar.xz
+9f6022331ff678064507f8c1936db3b6  plasma-desktop-5.16.4.tar.xz
+66cf356c39e8e5a361fa5bdbac07ea0e  kdeplasma-addons-5.16.4.tar.xz
+a4bbf8ecc177bb640a21e0b699f41717  kgamma5-5.16.4.tar.xz
+f4cdc68f40a0d9de75080473c5653aeb  ksshaskpass-5.16.4.tar.xz
+#98189f9c245ee94c36b52c0b4899fd6a  plasma-sdk-5.16.4.tar.xz
+0614d7063840aa22c5f273aa94eb59b5  sddm-kcm-5.16.4.tar.xz
+87770cae80be1d91f5a69e6964b35d90  user-manager-5.16.4.tar.xz
+31de7a8ab5233c568331c415a9932afb  discover-5.16.4.tar.xz
+#9cd0a7f9624a2f2b4b0fa56913644431  breeze-grub-5.16.4.tar.xz
+#973aad521ffcd3f4713984ed7c30ffe2  breeze-plymouth-5.16.4.tar.xz
+4fde8ca5608fd6af1612695b7d1574bc  kactivitymanagerd-5.16.4.tar.xz
+31b52d29b0aa1c6be4d90844217c7e63  plasma-integration-5.16.4.tar.xz
+d66af09fc97717ca4da55e37646708c5  plasma-tests-5.16.4.tar.xz
+3544c8e414e44c1a4622fa706dc09e93  plymouth-kcm-5.16.4.tar.xz
+3877c03570407e2382899b76e36e71cf  xdg-desktop-portal-kde-5.16.4.tar.xz
+8a5a274541943f365aa971318b52dc33  drkonqi-5.16.4.tar.xz
+2c323e7f60b6042d0b8c66f0726e7499  plasma-vault-5.16.4.tar.xz
+b48e4ea395f4ca9a98aecb4cb9616186  plasma-browser-integration-5.16.4.tar.xz
+5c1a41d205f55cc7828c485d08a366f3  kde-cli-tools-5.16.4.tar.xz
+39f47836ddf69aed04a26e26899a208a  systemsettings-5.16.4.tar.xz</literal>
+EOF</userinput></screen>
+
+    <note><para>The breeze-grub, breeze-plymouth, and plymouth-kcm packages 
+    above are all for customized support of <ulink
+    url="https://www.freedesktop.org/wiki/Software/Plymouth/">Plymouth</ulink>
+    which is designed to be run within an initial ram disk during boot (see
+    <xref linkend="initramfs"/>).  The plasma-sdk package is optional and used
+    for software development.</para></note>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Plasma5</title>
+
+    &as_root;
+
+    <para>
+      First, start a subshell that will exit on error:
+    </para>
+
+<screen><userinput>bash -e</userinput></screen>
+
+    <para>
+      Install all of the packages by running the following
+      commands:
+    </para>
+
+<screen><userinput>while read -r line; do
+
+    # Get the file name, ignoring comments and blank lines
+    if $(echo $line | grep -E -q '^ *$|^#' ); then continue; fi
+    file=$(echo $line | cut -d" " -f2)
+
+    pkg=$(echo $file|sed 's|^.*/||')          # Remove directory
+    packagedir=$(echo $pkg|sed 's|\.tar.*||') # Package directory
+
+    tar -xf $file
+    pushd $packagedir
+
+       # Fix some build issues when generating some configuration files
+       case $name in
+         plasma-workspace)
+           sed -i '/set.HAVE_X11/a set(X11_FOUND 1)' CMakeLists.txt
+         ;;
+      
+         khotkeys)
+           sed -i '/X11Extras/a set(X11_FOUND 1)' CMakeLists.txt
+         ;;
+      
+         plasma-desktop)
+           sed -i '/X11.h)/i set(X11_FOUND 1)' CMakeLists.txt
+         ;;
+       esac
+
+       mkdir build
+       cd    build
+
+       cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
+             -DCMAKE_BUILD_TYPE=Release         \
+             -DBUILD_TESTING=OFF                \
+             -Wno-dev ..  &amp;&amp;
+
+        make
+        as_root make install
+    popd
+
+<!-- some packages end up with files owned by root in $packagedir,
+     so use as_root for removing -->
+    as_root rm -rf $packagedir
+    as_root /sbin/ldconfig
+
+done &lt; plasma-&plasma5-version;.md5
+
+exit</userinput></screen>
+
+    <para>
+      If you did not set <envar>$KF5_PREFIX</envar> to
+      <filename>/usr</filename>, create symlinks to allow display managers to
+      find <application>Plasma</application>:
+    </para>
+
+<screen><userinput>as_root install -dvm 755 /usr/share/xsessions              &amp;&amp;
+cd /usr/share/xsessions/                                   &amp;&amp;
+[ -e plasma.desktop ]                                      ||
+as_root ln -sfv $KF5_PREFIX/share/xsessions/plasma.desktop &amp;&amp;
+as_root install -dvm 755 /usr/share/wayland-sessions       &amp;&amp;
+cd /usr/share/wayland-sessions/                            &amp;&amp;
+[ -e plasma.desktop ]                                      ||
+as_root ln -sfv $KF5_PREFIX/share/wayland-sessions/plasma.desktop<!--
+cd $KF5_PREFIX/share/plasma/plasmoids
+
+for j in $(find -name \*.js); do
+  as_root ln -sfv ../code/$(basename $j) $(dirname $j)/../ui/
+done--></userinput></screen>
+
+  </sect2>
+<!--
+    <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>ln -sfv ../code/$(basename $j) $(dirname $j)/../ui/</command>:
+      Create symbolic links so qml files can find needed javascript modules.
+    </para>
+
+  </sect2>
+-->
+  <sect2 role="configuration">
+    <title>Configuring Plasma</title>
+
+    <sect3>
+      <title>Linux PAM Configuration</title>
+
+      <para>
+        If you built Plasma with the recommended <application>Linux
+        PAM</application> support, create necessary configuration files by
+        running the following commands as the <systemitem
+        class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>cat &gt; /etc/pam.d/kde &lt;&lt; "EOF" 
+<literal># Begin /etc/pam.d/kde
+
+auth     requisite      pam_nologin.so
+auth     required       pam_env.so
+
+auth     required       pam_succeed_if.so uid &gt;= 1000 quiet
+auth     include        system-auth
+
+account  include        system-account
+password include        system-password
+session  include        system-session
+
+# End /etc/pam.d/kde</literal>
+EOF
+
+cat &gt; /etc/pam.d/kde-np &lt;&lt; "EOF" 
+<literal># Begin /etc/pam.d/kde-np
+
+auth     requisite      pam_nologin.so
+auth     required       pam_env.so
+
+auth     required       pam_succeed_if.so uid &gt;= 1000 quiet
+auth     required       pam_permit.so
+
+account  include        system-account
+password include        system-password
+session  include        system-session
+
+# End /etc/pam.d/kde-np</literal>
+EOF
+
+cat &gt; /etc/pam.d/kscreensaver &lt;&lt; "EOF"
+<literal># Begin /etc/pam.d/kscreensaver
+
+auth    include system-auth
+account include system-account
+
+# End /etc/pam.d/kscreensaver</literal>
+EOF</userinput></screen>
+    </sect3>
+  </sect2>
+
+  <sect2 role="starting">
+    <title>Starting Plasma5</title>
+
+    <para revision="sysv">
+      You can start <application>Plasma5</application> from runlevel 3, using
+      <xref linkend="xinit"/>, or from runlevel 5, using a Display Manager,
+      such as <xref linkend="lightdm"/>.
+    </para>
+
+    <para revision="systemd">
+      You can start <application>Plasma5</application> from a TTY, using
+      <xref linkend="xinit"/><!--, or from a graphical display manager, such as
+      <xref linkend="sddm"/>-->.
+    </para>
+
+    <para>
+      To start <application>Plasma 5</application> using <xref linkend="xinit"/>,
+      run the following commands:
+    </para>
+
+<screen><userinput>cat &gt; ~/.xinitrc &lt;&lt; "EOF"
+<literal>dbus-launch --exit-with-session $KF5_PREFIX/bin/startkde</literal>
+EOF
+
+startx</userinput></screen>
+
+    <para>
+      The X session starts on the first unused virtual terminal, normally vt7.
+      You can switch to another vt<emphasis>n</emphasis> simultaneously
+      pressing the keys Ctrl-Alt-F<emphasis>n</emphasis>
+      (<emphasis>n</emphasis>=1, 2, ...).  To switch back to the X session,
+      normally started at vt7, use Ctrl-Alt-F7. The vt where the command
+      <command>startx</command> was executed will display many messages,
+      including X starting messages, applications automatically started with
+      the session, and eventually, some warning and error messages. You may
+      prefer to redirect those messages to a log file, which not only will keep
+      the initial vt uncluttered, but can also be used for debugging purposes. This
+      can be done starting X with:
+    </para>
+
+    <screen><userinput>startx &amp;&gt; ~/x-session-errors</userinput></screen>
+
+    <para>
+      When shutting down or rebooting, the shutdown messages appear on the vt
+      where X was running. If you wish to see those messages, simultaneously
+      press keys Alt-F7 (assuming that X was running on vt7).
+    </para>
+
+    <para>If you intend to start <application>Plasma</application> using a
+    display manager such as <xref linkend="lightdm"/>, there will be two entries
+    for <application>Plasma</application>, one for use with
+    <application>Xorg</application>, and another for
+    <application>Wayland</application>. Modify the
+    <application>Xorg</application> entry with the following command, as the
+    <systemitem class="username">root</systemitem> user, so that you can
+    differentiate between the two:</para>
+
+<screen role="root"><userinput>sed '/^Name=/s/Plasma/Plasma on Xorg/' -i /usr/share/xsessions/plasma.desktop</userinput></screen>
+
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+           There are too many plasma programs (50 in /opt/kf5/bin) to list
+           separately here.
+        </seg>
+        <seg>
+           There are too many plasma libraries (39 in /opt/kf5/lib) to list
+           separately here.
+        </seg>
+        <seg>
+           There are too many plasma directories (over 1000 in /opt/kf5) to
+           list separately here.
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+</sect1>

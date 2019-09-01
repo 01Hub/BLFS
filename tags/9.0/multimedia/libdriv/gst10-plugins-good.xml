@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gst10-plugins-good-download-http
+           "&gstreamer-dl;/gst-plugins-good/gst-plugins-good-&gst10-plugins-good-version;.tar.xz">
+  <!ENTITY gst10-plugins-good-download-ftp  " ">
+  <!ENTITY gst10-plugins-good-md5sum        "d1a7b442994d9522418de4af4330e034">
+  <!ENTITY gst10-plugins-good-size          "3.7 MB">
+  <!ENTITY gst10-plugins-good-buildsize     "97 MB (with tests)">
+  <!ENTITY gst10-plugins-good-time          "0.5 SBU (Using parallelism=4; with tests)">
+]>
+
+<sect1 id="gst10-plugins-good" xreflabel="gst-plugins-good-&gst10-plugins-good-version;">
+  <?dbhtml filename="gst10-plugins-good.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>gst-plugins-good-&gst10-plugins-good-version;</title>
+
+  <indexterm zone="gst10-plugins-good">
+    <primary sortas="a-gst-plugins-good">gst-plugins-good</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to GStreamer Good Plug-ins</title>
+
+    <para>
+      The <application>GStreamer Good Plug-ins</application> is a set of plug-ins
+      considered by the <application>GStreamer</application> developers to have
+      good quality code, correct functionality, and the preferred license (LGPL
+      for the plug-in code, LGPL or LGPL-compatible for the supporting library).
+      A wide range of video and audio decoders, encoders, and filters are included.
+    </para>
+
+    &lfs90_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&gst10-plugins-good-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&gst10-plugins-good-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &gst10-plugins-good-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &gst10-plugins-good-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &gst10-plugins-good-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &gst10-plugins-good-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+<!-- Should be fixed in 1.16.1 -->
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/gst-plugins-good-&gst10-plugins-good-version;-v4l2_fix-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">GStreamer Good Plug-ins Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="gst10-plugins-base"/>
+    </para>
+
+    <!-- Common formats, output and input codecs and requirements
+    for GNOME apps. What's a multimedia framework useful if it
+    can't be used to play anything (common)? -->
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="cairo"/>,
+      <xref linkend="flac"/>,
+      <xref linkend="lame"/>,
+      <xref linkend="mpg123"/>,
+      <xref linkend="mesa"/>,
+      <xref linkend="gdk-pixbuf"/>,
+      <xref linkend="libgudev"/>,
+      <xref linkend="libjpeg"/>,
+      <xref linkend="libpng"/>,
+      <xref linkend="libsoup"/>,
+      <xref linkend="libvpx"/>, and
+      <xref linkend="xorg7-lib"/> <!-- build time requirements only,
+      you don't need either apps, fonts or xorg server to build this
+      package. You'll need xserver for any X app that wants to play
+      something though, but that should be obvious. -->
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="aalib"/>,
+      <xref linkend="alsa-oss"/>,
+      <xref linkend="gtk3"/> (for examples),
+      <xref linkend="gtk-doc"/>,
+      <xref linkend="libdv"/>,
+      <xref linkend="pulseaudio"/>,
+      <xref linkend="qt5"/>,
+      <xref linkend="speex"/>,
+      <xref linkend="taglib"/>,
+      <xref linkend="valgrind"/>,
+      <xref linkend='v4l-utils'/>,
+      <xref linkend="wayland"/>,
+      <ulink url="http://jackaudio.org/">JACK</ulink>,
+      <ulink url="http://caca.zoy.org/wiki/libcaca">libcaca</ulink>,
+      <ulink url="http://sourceforge.net/projects/libraw1394/">libiec61883</ulink>,
+      <ulink url="http://sourceforge.net/projects/libraw1394/">libraw1394</ulink>,
+      <ulink url="http://www.icecast.org/download.php">libshout</ulink>,
+      <ulink url="http://gstreamer.freedesktop.org/src/orc/">Orc</ulink>,
+      <ulink url="http://www.twolame.org/">TwoLame</ulink>, and
+      <ulink url="http://wavpack.com/">WavPack</ulink>
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/gst10-plugins-good"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of GStreamer Good Plug-ins</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/gst10-objc-error.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/gst10-plugins.xml"/>
+
+    <!-- No longer true since Meson/Ninja doesn't use libtool
+    <caution><para>
+      If you have Qt5 installed, the build may fail if you have Wayland support
+      enabled in Qt. To fix this, run the <command>remove-la-files.sh</command>
+      script that is in <xref linkend="la-files"/>.
+    </para></caution>
+    -->
+
+    <para>
+      Install <application>GStreamer Good Plug-ins</application> by running the
+      following commands:
+    </para>
+
+<screen><userinput>patch -Np1 -i ../gst-plugins-good-&gst10-plugins-good-version;-v4l2_fix-1.patch &amp;&amp;
+
+mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+meson  --prefix=/usr       \
+       -Dbuildtype=release \
+       -Dpackage-origin=http://www.linuxfromscratch.org/blfs/view/svn/ \
+       -Dpackage-name="GStreamer &gst10-plugins-good-version; BLFS" &amp;&amp;
+ninja</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>ninja test</command>.  The souphttpsrc
+      test is known to fail. 
+      <!-- This is due to API changes in libsoup-2.56+. The async/sync,
+      disconnect, and soup messaging functions were changed, and as a result,
+      the souphttpsrc test fails. -->
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>ninja install</userinput></screen>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          None
+        </seg>
+        <seg>
+          Several plugins under /usr/lib/gstreamer-1.0
+        </seg>
+        <seg>
+          /usr/share/gstreamer-1.0/presets and
+          /usr/share/gtk-doc/html/gst-plugins-good-plugins-1.0
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+</sect1>

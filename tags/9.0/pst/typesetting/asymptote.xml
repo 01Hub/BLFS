@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY asymptote-download-http "&sourceforge-dl;/asymptote/asymptote-&asymptote-version;.src.tgz">
+  <!ENTITY asymptote-download-ftp  " ">
+  <!ENTITY asymptote-md5sum        "63d51aa1b551e59f0d00f2495acbc793">
+  <!ENTITY asymptote-size          "4.0 MB">
+  <!ENTITY asymptote-buildsize     "188 MB">
+  <!ENTITY asymptote-time          "2.4 SBU">
+]>
+
+<sect1 id="asymptote" xreflabel="asymptote-&asymptote-version;">
+  <?dbhtml filename="asymptote.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>asymptote-&asymptote-version;</title>
+
+  <indexterm zone="asymptote">
+    <primary sortas="a-asymptote">asymptote</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to asymptote</title>
+
+    <para>
+      <application>Asymptote</application> is a powerful descriptive vector
+      graphics language that provides a natural coordinate-based framework for
+      technical drawing. Labels and equations can be typeset with LaTeX.
+    </para>
+
+    &lfs90_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&asymptote-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&asymptote-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &asymptote-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &asymptote-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &asymptote-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &asymptote-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="gs"/> and
+      <xref linkend="texlive"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="freeglut"/>,
+      <xref linkend="gc"/>,
+      <xref linkend="glew"/>,
+      <xref linkend="glm"/> and
+      <xref linkend="libtirpc"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="fftw"/>,
+      <xref linkend="gsl"/>, 
+      <xref linkend="libsigsegv"/>, and
+      <ulink url="https://dvisvgm.de/">dvisvgm</ulink>
+
+    </para>
+
+    <bridgehead renderas="sect4">Optional (at runtime, to use xasy)</bridgehead>
+    <para role="optional">
+      <ulink url="https://pypi.org/project/PyQt5/">PyQt5</ulink> (not tested),
+      which has a build dependency of <xref linkend="qt5"/>
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/asymptote"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of asymptote</title>
+<!--
+    <note>
+      <para>
+        At the moment, there are issues in building <application>dvisvgm</application>.
+        Without that, <command>asy</command> cannot create svg files. The current
+        source, for those who need it, can be found at <ulink url="https://dvisvgm.de/"/>
+      </para>
+    </note>
+-->
+    <para>
+      Install <application>asymptote</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>export TEXARCH=$(uname -m | sed -e 's/i.86/i386/' -e 's/$/-linux/') &amp;&amp;
+
+./configure --prefix=/opt/texlive/&texlive-year;                          \
+            --bindir=/opt/texlive/&texlive-year;/bin/$TEXARCH             \
+            --datarootdir=/opt/texlive/&texlive-year;/texmf-dist          \
+            --infodir=/opt/texlive/&texlive-year;/texmf-dist/doc/info     \
+            --libdir=/opt/texlive/&texlive-year;/texmf-dist               \
+            --mandir=/opt/texlive/&texlive-year;/texmf-dist/doc/man       \
+            --enable-gc=system                                  \
+            --with-latex=/opt/texlive/&texlive-year;/texmf-dist/tex/latex \
+            --with-context=/opt/texlive/&texlive-year;/texmf-dist/tex/context/third &amp;&amp;
+
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+     href="../../xincludes/tex-prefix.xml"/>
+
+    <para><parameter>--libdir=/opt/texlive/&texlive-year;/texmf-dist;</parameter>:
+    This parameter ensures that the <filename class="directory">asymptote</filename>
+    directory will similarly overwrite any files installed by install-tl-unx.</para>
+
+    <para><parameter>--enable-gc=system</parameter>: this ensures that the system
+    version of <filename class="libraryfile">libgc.so</filename> will be used
+    instead of the version shipped with this package.</para>
+
+    <para><parameter>--with-latex= ... --with-context=</parameter>: These switches
+    ensure that style files and a tex file will be installed into the
+    <application>texlive</application> directories instead of creating a
+    <filename class="directory">texmf-local</filename> directory for them.</para>
+
+    <!-- commenting for now: 2.44 installs asymptote.info in both places
+     so the old version no longer remains
+
+    <para>
+      <command>rm -fv /opt/texlive/.../asymptote.info</command>:
+      This deletes the file installed by <application>texlive</application>.
+      Exceptionally, asymptote will create an <filename
+      class="directory">asymptote/</filename> subdirectory for its own
+      <filename>asymptote.info</filename> even though a possibly older
+      version from <xref linkend="texlive"/> is in the main
+      <application>texlive</application>
+      <filename class="directory">info/</filename> directory. Both the
+      new version and the existing <filename>asy-faq.info</filename>
+      <emphasis>will</emphasis> be found by <command>info</command>.
+    </para>-->
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>
+          asy, xasy
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          /opt/texlive/&texlive-year;texmf-dist/asymptote,
+          /opt/texlive/&texlive-year;/doc/asymptote,
+          /opt/texlive/&texlive-year;/info/asymptote
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="asy">
+        <term><command>asy</command></term>
+        <listitem>
+          <para>
+            is a vector graphics program.
+          </para>
+          <indexterm zone="asymptote asy">
+            <primary sortas="b-asy">asy</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xasy">
+        <term><command>xasy</command></term>
+        <listitem>
+          <para>
+            is a Python3 script providing a Qt5 GUI for asy.
+          </para>
+          <indexterm zone="asymptote xasy">
+            <primary sortas="b-xasy">xasy</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

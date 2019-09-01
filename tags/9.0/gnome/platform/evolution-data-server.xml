@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY evolution-data-server-download-http
+           "&gnome-download-http;/evolution-data-server/&gnome-minor-32;/evolution-data-server-&evolution-data-server-version;.tar.xz">
+  <!ENTITY evolution-data-server-download-ftp
+           "&gnome-download-ftp;/evolution-data-server/&gnome-minor-32;/evolution-data-server-&evolution-data-server-version;.tar.xz">
+  <!ENTITY evolution-data-server-md5sum        "57820f3f88fc554e1a58665a52e12c05">
+  <!ENTITY evolution-data-server-size          "4.4 MB">
+  <!ENTITY evolution-data-server-buildsize     "161 MB">
+  <!ENTITY evolution-data-server-time          "0.6 SBU (Using parallelism=4)">
+]>
+
+<sect1 id="evolution-data-server"
+xreflabel="evolution-data-server-&evolution-data-server-version;">
+  <?dbhtml filename="evolution-data-server.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>evolution-data-server-&evolution-data-server-version;</title>
+
+  <indexterm zone="evolution-data-server">
+    <primary sortas="a-evolution-data-server">evolution-data-server</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Evolution Data Server</title>
+
+    <para>
+      The <application>Evolution Data Server</application> package provides
+      a unified backend for programs that work with contacts, tasks, and calendar
+      information. It was originally developed for
+      <application>Evolution</application> (hence the name), but is now used by
+      other packages as well.
+    </para>
+
+    &lfs90_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&evolution-data-server-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&evolution-data-server-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &evolution-data-server-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &evolution-data-server-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &evolution-data-server-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &evolution-data-server-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Evolution Data Server Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="db"/>,
+      <xref linkend="gcr"/>,
+      <xref linkend="libical"/>,
+      <xref linkend="libsecret"/>,
+      <xref linkend="nss"/>, and
+      <xref linkend="sqlite"/>.
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="gnome-online-accounts"/>,
+      <xref linkend="gobject-introspection"/>,
+      <xref linkend="gtk3"/>,
+      <xref linkend="icu"/>,
+      <xref linkend="libcanberra"/>,
+      <xref linkend="libgdata"/>,
+      <xref linkend="libgweather"/>, and
+      <xref linkend="vala"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="gtk-doc"/>,
+      <xref linkend="mitkrb"/>,
+      a <xref linkend="server-mail"/> (that provides a <command>sendmail</command> command), and
+      <xref linkend="openldap"/>,
+      <!--<ulink url="https://gitlab.com/groups/accounts-sso">Accounts-SSO</ulink>,
+      <ulink url="https://github.com/google/google-authenticator/">Google Authenticator</ulink>, and
+      <ulink url="https://github.com/googlei18n/libphonenumber/">libphonenumber</ulink>-->
+      <!-- For the above commented entries - I can't seem to find references to
+      these in 3.32.0, so they've been commented.-->
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+      <ulink url="&blfs-wiki;/evolution-data-server"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Evolution Data Server</title>
+
+    <para>
+      Install <application>Evolution Data Server</application> by running
+      the following commands:
+    </para>
+
+<screen revision="sysv"><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr   \
+      -DSYSCONF_INSTALL_DIR=/etc    \
+      -DENABLE_VALA_BINDINGS=ON     \
+      -DENABLE_INSTALLED_TESTS=ON   \
+      -DENABLE_GOOGLE=ON            \
+      -DWITH_OPENLDAP=OFF           \
+      -DWITH_KRB5=OFF               \
+      -DENABLE_INTROSPECTION=ON     \
+      -DENABLE_GTK_DOC=OFF          \
+      -DWITH_SYSTEMDUSERUNITDIR=no  \
+      .. &amp;&amp;
+make</userinput></screen>
+
+<screen revision="systemd"><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr   \
+      -DSYSCONF_INSTALL_DIR=/etc    \
+      -DENABLE_VALA_BINDINGS=ON     \
+      -DENABLE_INSTALLED_TESTS=ON   \
+      -DENABLE_GOOGLE=ON            \
+      -DWITH_OPENLDAP=OFF           \
+      -DWITH_KRB5=OFF               \
+      -DENABLE_INTROSPECTION=ON     \
+      -DENABLE_GTK_DOC=OFF          \
+      .. &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a working test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>-DENABLE_GOOGLE=ON</parameter>: This default flag enables
+      access to google services via <xref linkend="libgdata"/> and also
+      enables the Google Authentication option.
+    </para>
+
+    <!--
+    <para>
+      <parameter>-DENABLE_GOOGLE_AUTH=OFF</parameter>: This flag is used
+      to disable the Google Authentication functionality within
+      <application>Evolution Data Server</application>. Omit if you have
+      installed <application>Google Authenticator</application>.
+    </para>
+    -->
+
+    <!--
+    <para>
+      <parameter>-DENABLE_UOA=OFF</parameter>: This flag is used
+      to disable <application>Ubuntu Online Accounts</application>
+      support in <application>Evolution Data Server</application>.
+      Remove it if you have installed Accounts-SSO.
+    </para>
+    -->
+
+    <para>
+      <parameter>-DENABLE_VALA_BINDINGS=ON</parameter>: This switch
+      enables building the Vala bindings. Remove if you don't
+      have <xref linkend="vala"/> installed.
+    </para>
+
+    <para>
+      <parameter>-DENABLE_GTK_DOC=OFF</parameter>: This switch
+      disables building the API documentation. It is broken for
+      this package due to the use of a long deprecated gtk-doc program
+      that is no longer available.
+    </para>
+
+<!-- I need a CMake version of this. I'll come up with it at a later time/date.
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/gtk-doc-rebuild.xml"/>
+-->
+
+    <para revision="sysv">
+      <parameter>-DWITHSYSTEMDUSERUNITDIR=no</parameter>: This switch
+      disables installing the systemd units, which are not used for a Sysv
+      build.
+    </para>
+
+    <note>
+      <para>
+        To enable many of the optional dependencies, review the information
+        from <command>cmake -L CMakeLists.txt</command> for the necessary
+        parameters you must pass to the <command>cmake</command> command.
+      </para>
+    </note>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          None
+        </seg>
+        <seg>
+          libcamel-1.2.so, libebackend-1.2.so, libebook-1.2.so, 
+          libebook-contacts-1.2.so, libecal-1.2.so, libedata-book-1.2.so, 
+          libedata-cal-1.2.so, libedataserver-1.2.so, 
+          libedataserverui-1.2.so, and libetestserverutils.so
+        </seg>
+        <seg>
+          /usr/include/evolution-data-server,
+          /usr/lib/evolution-data-server,
+          /usr/share/{,installed-tests/}evolution-data-server,
+          /usr/share/gtk-doc/html/{camel,libebackend,libebook},
+          /usr/share/gtk-doc/html/{libecal,libedata-book,libedata-cal},
+          /usr/share/gtk-doc/html/{libedataserver,libedataserverui} and
+          /usr/share/pixmaps/evolution-data-server
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libcamel-1">
+        <term><filename class="libraryfile">libcamel-1.2.so</filename></term>
+        <listitem>
+          <para>
+            is the <application>Evolution</application> MIME message
+            handling library.
+          </para>
+          <indexterm zone="evolution-data-server libcamel-1">
+            <primary sortas="c-libcamel-1">libcamel-1.2.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libebackend-1">
+        <term><filename class="libraryfile">libebackend-1.2.so</filename></term>
+        <listitem>
+          <para>
+            is the utility library for
+            <application>Evolution Data Server</application> Backends.
+          </para>
+          <indexterm zone="evolution-data-server libebackend-1">
+            <primary sortas="c-libebackend-1">libebackend-1.2.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libebook-1">
+        <term><filename class="libraryfile">libebook-1.2.so</filename></term>
+        <listitem>
+          <para>
+            is the client library for <application>Evolution</application>
+            address books.
+          </para>
+          <indexterm zone="evolution-data-server libebook-1">
+            <primary sortas="c-libebook-1">libebook-1.2.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libebook-contacts-1">
+        <term><filename class="libraryfile">libebook-contacts-1.2.so</filename></term>
+        <listitem>
+          <para>
+            is the client library for <application>Evolution</application>
+            contacts.
+          </para>
+          <indexterm zone="evolution-data-server libebook-contacts-1">
+            <primary sortas="c-libebook-contacts-1">libebook-contacts-1.2.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libecal-1">
+        <term><filename class="libraryfile">libecal-1.2.so</filename></term>
+        <listitem>
+          <para>
+            is the client library for <application>Evolution</application>
+            calendars.
+          </para>
+          <indexterm zone="evolution-data-server libecal-1">
+            <primary sortas="c-libecal-1">libecal-1.2.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libedata-book-1">
+        <term><filename class="libraryfile">libedata-book-1.2.so</filename></term>
+        <listitem>
+          <para>
+            is the backend library for <application>Evolution</application>
+            address books.
+          </para>
+          <indexterm zone="evolution-data-server libedata-book-1">
+            <primary sortas="c-libedata-book-1">libedata-book-1.2.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libedata-cal-1">
+        <term><filename class="libraryfile">libedata-cal-1.2.so</filename></term>
+        <listitem>
+          <para>
+            is the backend library for <application>Evolution</application>
+            calendars.
+          </para>
+          <indexterm zone="evolution-data-server libedata-cal-1">
+            <primary sortas="c-libedata-cal-1">libedata-cal-1.2.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libedataserver-1">
+        <term><filename class="libraryfile">libedataserver-1.2.so</filename></term>
+        <listitem>
+          <para>
+            is the utility library for
+            <application>Evolution Data Server</application>.
+          </para>
+          <indexterm zone="evolution-data-server libedataserver-1">
+            <primary sortas="c-libedataserver-1">libedataserver-1.2.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libedataserverui-3">
+        <term><filename class="libraryfile">libedataserverui-3.0.so</filename></term>
+        <listitem>
+          <para>
+            is the GUI utility library for
+            <application>Evolution Data Server</application>.
+          </para>
+          <indexterm zone="evolution-data-server libedataserverui-3">
+            <primary sortas="c-libedataserverui-3">libedataserverui-3.0.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libetestserverutils-1">
+        <term><filename class="libraryfile">libetestserverutils.so</filename></term>
+        <listitem>
+          <para>
+            is the server test utility library for
+            <application>Evolution Data Server</application>.
+          </para>
+          <indexterm zone="evolution-data-server libetestserverutils-1">
+            <primary sortas="c-libetestserverutils-1">libetestserverutils.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
